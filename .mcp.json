@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "braking-lab": {
+      "type": "http",
+      "url": "https://mcp.brakinglab.com/mcp"
+    }
+  }
+}

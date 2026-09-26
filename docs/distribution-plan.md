@@ -1,7 +1,7 @@
 # Plan de distribución del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** plan; empaquetado y publicaciones pendientes
+- **Estado:** empaquetado privado en curso; pruebas autenticadas y publicaciones pendientes
 - **Fuente:** este repositorio privado, con una sola copia de las nueve skills en `skills/`
 
 ## Objetivo
@@ -20,18 +20,20 @@ La [validación de las skills](test-plan.md) es una puerta de entrada para publi
 
 Elegir la tercera opción. Mantener `skills/` como fuente única y el MCP remoto como autoridad para datos, permisos, cuotas y confirmaciones. Los manifiestos son adaptadores de instalación; no contienen otra versión de los flujos. No crear un CLI de Braking Lab hasta comprobar que el CLI existente deja una necesidad real sin cubrir.
 
-Estructura prevista en este mismo repositorio:
+Estructura en este mismo repositorio:
 
 ```text
 skills/                         Nueve Agent Skills compartidas
-plugin.json                     Paquete Agent Plugins para OpenAI y clientes compatibles
+plugin.json                     Paquete Agent Plugins portable
 mcp.json                        Referencia portable al MCP remoto
 .claude-plugin/plugin.json      Metadatos del plugin de Claude
 .mcp.json                       Referencia al MCP para Claude
+openai/app.json                 Conector personal registrado para ChatGPT
+scripts/build_archive.py        Tres archivos de distribución desde skills/
 docs/                           Pruebas, instalación y soporte
 ```
 
-Los formatos de `mcp.json` y `.mcp.json` son distintos; apuntarán al mismo servicio de producción y se validarán por separado. Las pruebas contra staging usarán una copia local o configuración de prueba claramente marcada, nunca un manifiesto publicable que pueda dirigir usuarios a staging. El empaquetado de OpenAI puede necesitar además un mapeo de la conexión MCP registrada en ChatGPT; decidir el archivo exacto al probar el flujo real de Developer mode. No introducir hooks ni scripts de instalación si las skills y el MCP remoto bastan.
+Los formatos de `mcp.json` y `.mcp.json` son distintos y apuntan al mismo servicio de producción. El archivo ChatGPT contiene un manifiesto generado con `.app.json` y omite `mcp.json` para mostrar una sola conexión. El archivo portable mantiene `mcp.json` y omite `.app.json`; el de Claude utiliza `.mcp.json`. Las pruebas contra staging usarán una copia local o configuración de prueba claramente marcada, nunca un manifiesto publicable que pueda dirigir usuarios a staging. No introducir hooks ni scripts de instalación si las skills y el MCP remoto bastan.
 
 ## Alcance de cada vía
 

@@ -1,0 +1,17 @@
+{
+  "name": "braking-lab",
+  "description": "Race Engineer for Braking Lab drivers",
+  "owner": {
+    "name": "Braking Lab"
+  },
+  "plugins": [
+    {
+      "name": "braking-lab-race-engineer",
+      "source": {
+        "source": "github",
+        "repo": "r-bart/braking-lab-agent-skills"
+      },
+      "description": "Review laps, prepare races, and explore setups using your Braking Lab data."
+    }
+  ]
+}

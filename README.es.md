@@ -16,16 +16,14 @@ Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o e
 | «¿Qué debería practicar antes de la carrera?»      | `race-week`        |
 | «Compara mis dos últimas vueltas.»                 | `lap-comparison`   |
 
-## Prueba las skills
+## Prueba Race Engineer
 
-1. [Conecta el MCP del Race Engineer](https://www.brakinglab.com/es/docs/race-engineer/mcp-setup) e inicia sesión con la cuenta de Braking Lab donde están tus datos. Las skills no conectan ni autentican el MCP por sí solas.
-2. Clona el [repositorio privado](https://github.com/r-bart/braking-lab-agent-skills) con una cuenta que tenga acceso. Para una prueba local, enlaza o copia sus nueve carpetas `skills/<name>/` en `~/.codex/skills/` para Codex o `~/.claude/skills/` para Claude Code. Inicia una sesión nueva si tu cliente todavía no las detecta.
-3. Pregunta con tus propias palabras. El asistente elige la skill relevante; también puedes invocarla por nombre en los clientes que lo permitan.
+El paquete privado de prueba incluye las nueve skills y la conexión al MCP de Race Engineer. Sigue la guía para [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md) u [otro agente](docs/install-other-agents.md). Después inicia sesión en la cuenta de Braking Lab donde están tus datos y pregunta con tus propias palabras.
 
 Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no cambian tu plan ni conceden más acceso. Tu cliente conectado puede seguir usando otras funciones del Race Engineer. Las acciones que guardan o cambian datos siguen sujetas a los permisos de tu cuenta y a las confirmaciones del servidor. [Consulta a qué datos puede acceder el Race Engineer](https://www.brakinglab.com/es/docs/race-engineer/security).
 
 ## Estado actual
 
-Las nueve skills están escritas. Se ha validado su formato y se han contrastado los nombres de las funciones con el catálogo del MCP. Faltan las pruebas reales con una cuenta de test autenticada, incluida la selección de skills, los límites del plan y las confirmaciones. Este repositorio todavía no contiene un plugin para Claude o Codex ni una publicación en sus directorios.
+Los paquetes para Claude y Agent Plugins se construyen desde las mismas nueve skills. Sus manifiestos y estructura han pasado la validación local. Faltan las pruebas reales con una cuenta autenticada, incluida la selección de skills, los límites del plan y las confirmaciones. Ningún plugin tiene aún una ficha pública en su directorio.
 
 Sigue el [plan de pruebas](docs/test-plan.md) para las comprobaciones pendientes. El [plan de distribución](docs/distribution-plan.md) recoge los pasos para Claude, ChatGPT y otros agentes cuando terminen las pruebas; las [notas para mantenimiento](docs/maintainers.md) conservan los detalles de empaquetado.

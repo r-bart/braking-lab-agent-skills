@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "braking-lab-race-engineer",
+  "version": "0.1.0",
+  "description": "Race Engineer skills and MCP access for your Braking Lab telemetry, setups, race calendar, and track notes.",
+  "author": {
+    "name": "Braking Lab",
+    "url": "https://www.brakinglab.com"
+  },
+  "homepage": "https://www.brakinglab.com/en/features/race-engineer",
+  "repository": "https://github.com/r-bart/braking-lab-agent-skills",
+  "keywords": ["sim-racing", "telemetry", "race-engineer", "setups"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Braking Lab Race Engineer",
+        "shortDescription": "Understand your laps and prepare your next race.",
+        "longDescription": "Use your Braking Lab data to review a session, compare laps, prepare a race, and explore setup changes with clear evidence and limits.",
+        "developerName": "Braking Lab",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://www.brakinglab.com",
+        "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
+        "termsOfServiceURL": "https://www.brakinglab.com/en/terms",
+        "brandColor": "#F97316",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png",
+        "defaultPrompt": [
+          "Review my latest session and show where I lost time.",
+          "Compare my last two laps and explain the biggest difference.",
+          "What should I practice before my next race?"
+        ]
+      }
+    }
+  }
+}

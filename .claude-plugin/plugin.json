@@ -1,0 +1,13 @@
+{
+  "name": "braking-lab-race-engineer",
+  "displayName": "Braking Lab Race Engineer",
+  "version": "0.1.0",
+  "description": "Review laps, prepare races, and explore setups using your Braking Lab data.",
+  "author": {
+    "name": "Braking Lab",
+    "url": "https://www.brakinglab.com"
+  },
+  "homepage": "https://www.brakinglab.com/en/features/race-engineer",
+  "repository": "https://github.com/r-bart/braking-lab-agent-skills",
+  "keywords": ["sim-racing", "telemetry", "race-engineer", "setups"]
+}
