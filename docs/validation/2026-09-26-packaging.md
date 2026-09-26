@@ -25,6 +25,10 @@ En un chat nuevo, sin seleccionar el plugin ni mencionarlo por su nombre, «¿Qu
 
 Claude chat no pudo ejecutar la primera consulta tras conectar: la cuenta alcanzó su límite mensual de uso y la interfaz devolvió el borrador sin respuesta. La conexión quedó visible como «Conectado». Claude Code había mostrado el mismo límite antes de conectar.
 
+## Comprobación adicional del paquete privado
+
+En el commit `48465b5` se reconstruyeron los tres ZIP `0.1.1` y se verificaron todos con `SHA256SUMS`. La inspección de su contenido no encontró referencias a staging, fixtures `e2e-`, Supabase ni marcadores de clave privada. Un barrido de los 258 objetos del historial Git buscó patrones de claves OpenAI, GitHub y Supabase, claves privadas y asignaciones de secreto; no encontró coincidencias. Estas comprobaciones acotan errores de empaquetado evidentes, pero no sustituyen la revisión completa de privacidad, licencia, soporte y funcionamiento de clientes exigida antes de hacer público el repositorio.
+
 ## Pendiente antes de declarar soporte completo
 
 - Primer debrief y una escritura ordinaria en ChatGPT, con lectura posterior; pruebas de límites y rechazo seguro según `../test-plan.md`.
