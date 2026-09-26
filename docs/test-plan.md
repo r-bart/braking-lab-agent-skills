@@ -2,7 +2,7 @@
 
 - **Fecha:** 2026-09-26
 - **Estado:** pendiente de ejecutar
-- **Alcance:** las nueve skills de `skills/`, usadas con el MCP del Race Engineer en Codex y Claude Code. El empaquetado como plugin y la distribución se decidirán después.
+- **Alcance:** las nueve skills de `skills/`, usadas con el MCP del Race Engineer en Codex y Claude Code. El empaquetado y la distribución siguen el [plan de distribución](distribution-plan.md), cuya ejecución depende de estas pruebas.
 
 ## Objetivo y punto de partida
 

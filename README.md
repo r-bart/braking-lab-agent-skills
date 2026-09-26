@@ -28,4 +28,4 @@ The skills guide common tasks. They do not limit what the MCP can do, change you
 
 All nine skills are written and their format and function names have been checked against the MCP catalog. Live checks with an authenticated test account, including skill selection, quota limits, and confirmation flows, are still pending. This repository does not yet contain a Claude or Codex plugin package or a directory listing.
 
-Follow the [test plan](docs/test-plan.md) for the remaining verification work. Packaging and distribution notes are in [maintainer notes](docs/maintainers.md) for later.
+Follow the [test plan](docs/test-plan.md) for verification. The [distribution plan](docs/distribution-plan.md) covers Claude, ChatGPT, and other agents after the tests; packaging details are in [maintainer notes](docs/maintainers.md).

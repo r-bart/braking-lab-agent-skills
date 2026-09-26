@@ -28,4 +28,4 @@ Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no ca
 
 Las nueve skills están escritas. Se ha validado su formato y se han contrastado los nombres de las funciones con el catálogo del MCP. Faltan las pruebas reales con una cuenta de test autenticada, incluida la selección de skills, los límites del plan y las confirmaciones. Este repositorio todavía no contiene un plugin para Claude o Codex ni una publicación en sus directorios.
 
-Sigue el [plan de pruebas](docs/test-plan.md) para las comprobaciones pendientes. Las [notas para mantenimiento](docs/maintainers.md) conservan el contexto de empaquetado y distribución para más adelante.
+Sigue el [plan de pruebas](docs/test-plan.md) para las comprobaciones pendientes. El [plan de distribución](docs/distribution-plan.md) recoge los pasos para Claude, ChatGPT y otros agentes cuando terminen las pruebas; las [notas para mantenimiento](docs/maintainers.md) conservan los detalles de empaquetado.

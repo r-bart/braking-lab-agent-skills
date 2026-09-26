@@ -1,6 +1,6 @@
 # Maintainer notes
 
-The repository is private during skill validation. Complete the [test plan](test-plan.md) before deciding on plugin packaging or distribution. Changing the repository's visibility to private on 2026-09-26 cannot retract access to content from the period when it was public.
+The repository is private during skill validation. Complete the [test plan](test-plan.md) before executing the [distribution plan](distribution-plan.md). Changing the repository's visibility to private on 2026-09-26 cannot retract access to content from the period when it was public.
 
 ## One skill source, two distribution paths
 
