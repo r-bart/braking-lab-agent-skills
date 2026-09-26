@@ -3,7 +3,7 @@
 El paquete privado combina las nueve skills con el conector MCP de Braking Lab. La ficha pública aún no existe; durante el piloto se usa un archivo revisado.
 
 1. Abre **Plugins** en ChatGPT y elige **Add → Upload plugin archive**.
-2. Selecciona el archivo privado [`braking-lab-chatgpt-0.1.0.zip`](https://github.com/r-bart/braking-lab-agent-skills/releases/download/v0.1.0/braking-lab-chatgpt-0.1.0.zip). Comprueba que la ficha muestra **Braking Lab Race Engineer** y nueve skills.
+2. Selecciona el archivo privado [`braking-lab-chatgpt-0.1.1.zip`](https://github.com/r-bart/braking-lab-agent-skills/releases/download/v0.1.1/braking-lab-chatgpt-0.1.1.zip). Comprueba que la ficha muestra **Braking Lab Race Engineer** y nueve skills.
 3. Conecta tu cuenta de Braking Lab cuando ChatGPT lo solicite. Verifica que es la cuenta que contiene tus datos.
 4. Pregunta: «Revisa mi última tanda en Spa y dame tres prioridades basadas en la telemetría».
 
