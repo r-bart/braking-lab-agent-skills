@@ -1,14 +1,14 @@
 # Plan de pruebas del set de skills del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** en ejecución; véase el [registro del candidato privado](validation/2026-09-26-test-run.md)
+- **Estado:** en ejecución; OAuth de staging recuperado, con una incidencia de configuración preview documentada en el [registro del candidato privado](validation/2026-09-26-test-run.md)
 - **Alcance:** las nueve skills de `skills/`, usadas con el MCP del Race Engineer en Codex y Claude Code. El empaquetado y la distribución siguen el [plan de distribución](distribution-plan.md), cuya ejecución depende de estas pruebas.
 
 ## Objetivo y punto de partida
 
 El objetivo es poder afirmar, con resultados reproducibles, que las skills se activan para las tareas adecuadas, usan el contrato vigente del MCP, respetan permisos y confirmaciones, y explican la evidencia sin exagerarla. «Listo» significa superar los criterios de salida de este documento; ninguna batería finita garantiza que un asistente nunca se equivoque.
 
-Ya existen nueve `SKILL.md`. Su formato pasó el validador de Agent Skills y los nombres de funciones se contrastaron con una instantánea versionada del catálogo local del MCP el 2026-09-26. El repositorio `r-bart/braking-lab-agent-skills` está subido a GitHub y es privado. ChatGPT y Claude están conectados para el piloto de solo lectura; la conexión local de staging requiere volver a autenticarse para los casos con fixtures. Las pruebas estáticas no sustituyen ese paso.
+Ya existen nueve `SKILL.md`. Su formato pasó el validador de Agent Skills y los nombres de funciones se contrastaron con una instantánea versionada del catálogo local del MCP el 2026-09-26. El repositorio `r-bart/braking-lab-agent-skills` está subido a GitHub y es privado. ChatGPT y Claude están conectados para el piloto de solo lectura. La conexión de staging está reautenticada en la cuenta Basic de prueba, que no contiene sesiones, setups ni notepads. El despliegue preview de la app aún necesita corregir su URL de MCP para que el consentimiento funcione sin un proxy local. Las pruebas estáticas no sustituyen los casos con fixtures.
 
 ## Enfoque
 
@@ -35,7 +35,7 @@ Si falla OAuth o staging, continuar las fases estáticas y de redacción. Las pr
 **Antes:** validación local puntual. **Después:** una comprobación repetible que falla ante cambios incompatibles.
 
 - [x] Validar los nueve directorios con `agentskills validate skills/<nombre>`; comprobar nombre de carpeta, frontmatter, `description` y referencias locales.
-- [ ] Comparar todas las funciones citadas con un contrato de nombres y versión exportado del `TOOL_CATALOG` del MCP fijado. El contrato de la release debe corresponder al servidor desplegado, no solo al código local. Detectar funciones retiradas y distinguirlas de campos o estados que no son funciones.
+- [x] Comparar todas las funciones citadas con un contrato de nombres y versión exportado del `TOOL_CATALOG` del MCP fijado. El contrato de la release debe corresponder al servidor desplegado, no solo al código local. Detectar funciones retiradas y distinguirlas de campos o estados que no son funciones. `getCapabilities` confirmó en staging la versión `97-90f662d1d158357c`.
 - [x] Comprobar formato Markdown, enlaces de los READMEs y ausencia de secretos, rutas privadas y artefactos de staging en los archivos que podrían publicarse más adelante.
 - [x] Incorporar estas comprobaciones a CI para cada PR del repo privado. Mantener el resultado verde tras cada tarea posterior.
 
