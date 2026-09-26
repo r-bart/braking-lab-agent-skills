@@ -1,7 +1,7 @@
 # Plan de pruebas del set de skills del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** en ejecución; OAuth de staging recuperado y configuración preview corregida según el [registro del candidato privado](validation/2026-09-26-test-run.md)
+- **Estado:** en ejecución; OAuth de staging recuperado y configuración preview corregida. La [validación de staging del 2026-09-26](validation/2026-09-26-staging-validation.md) ejecutó 37 tests E2E correctos, 2 fallidos y 41 omitidos; aún no cumple los criterios de cierre.
 - **Alcance:** las nueve skills de `skills/`, usadas con el MCP del Race Engineer en Codex y Claude Code. El empaquetado y la distribución siguen el [plan de distribución](distribution-plan.md), cuya ejecución depende de estas pruebas.
 
 ## Objetivo y punto de partida
