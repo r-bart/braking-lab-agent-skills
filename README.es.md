@@ -18,12 +18,12 @@ Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o e
 
 ## Prueba Race Engineer
 
-El paquete privado de prueba incluye las nueve skills y la conexión al MCP de Race Engineer. Sigue la guía para [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md) u [otro agente](docs/install-other-agents.md). Después inicia sesión en la cuenta de Braking Lab donde están tus datos y pregunta con tus propias palabras.
+El paquete privado de prueba incluye las nueve skills y la conexión al MCP de Race Engineer. Sigue la guía para [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md) u [otro agente](docs/install-other-agents.md). Después inicia sesión en la cuenta de Braking Lab donde están tus datos y pregunta con tus propias palabras.
 
 Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no cambian tu plan ni conceden más acceso. Tu cliente conectado puede seguir usando otras funciones del Race Engineer. Las acciones que guardan o cambian datos siguen sujetas a los permisos de tu cuenta y a las confirmaciones del servidor. [Consulta a qué datos puede acceder el Race Engineer](https://www.brakinglab.com/es/docs/race-engineer/security).
 
 ## Estado actual
 
-Los paquetes para Claude y Agent Plugins se construyen desde las mismas nueve skills. Sus manifiestos y estructura han pasado la validación local. Faltan las pruebas reales con una cuenta autenticada, incluida la selección de skills, los límites del plan y las confirmaciones. Ningún plugin tiene aún una ficha pública en su directorio.
+Los paquetes para Claude, ChatGPT y Agent Plugins se construyen desde las mismas nueve skills. Sus manifiestos y estructura han pasado la validación local. ChatGPT importó el paquete privado, y Claude Code y Codex instalaron desde el repositorio privado. Faltan las pruebas reales con una cuenta autenticada, incluida la selección de skills, los límites del plan y las confirmaciones. Ningún plugin tiene aún una ficha pública en su directorio.
 
 Sigue el [plan de pruebas](docs/test-plan.md) para las comprobaciones pendientes. El [plan de distribución](docs/distribution-plan.md) recoge los pasos para Claude, ChatGPT y otros agentes cuando terminen las pruebas; las [notas para mantenimiento](docs/maintainers.md) conservan los detalles de empaquetado.

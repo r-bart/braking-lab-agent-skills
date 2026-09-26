@@ -14,6 +14,7 @@ plugin.json                     Portable Agent Plugins manifest
 mcp.json                        Portable MCP configuration
 .claude-plugin/plugin.json      Claude plugin manifest
 .claude-plugin/marketplace.json Private Claude Code marketplace
+.agents/plugins/marketplace.json Codex marketplace pointing at the same root
 .mcp.json                       Claude MCP configuration
 openai/app.json                 Registered ChatGPT MCP app mapping for the private pilot
 scripts/build_archive.py        Claude, ChatGPT, portable ZIPs from one skill source
@@ -34,7 +35,7 @@ Codex and ChatGPT share [OpenAI's public plugin directory](https://developers.op
 | Authenticated MCP behavior on staging                                           | Pending: local connection requires reauthentication |
 | Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                             |
 | Detailed skill test plan                                                        | Written; execution pending                          |
-| Claude and OpenAI plugin manifest validation                                    | Passed locally; private import still being tested   |
+| Claude and OpenAI plugin manifest validation                                    | Passed locally; private installs completed          |
 | Public directory review                                                         | Pending                                             |
 
 The source catalog is `braking-lab-monorepo/apps/mcp-server/src/mcp/code-mode/catalog/` in the private project. Published skills must name only functions present in the deployed catalog. A successful YAML check cannot establish correct tool behavior.

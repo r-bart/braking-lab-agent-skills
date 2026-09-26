@@ -27,6 +27,8 @@ skills/                         Nueve Agent Skills compartidas
 plugin.json                     Paquete Agent Plugins portable
 mcp.json                        Referencia portable al MCP remoto
 .claude-plugin/plugin.json      Metadatos del plugin de Claude
+.claude-plugin/marketplace.json Catálogo privado de Claude Code
+.agents/plugins/marketplace.json Catálogo de Codex
 .mcp.json                       Referencia al MCP para Claude
 openai/app.json                 Conector personal registrado para ChatGPT
 scripts/build_archive.py        Tres archivos de distribución desde skills/

@@ -1,0 +1,20 @@
+{
+  "name": "braking-lab",
+  "interface": {
+    "displayName": "Braking Lab"
+  },
+  "plugins": [
+    {
+      "name": "braking-lab-race-engineer",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

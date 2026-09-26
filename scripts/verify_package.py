@@ -46,6 +46,7 @@ def main() -> None:
     claude_mcp = read_json(ROOT / ".mcp.json")
     openai_app = read_json(ROOT / "openai" / "app.json")
     marketplace = read_json(ROOT / ".claude-plugin" / "marketplace.json")
+    codex_marketplace = read_json(ROOT / ".agents" / "plugins" / "marketplace.json")
 
     assert portable["name"] == claude["name"] == "braking-lab-race-engineer"
     assert portable["version"] == claude["version"]
@@ -63,6 +64,13 @@ def main() -> None:
     assert marketplace["plugins"][0]["source"] == {
         "source": "github",
         "repo": "r-bart/braking-lab-agent-skills",
+    }
+    assert codex_marketplace["name"] == "braking-lab"
+    assert len(codex_marketplace["plugins"]) == 1
+    assert codex_marketplace["plugins"][0]["name"] == portable["name"]
+    assert codex_marketplace["plugins"][0]["source"] == {
+        "source": "local",
+        "path": "./",
     }
     assert "apps" not in portable["extensions"]["com.openai"]
     assert re.fullmatch(
