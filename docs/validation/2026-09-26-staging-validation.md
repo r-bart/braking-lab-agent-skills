@@ -36,8 +36,18 @@ La suite completa contra la base real de staging, usando esos fixtures nuevos, t
 
 Esta ejecución ejercita código local del MCP sobre la base de staging. No prueba por sí sola la versión desplegada del servidor ni la selección y respuesta de las skills en Claude o ChatGPT.
 
+## Reejecución completa con el fixture Alpine — 27 de septiembre
+
+Una lectura de las 524 referencias activas y sus 88 variantes exactas encontró una base alternativa observada para el fixture de construcción IV en `Alpine_A424`. Se regeneraron los diez setups sintéticos con esa variante y el generador terminó correctamente, sin reintentos por tasa. La base IV difiere de su referente en un dial que la derivación mueve, de modo que la aserción de delta relativo conserva su capacidad de detectar una copia de valores absolutos.
+
+Se ajustaron los pedidos E2E para usar valores finales observados. Los casos de punto medio dry/balanced y pasos wet no observados ahora exigen el rechazo concreto y comprueban que no apareció ninguna versión hija ni cambió el puntero. El arnés usa reintentos acotados solo para `UPLOAD_RATE_LIMITED`, respetando el tiempo indicado por staging; no se modificó el constructor del producto ni el guard de dominio exacto.
+
+La suite completa `MCP_ACCEPTANCE=1 pnpm test:e2e` terminó con **78 tests correctos, 0 fallidos y 2 omitidos** en 819,60 segundos (código 0). Los omitidos son `interactive-session.e2e.test.ts` y `staging-transport-smoke.e2e.test.ts`, que requieren sus activaciones y credenciales específicas. Pasaron, entre otros, construcción de Setup Interview (6/6), riesgo e identidad (10/10), procedencia (7/7), remix (4/4), evaluación (12/12), aislamiento entre propietarios (5/5), análisis (22/22), trazas (6/6) y transporte local (3/3). La lectura posterior confirmó **10 setups, 15 versiones, cero usos**, seis bases activas en v1 y rutas de blob canónicas. Typecheck, lint y formato pasaron; la verificación del paquete de skills confirmó las nueve skills, los dos manifests y las 66 funciones del catálogo fijado.
+
+Este resultado valida el código MCP local contra la base real de staging. No ejecuta los dos casos de transporte opt-in, no certifica el despliegue remoto y no constituye una prueba de uso de las skills por Claude o ChatGPT.
+
 ## Puertas de salida pendientes
 
-La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Falta conectar una cuenta de staging con derechos Plus/Ultra al MCP desplegado y recorrer debrief, comparación, setups, Track Notes y race week con datos; verificar sus escrituras por lectura posterior; probar formularios `elicitation.form` en un cliente compatible; y ejecutar el corpus de 54 prompts en Claude Code. El CLI de Claude informó de límite de gasto mensual y restablecimiento semanal el 1 de octubre a las 19:00 (Madrid). La suite E2E general sigue roja por los rechazos de dominio exacto en los casos LMU.
+La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Falta conectar una cuenta de staging con derechos Plus/Ultra al MCP desplegado y recorrer debrief, comparación, setups, Track Notes y race week con datos; verificar sus escrituras por lectura posterior; probar formularios `elicitation.form` en un cliente compatible; y ejecutar el corpus de 54 prompts en Claude Code. El CLI de Claude informó de límite de gasto mensual y restablecimiento semanal el 1 de octubre a las 19:00 (Madrid). La suite E2E local está verde; las pruebas opt-in de sesión interactiva y transporte remoto siguen pendientes.
 
 Hasta resolver estas puertas, la release sigue siendo privada y preliminar. No hay evidencia suficiente para afirmar soporte funcional completo de las nueve skills ni para enlazar una instalación pública desde la landing.
