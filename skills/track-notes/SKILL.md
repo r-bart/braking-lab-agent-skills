@@ -1,11 +1,11 @@
 ---
 name: track-notes
-description: Find, create, update, or delete Braking Lab track notepads, edit structured corner notes, and link or unlink a notepad from a race.
+description: Manage Braking Lab Track Notes. Use when a driver asks to find, add, or change corner references, map pins, or general circuit notes, link notes to a race, or remove a notepad.
 ---
 
 # Track notes
 
-Use `execute_code`; inspect `getFunctionSchema` for exact mutation arguments.
+Use `execute_code`; inspect `getFunctionSchema` for exact mutation arguments. At the start of a conversation, verify the connected account with `whoami` before interpreting missing notes.
 
 1. Find the right layout, car, and simulator with `getTrackNotepads`; load full content with `getTrackNotepad` before editing. Create a new notepad with `createTrackNotepad` only after checking whether the driver already has one for that context.
 2. `updateTrackNotepad` replaces any supplied `cornerNotes`, `pins`, or `videos` array in full. Start from the fetched arrays, change the intended entries, and submit complete revised arrays. Preserve unrelated entries. Put gear, braking landmark, pressure, turn-in, apex, speed, throttle, and exit data in their structured fields; use free-text `notes` for the remainder.

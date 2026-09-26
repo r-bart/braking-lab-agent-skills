@@ -1,11 +1,11 @@
 ---
 name: lap-comparison
-description: Compare two to five Braking Lab telemetry laps, select a valid reference, and explain measured time and braking differences without overstating missing zones.
+description: Compare Braking Lab laps and explain measured time or braking differences. Use when a driver asks to compare their own laps or an owned lap with a public leaderboard reference; a full session debrief belongs to debrief.
 ---
 
 # Lap comparison
 
-Use `execute_code` and check `getFunctionSchema` for current inputs.
+Use `execute_code` and check `getFunctionSchema` for current inputs. At the start of a conversation, verify the connected account with `whoami` before treating missing laps as no data.
 
 1. Find owned candidate sessions with `getSessions`, then lap IDs and context with `getSessionDetail`. Choose a reference that fits the driver's question, such as their best clean lap or a specified prior lap. Make the reference explicit. For a public reference, inspect `getDesktopLeaderboard` and select only a row with `hasTelemetry`; prefilter by simulator, track layout, and car as far as the returned data allows.
 2. Compare two to five owned laps with `compareLaps`, ordering `lapIds` as `[referenceLapId, ...comparedLapIds]`. Cross-session comparisons require compatible simulator, track, layout, and car; do not paper over an unknown identity. For an owned lap against a public leaderboard lap, use `compareTraces` with `isPublicB: true`; the server checks fewer identity dimensions on that path, so explain any unresolved compatibility.

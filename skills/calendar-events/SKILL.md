@@ -1,11 +1,11 @@
 ---
 name: calendar-events
-description: Find, create, edit, or delete Braking Lab race calendar events, including events imported from iRacing or LMU schedules.
+description: Manage a driver's Braking Lab race calendar. Use when they ask to find, add, reschedule, edit, or remove an event, including one from an iRacing or LMU schedule; race preparation belongs to race-week.
 ---
 
 # Race calendar events
 
-Use `execute_code` and `getFunctionSchema` for exact inputs.
+Use `execute_code` and `getFunctionSchema` for exact inputs. At the start of a conversation, verify the connected account with `whoami`; an empty calendar may mean the wrong account is connected.
 
 1. Locate the event with `getAllRaces` and `getRaceDetail`. Confirm the exact event before editing or deleting; similar series and repeated race weeks can have near-identical names.
 2. Create with `createRaceEvent` using name, simulator, series, car, track, and race date. When using an official schedule, inspect the chosen result first, then use `createRaceFromSchedule` or `createRaceFromLMUSchedule`. If the server reports an equivalent existing race, reuse that ID instead of creating a duplicate.

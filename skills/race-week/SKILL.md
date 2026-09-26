@@ -1,11 +1,11 @@
 ---
 name: race-week
-description: Prepare for an existing Braking Lab race using linked practice sessions, readiness, preparation checklist, track notes, and telemetry-based strategy.
+description: Prepare for an existing Braking Lab race using practice, readiness, notes, checklist, and strategy. Use when a driver asks how ready they are or what to do before race day; use calendar-events for event maintenance.
 ---
 
 # Race week
 
-Use `execute_code`; inspect current schemas with `getFunctionSchema` before mutations.
+Use `execute_code`; inspect current schemas with `getFunctionSchema` before mutations. At the start of a conversation, verify the connected account with `whoami` before interpreting an empty race list.
 
 1. Resolve the exact race with `getUpcomingRaces` or `getAllRaces`, then `getRaceDetail`. Use its linked sessions and notepad IDs as the starting context. Find relevant unlinked practice with `getUnlinkedSessionsForRace`, but get driver confirmation of the race and practice phase before `linkSessionToRace`. Relinking moves a session from its prior race; omitting `practiceType` clears any existing FP assignment.
 2. Review `getPreparation` and `getPreparationTemplates`. If the driver wants a plan, collect track and car familiarity plus the race goal, then `createPreparation` using the appropriate template or manual flow. Use `updatePreparation`, `updatePreparationPhase`, and `updateChecklistItem` for later progress.

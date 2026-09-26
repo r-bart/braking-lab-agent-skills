@@ -1,11 +1,11 @@
 ---
 name: debrief
-description: Debrief a Braking Lab telemetry session or stint, identify evidence-backed driving priorities, and save a coaching report when the driver requests a complete debrief.
+description: Analyze a Braking Lab telemetry session or stint and identify driving priorities. Use when a driver asks what happened in a run or requests a complete debrief and coaching report; a direct lap-to-lap question belongs to lap-comparison.
 ---
 
 # Session debrief
 
-Use `execute_code` and inspect exact function schemas with `brakinglab.getFunctionSchema({ name })` when needed.
+Use `execute_code` and inspect exact function schemas with `brakinglab.getFunctionSchema({ name })` when needed. At the start of a conversation, verify the connected account with `whoami` before interpreting missing sessions.
 
 1. Identify the right run using `getSessions` or `getLatestSession`, then `getSessionDetail`. Resolve ambiguous car, track, date, or stint with the driver.
 2. Analyze only available signals: `getCornerAnalysis`, `getBrakingZones`, `getZoneConsistency`, `getDrivingSymptoms`, `getSectorAnalysis`, and relevant traces or lap comparisons. Separate observations from hypotheses. Missing signals and a single matched braking observation cannot establish measured consistency. Align braking observations by location, not zone number alone. For LMU, yaw-derived understeer or oversteer diagnoses are directional, especially when borderline.

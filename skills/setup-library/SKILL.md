@@ -1,11 +1,11 @@
 ---
 name: setup-library
-description: Browse and inspect a driver's Braking Lab car setups and version history, or create and append LMU setup versions from driver-supplied full .svm files.
+description: Find and inspect a driver's Braking Lab car setups and version history. Use when they ask which setup they own or want to create or append an LMU version from a complete .svm file; setup parameter changes belong to setup-coaching.
 ---
 
 # Setup library
 
-Use `execute_code`; check exact inputs with `getFunctionSchema` before writes.
+Use `execute_code`; check exact inputs with `getFunctionSchema` before writes. At the start of a conversation, verify the connected account with `whoami` before interpreting an empty setup library.
 
 1. Find the owned setup with `listCarSetups`, then inspect its simulator, car, source, versions, and lineage using `getCarSetup`. Resolve near-duplicate names by canonical setup identity and effective values, not filename or display name alone.
 2. For a new LMU setup, use `createCarSetup` only with a driver-supplied complete `.svm`. For a new version, use `addSetupVersion` with a complete `.svm` and the correct existing setup/channel. Do not mix source channels or infer a full setup from fragments.

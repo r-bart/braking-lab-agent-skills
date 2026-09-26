@@ -1,11 +1,11 @@
 ---
 name: setup-coaching
-description: Diagnose handling from Braking Lab telemetry and driver feedback, explain setup parameters, and propose or create a small, testable setup remix.
+description: Diagnose handling and propose a testable Braking Lab setup change. Use when a driver reports understeer, oversteer, instability, or another car behavior and wants an explanation or a setup remix; use setup-evaluation to assess a driven change.
 ---
 
 # Setup coaching
 
-Use `execute_code`. Check `getFunctionSchema` before mutations; the connected MCP catalog is authoritative.
+Use `execute_code`. Check `getFunctionSchema` before mutations; the connected MCP catalog is authoritative. At the start of a conversation, verify the connected account with `whoami` before interpreting missing setups or telemetry.
 
 1. Establish simulator, car, track, conditions, the actual setup/version, and the driver's handling complaint. Use `getCarSetup`, `getCarParamSpace`, `explainSetupParam`, and `getSetupTendencies` for available controls and interpretation. Use telemetry only where the session is compatible; `getSetupTelemetryContext` separates compatibility, attribution, selection quality, and signal availability. Compatible telemetry alone does not prove that the named version was driven.
 2. Inspect `getSetupExperimentHistory` before suggesting another change. Explain what is measured, what is subjective, and what remains unknown. Avoid causal claims from two runs.
