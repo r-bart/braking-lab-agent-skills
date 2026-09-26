@@ -30,6 +30,6 @@ Claude chat no pudo ejecutar la primera consulta tras conectar: la cuenta alcanz
 - Primer debrief y una escritura ordinaria en ChatGPT, con lectura posterior; pruebas de límites y rechazo seguro según `../test-plan.md`.
 - Primera respuesta basada en datos en Claude chat y Claude Code cuando se restablezca el límite mensual.
 - Prueba con una segunda cuenta de ChatGPT; comprobar actualización y desinstalación.
-- Confirmar la elegibilidad del mapeo de la app registrada al preparar el envío público de OpenAI. El registro personal sirve para el piloto, no equivale a una ficha publicada.
+- Para el envío público de OpenAI, crear un borrador **With MCP** con la URL de producción y las skills. El registro personal sirve para el piloto; el portal no admite referenciarlo como integración existente. Antes del envío, implementar y verificar en el servidor la prueba de dominio y el soporte OAuth de `openid`, `email` y UserInfo exigidos para las restricciones de dominio de workspace.
 
-El repositorio y los archivos siguen privados. Esta validación prueba el empaquetado y la importación; no prueba la calidad de las respuestas ni los flujos autenticados.
+El repositorio y los archivos siguen privados. Esta validación prueba empaquetado, importación, OAuth y las consultas de lectura descritas; quedan pendientes la evaluación completa de respuestas, otros clientes y los flujos de escritura y confirmación.
