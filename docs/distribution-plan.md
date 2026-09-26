@@ -1,7 +1,7 @@
 # Plan de distribución del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** empaquetado privado en curso; pruebas autenticadas y publicaciones pendientes
+- **Estado:** paquetes privados importados e instalados; pruebas autenticadas y publicaciones pendientes
 - **Fuente:** este repositorio privado, con una sola copia de las nueve skills en `skills/`
 
 ## Objetivo
@@ -9,6 +9,8 @@
 Que un piloto de Braking Lab pueda elegir Claude o ChatGPT, instalar el Race Engineer desde el directorio de su asistente, autorizar su cuenta de Braking Lab y empezar con una pregunta útil. Para otros agentes, aprovechar el paquete portable cuando instale skills y MCP; donde no lo haga, ofrecer instalación de skills por CLI y una guía corta para conectar el MCP. La instalación no debe prometer operaciones que un cliente no pueda completar, en particular las que requieren `elicitation.form`.
 
 La [validación de las skills](test-plan.md) es una puerta de entrada para publicar. Este plan fija la secuencia de distribución, pero no convierte una prueba estructural en una aprobación de producto. El repositorio sigue privado durante el piloto.
+
+**Avance del 26 de septiembre:** los tres archivos se construyen desde `skills/`. ChatGPT y Claude chat importaron sus archivos; Claude Code y Codex instalaron desde el repositorio privado. La [evidencia de empaquetado](validation/2026-09-26-packaging.md) registra los detalles. OAuth y tareas reales siguen abiertos.
 
 ## Decisión de arquitectura
 

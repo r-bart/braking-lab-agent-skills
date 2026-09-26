@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
@@ -54,8 +55,11 @@ def build(flavor: str) -> Path:
 
 def main() -> None:
     OUTPUT_DIR.mkdir(exist_ok=True)
-    for flavor in ("claude", "chatgpt", "portable"):
-        build(flavor)
+    archives = [build(flavor) for flavor in ("claude", "chatgpt", "portable")]
+    checksums = "".join(
+        f"{sha256(path.read_bytes()).hexdigest()}  {path.name}\n" for path in archives
+    )
+    (OUTPUT_DIR / "SHA256SUMS").write_text(checksums, encoding="utf-8")
 
 
 if __name__ == "__main__":
