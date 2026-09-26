@@ -25,7 +25,6 @@ def add_file(archive: ZipFile, path: Path, name: str | None = None) -> None:
 def build(flavor: str) -> Path:
     output = OUTPUT_DIR / f"braking-lab-{flavor}-{VERSION}.zip"
     with ZipFile(output, "w", compression=ZIP_DEFLATED) as archive:
-        add_file(archive, ROOT / "README.md")
         add_file(archive, ROOT / "assets" / "icon.png")
         for path in SKILL_FILES:
             add_file(archive, path)
