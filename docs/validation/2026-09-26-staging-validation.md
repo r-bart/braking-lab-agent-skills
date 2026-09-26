@@ -16,8 +16,16 @@
 
 Las dos aserciones fallidas de `tierA-analysis.e2e.test.ts` esperan deltas numéricos para zonas sin alineación comprobada y pendiente `0` cuando no hay datos. El contrato actual devuelve `null` en ambos casos; los tests unitarios del mismo módulo ya comprueban ese comportamiento. No se considera aprobado el E2E completo mientras esas expectativas y los fixtures opcionales sigan sin resolver.
 
+## Reejecución con fixtures LMU existentes
+
+El [PR #75 del monorepo](https://github.com/r-bart/braking-lab-monorepo/pull/75) corrige esas aserciones sin cambiar código de producto. El archivo afectado pasó **22/22** pruebas sobre staging, además de typecheck, lint y formato.
+
+El generador revisado de fixtures LMU se ejecutó contra la cuenta sintética Ultra. Tras varios rechazos por tasa de subida terminó con `UNKNOWN_SEED_FAILURE`; no se interpretó como éxito. Se inventariaron y borraron **solo** los 10 setups nuevos incompletos y sus 16 blobs canónicos, con verificación de que no quedaban esas filas. Los diez fixtures anteriores permanecieron. Para la siguiente ejecución se fijaron los seis pares de IDs existentes después de comprobar propietario, nombre, estado `ready`, versión 1 y ruta canónica; los IDs se guardaron únicamente en un archivo local privado.
+
+La suite completa con esos fixtures anteriores terminó con **46 tests correctos, 9 fallidos y 25 omitidos**. Los fallos se agrupan en Setup Interview, evaluación y procedencia/remix: el constructor rechaza un valor final discontinuo fuera del dominio exacto revisado o un punto medio no observado. El rechazo evita escribir un setup sin evidencia, pero los casos principales de esas pruebas no pasan. Las omisiones incluyen pruebas que dependen de otras puertas de staging. Este resultado sustituye el anterior como estado E2E más reciente; tampoco habilita una release pública.
+
 ## Puertas de salida pendientes
 
-La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Faltan fixtures y cuenta de staging con derechos Plus/Ultra para los flujos principales de debrief, comparación, setups, Track Notes y race week en el MCP desplegado; lectura posterior de sus escrituras; formularios `elicitation.form` en un cliente compatible; y el corpus de 54 prompts en Claude Code, bloqueado por el límite de uso observado. La suite E2E general está roja y algunos grupos no corren sin IDs de fixtures propiedad del piloto.
+La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Falta conectar una cuenta de staging con derechos Plus/Ultra al MCP desplegado y recorrer debrief, comparación, setups, Track Notes y race week con datos; verificar sus escrituras por lectura posterior; probar formularios `elicitation.form` en un cliente compatible; y ejecutar el corpus de 54 prompts en Claude Code. El CLI de Claude informó de límite de gasto mensual y restablecimiento semanal el 1 de octubre a las 19:00 (Madrid). La suite E2E general sigue roja por los rechazos de dominio exacto en los casos LMU.
 
 Hasta resolver estas puertas, la release sigue siendo privada y preliminar. No hay evidencia suficiente para afirmar soporte funcional completo de las nueve skills ni para enlazar una instalación pública desde la landing.
