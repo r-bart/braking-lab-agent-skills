@@ -12,14 +12,24 @@
 - Claude chat importó `braking-lab-claude-0.1.0.zip` como plugin personal. La ficha mostró versión `0.1.0`, nueve skills y un conector Braking Lab. El plugin quedó activado y el conector mostró «Sin conexión»; no se inició OAuth.
 - Codex registró primero el marketplace local y después repitió la instalación desde el repositorio privado por HTTPS. `codex plugin list --json` mostró `braking-lab-race-engineer@braking-lab` versión `0.1.0` habilitado, con origen Git y política de autenticación `ON_USE`. El caché contenía `plugin.json`, `mcp.json` y las nueve skills. Todavía falta una sesión nueva con OAuth y tareas reales.
 - En una sesión nueva de Codex, las nueve skills aparecieron en el contexto. El inicio del MCP de Braking Lab devolvió `Auth required`, que es coherente con un conector todavía sin autorizar. La cuenta ya tenía copias locales de esas skills, por lo que esta prueba no demuestra aún selección automática exclusiva del plugin.
+- `DISABLE_TELEMETRY=1 npx skills add r-bart/braking-lab-agent-skills --list` clonó el repositorio privado con las credenciales Git locales y enumeró las nueve skills. Es una comprobación de descubrimiento; el comando no instaló skills ni configuró el MCP.
+- Los documentos OAuth públicos del MCP anunciaron `race-engineer:read`, `race-engineer:write`, autorización `code` con PKCE S256 y registro dinámico. El descubrimiento no sustituye al inicio de sesión en un cliente.
 - GitHub Actions completó correctamente la validación de esquemas, las nueve skills y la generación de los tres archivos en el commit `e4052e0`. La primera ejecución había fallado en la configuración del caché de pip; se corrigió `cache-dependency-path`.
+- La ejecución de GitHub Actions del commit `a4d9e22` pasó también la comprobación SHA-256 de los archivos. La versión preliminar privada [`v0.1.0`](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0) adjunta los tres ZIP y `SHA256SUMS`.
+
+## OAuth y lectura del piloto
+
+Con autorización expresa del propietario de la cuenta, ChatGPT y Claude completaron OAuth contra el MCP de producción. Las fichas de ambos clientes mostraron la conexión activa. ChatGPT respondió correctamente a una consulta de cuenta y plan, enumeró las tres sesiones más recientes y comparó dos vueltas limpias de una misma sesión. La comparación identificó la vuelta de referencia, presentó deltas medidos y señaló una zona de frenada sin correspondencia. El historial de las respuestas indicó interacción con Braking Lab Race Engineer. No se solicitó ninguna escritura ni se guardaron datos en estas pruebas; los identificadores de cuenta y las sesiones privadas se omiten de este registro. Estas tres consultas seleccionaron el plugin explícitamente en el compositor.
+
+En un chat nuevo, sin seleccionar el plugin ni mencionarlo por su nombre, «¿Qué plan tengo ahora mismo en Braking Lab? Compruébalo en mi cuenta y no cambies nada» produjo una respuesta correcta y el historial indicó «Interacted with Braking Lab Race Engineer». Esto prueba la activación natural de la integración para esa petición, pero la interfaz no muestra qué `SKILL.md` eligió internamente.
+
+Claude chat no pudo ejecutar la primera consulta tras conectar: la cuenta alcanzó su límite mensual de uso y la interfaz devolvió el borrador sin respuesta. La conexión quedó visible como «Conectado». Claude Code había mostrado el mismo límite antes de conectar.
 
 ## Pendiente antes de declarar soporte completo
 
-- OAuth y `whoami` en la cuenta piloto; no se autorizó ninguna cuenta de Braking Lab durante esta validación.
-- Primer debrief y una escritura ordinaria en ChatGPT, con lectura posterior; pruebas de límites y rechazo seguro según `docs/test-plan.md`.
-- Prueba funcional en Claude Code. La instalación y la validación local pasaron, pero la ejecución del modelo quedó detenida por el límite mensual de Claude Code de esta cuenta.
-- OAuth y primer uso en Claude chat y en una segunda cuenta de ChatGPT; comprobar actualización y desinstalación.
+- Primer debrief y una escritura ordinaria en ChatGPT, con lectura posterior; pruebas de límites y rechazo seguro según `../test-plan.md`.
+- Primera respuesta basada en datos en Claude chat y Claude Code cuando se restablezca el límite mensual.
+- Prueba con una segunda cuenta de ChatGPT; comprobar actualización y desinstalación.
 - Confirmar la elegibilidad del mapeo de la app registrada al preparar el envío público de OpenAI. El registro personal sirve para el piloto, no equivale a una ficha publicada.
 
 El repositorio y los archivos siguen privados. Esta validación prueba el empaquetado y la importación; no prueba la calidad de las respuestas ni los flujos autenticados.

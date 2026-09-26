@@ -24,6 +24,6 @@ The skills guide common tasks. They do not limit what the MCP can do, change you
 
 ## Current status
 
-The Claude, ChatGPT, and portable Agent Plugins packages are built from the same nine skills. Their manifests and skill structure have passed local validation. ChatGPT imported the private package, and Claude Code and Codex installed from the private repository. Live checks with an authenticated test account, including skill selection, quota limits, and confirmation flows, are still pending. Neither plugin has a public directory listing yet.
+The Claude, ChatGPT, and portable Agent Plugins packages are built from the same nine skills. Their manifests and skill structure have passed local validation. ChatGPT and Claude chat imported the private packages; Claude Code and Codex installed from the private repository. The [private 0.1.0 pilot release](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0) contains the three archives. ChatGPT completed OAuth and several read-only tasks; Claude completed OAuth but its first task was blocked by the account's usage limit. Further checks of skill selection, quotas, and confirmation flows are pending. Neither plugin has a public directory listing yet.
 
 Follow the [test plan](docs/test-plan.md) for verification. The [distribution plan](docs/distribution-plan.md) covers Claude, ChatGPT, and other agents after the tests; packaging details are in [maintainer notes](docs/maintainers.md).

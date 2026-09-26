@@ -24,6 +24,6 @@ Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no ca
 
 ## Estado actual
 
-Los paquetes para Claude, ChatGPT y Agent Plugins se construyen desde las mismas nueve skills. Sus manifiestos y estructura han pasado la validación local. ChatGPT importó el paquete privado, y Claude Code y Codex instalaron desde el repositorio privado. Faltan las pruebas reales con una cuenta autenticada, incluida la selección de skills, los límites del plan y las confirmaciones. Ningún plugin tiene aún una ficha pública en su directorio.
+Los paquetes para Claude, ChatGPT y Agent Plugins se construyen desde las mismas nueve skills. Sus manifiestos y estructura han pasado la validación local. ChatGPT y Claude chat importaron los paquetes privados; Claude Code y Codex instalaron desde el repositorio privado. La [versión preliminar privada 0.1.0](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0) contiene los tres archivos. ChatGPT completó OAuth y varias consultas de lectura; Claude completó OAuth, pero el límite de uso de la cuenta impidió su primera respuesta. Quedan pruebas de selección de skills, cuotas y confirmaciones. Ningún plugin tiene aún una ficha pública en su directorio.
 
 Sigue el [plan de pruebas](docs/test-plan.md) para las comprobaciones pendientes. El [plan de distribución](docs/distribution-plan.md) recoge los pasos para Claude, ChatGPT y otros agentes cuando terminen las pruebas; las [notas para mantenimiento](docs/maintainers.md) conservan los detalles de empaquetado.

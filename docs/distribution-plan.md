@@ -10,7 +10,7 @@ Que un piloto de Braking Lab pueda elegir Claude o ChatGPT, instalar el Race Eng
 
 La [validación de las skills](test-plan.md) es una puerta de entrada para publicar. Este plan fija la secuencia de distribución, pero no convierte una prueba estructural en una aprobación de producto. El repositorio sigue privado durante el piloto.
 
-**Avance del 26 de septiembre:** los tres archivos se construyen desde `skills/`. ChatGPT y Claude chat importaron sus archivos; Claude Code y Codex instalaron desde el repositorio privado. La [evidencia de empaquetado](validation/2026-09-26-packaging.md) registra los detalles. OAuth y tareas reales siguen abiertos.
+**Avance del 26 de septiembre:** los tres archivos se construyen desde `skills/`. ChatGPT y Claude chat importaron sus archivos; Claude Code y Codex instalaron desde el repositorio privado. ChatGPT completó OAuth y consultas de lectura; Claude completó OAuth, pero el límite de uso de la cuenta impidió la primera respuesta. La [evidencia de validación](validation/2026-09-26-packaging.md) registra los detalles. Siguen abiertos los flujos de escritura, la prueba con otra cuenta y la revisión de directorios.
 
 ## Decisión de arquitectura
 
