@@ -1,14 +1,14 @@
 # Plan de pruebas del set de skills del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** en ejecución; OAuth de staging recuperado, con una incidencia de configuración preview documentada en el [registro del candidato privado](validation/2026-09-26-test-run.md)
+- **Estado:** en ejecución; OAuth de staging recuperado y configuración preview corregida según el [registro del candidato privado](validation/2026-09-26-test-run.md)
 - **Alcance:** las nueve skills de `skills/`, usadas con el MCP del Race Engineer en Codex y Claude Code. El empaquetado y la distribución siguen el [plan de distribución](distribution-plan.md), cuya ejecución depende de estas pruebas.
 
 ## Objetivo y punto de partida
 
 El objetivo es poder afirmar, con resultados reproducibles, que las skills se activan para las tareas adecuadas, usan el contrato vigente del MCP, respetan permisos y confirmaciones, y explican la evidencia sin exagerarla. «Listo» significa superar los criterios de salida de este documento; ninguna batería finita garantiza que un asistente nunca se equivoque.
 
-Ya existen nueve `SKILL.md`. Su formato pasó el validador de Agent Skills y los nombres de funciones se contrastaron con una instantánea versionada del catálogo local del MCP el 2026-09-26. El repositorio `r-bart/braking-lab-agent-skills` está subido a GitHub y es privado. ChatGPT y Claude están conectados para el piloto de solo lectura. La conexión de staging está reautenticada en la cuenta Basic de prueba, que no contiene sesiones, setups ni notepads. El despliegue preview de la app aún necesita corregir su URL de MCP para que el consentimiento funcione sin un proxy local. Las pruebas estáticas no sustituyen los casos con fixtures.
+Ya existen nueve `SKILL.md`. Su formato pasó el validador de Agent Skills y los nombres de funciones se contrastaron con una instantánea versionada del catálogo local del MCP el 2026-09-26. El repositorio `r-bart/braking-lab-agent-skills` está subido a GitHub y es privado. ChatGPT y Claude están conectados para el piloto de solo lectura. La conexión de staging está reautenticada en la cuenta Basic de prueba, que no contiene sesiones, setups ni notepads. La URL de MCP en la preview publicada ya está corregida; queda repetir una autorización nueva sin el workaround local. Las pruebas estáticas no sustituyen los casos con fixtures.
 
 ## Enfoque
 
