@@ -2,7 +2,7 @@
 
 ## Identidad y alcance
 
-- Skills: commit `211ed06` del repositorio privado `r-bart/braking-lab-agent-skills`.
+- Skills: versión 0.1.1 del repositorio privado `r-bart/braking-lab-agent-skills`; el candidato documental más reciente antes de esta tanda era `d0192aa`.
 - Fuente local del MCP: commit `1d123a617` del monorepo; el directorio `apps/mcp-server` estaba limpio. El despliegue remoto devolvió `CATALOG_VERSION=97-90f662d1d158357c`, igual al contrato fijado por las skills. La igualdad del catálogo no certifica que el código desplegado sea ese commit.
 - Cliente remoto: conector Braking Lab (STA) de Codex, autenticado como una cuenta sintética Basic. La ejecución opt-in de Vitest usó credenciales locales no registradas en Git y el guard del proyecto Supabase de staging. No se usaron datos de producción.
 
@@ -24,7 +24,17 @@ El generador revisado de fixtures LMU se ejecutó contra la cuenta sintética Ul
 
 La suite completa con esos fixtures anteriores terminó con **46 tests correctos, 9 fallidos y 25 omitidos**. Los fallos se agrupan en Setup Interview, evaluación y procedencia/remix: el constructor rechaza un valor final discontinuo fuera del dominio exacto revisado o un punto medio no observado. El rechazo evita escribir un setup sin evidencia, pero los casos principales de esas pruebas no pasan. Las omisiones incluyen pruebas que dependen de otras puertas de staging. Este resultado sustituye el anterior como estado E2E más reciente; tampoco habilita una release pública.
 
-Una comprobación de solo lectura de la variante exacta afectada encontró **cero** diales movidos con una base alternativa cuyo resultado también fuera una posición observada y **cuatro** diales no movidos con una base alternativa observada. El generador elegía por intervalo numérico, que no certifica los huecos. El mismo PR ahora selecciona posiciones observadas y puede usar un dial no movido para diferenciar el fixture sintético. Pasó typecheck, lint y el contrato estático del generador; **la nueva generación completa sigue sin verificar** por el límite de subidas.
+Una comprobación de solo lectura de la variante exacta afectada encontró **cero** diales movidos con una base alternativa cuyo resultado también fuera una posición observada y **cuatro** diales no movidos con una base alternativa observada. El generador elegía por intervalo numérico, que no certifica los huecos. El mismo PR ahora selecciona posiciones observadas y puede usar un dial no movido para diferenciar el fixture sintético. En esa tanda pasó typecheck, lint y el contrato estático del generador, pero la generación completa aún no estaba verificada.
+
+## Tanda del 27 de septiembre: fixtures nuevos y E2E
+
+Una primera generación espaciada creó los diez setups base y sus hijos sin rechazos de tasa, pero terminó al intentar retroceder el puntero de la versión activa para borrar una versión de prueba. Staging respondió `AI_SETUP_LATEST_REGRESSION`, como exige el guard. Se verificaron y borraron solo las diez filas sintéticas de esa ejecución y sus 16 versiones. Una inspección posterior halló 15 blobs huérfanos de esos IDs; se eliminaron por ruta canónica individual y la lectura posterior confirmó cero. El generador quedó corregido para comparar dos hijos duraderos en su prueba de no clonación, sin retroceder versiones, y para confirmar el borrado de cada blob antiguo.
+
+La siguiente generación terminó **correctamente**: diez setups nuevos, 15 versiones y doce variables de ID para los seis pares base/version exigidos por E2E, sin rechazos de subida. El barrido eliminó las diez filas anteriores y una comprobación de sus rutas confirmó cero blobs restantes. Los IDs se guardaron solo en un archivo local privado con permisos `0600`.
+
+La suite completa contra la base real de staging, usando esos fixtures nuevos, terminó con **49 tests correctos, 6 fallidos y 25 omitidos** (80 en total, código 1). Los fallos de Setup Interview, evaluación, procedencia y remix siguen relacionados con puntos medios o valores finales que el dominio exacto no observa; el servidor los rechaza sin guardar hijos inseguros. Una aserción adicional exige que el fixture IV difiera en un dial *movido* aunque la variante revisada no ofrece tal base alternativa. El test de limpieza también intentaba retroceder el puntero antes de borrar la versión hija. Se corrigió el orden de limpieza en los cinco archivos E2E afectados y se validaron en staging, por separado, el borrado de un hijo/blob y la restauración del fixture RA a v1. Tres punteros sintéticos que la ejecución roja había dejado vacíos se restauraron a v1 y se verificaron. **La suite completa no se ha repetido después de esta corrección del arnés**; las seis fallas funcionales no se dan por resueltas.
+
+Esta ejecución ejercita código local del MCP sobre la base de staging. No prueba por sí sola la versión desplegada del servidor ni la selección y respuesta de las skills en Claude o ChatGPT.
 
 ## Puertas de salida pendientes
 
