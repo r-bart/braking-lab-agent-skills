@@ -135,7 +135,8 @@ Cada tarea termina con los archivos válidos y el repo en un estado instalable p
 #### Tarea 4.1 — envío a directorios
 
 - [ ] Enviar el plugin de Claude con su paquete, información de acceso al MCP y materiales que exija Anthropic. Resolver su validación y revisión antes de publicar.
-- [ ] Enviar el plugin de OpenAI como skills más MCP, con identidad verificada, dominio, política de privacidad, casos positivos y negativos, y anotaciones de herramientas reales. Resolver la revisión antes de publicar.
+- [ ] Crear en el portal de OpenAI un envío **With MCP** con la URL HTTPS de producción e incluir las nueve skills en ese mismo borrador. No presentar `openai/app.json`, el ID de la app personal ni el ZIP privado como referencia de una integración ya publicada: el portal debe escanear el MCP directamente. Completar identidad verificada, dominio, política de privacidad, cinco casos positivos, tres negativos y anotaciones reales de todas las herramientas.
+- [ ] Preparar en el servidor MCP la prueba de dominio `/.well-known/openai-apps-challenge` y el soporte OAuth exigido para restricciones de dominio de workspace: scopes `openid` y `email`, UserInfo Endpoint con `email` y `email_verified: true`. El catálogo actual anuncia solo `race-engineer:read` y `race-engineer:write`; este cambio pertenece al monorepo y requiere implementación y pruebas separadas antes de solicitar revisión pública.
 - [ ] Mantener estados separados: «enviado», «aprobado» y «publicado» no son equivalentes. No enlazar una ficha antes de confirmar que está visible para una cuenta ajena.
 
 **Verificación:** instalación desde cada directorio en una cuenta nueva, OAuth y primera consulta correctos; guardar URL real de cada ficha.
@@ -216,5 +217,5 @@ El trabajo termina cuando las skills superan su plan de pruebas, Claude y ChatGP
 
 - [Agent Skills](https://agentskills.io/specification), [Agent Plugins](https://agent-plugins.org/) y su [lista de clientes compatibles](https://agent-plugins.org/compatible-clients) para el núcleo portable.
 - [Plugins de Claude](https://code.claude.com/docs/en/plugins-reference) y [marketplaces privados de Claude](https://code.claude.com/docs/en/plugin-marketplaces).
-- [Paquetes de OpenAI](https://developers.openai.com/plugins/build/plugins) y [envío al directorio](https://developers.openai.com/plugins/deploy/submission).
+- [Paquetes de OpenAI](https://developers.openai.com/plugins/build/plugins), [envío al directorio](https://developers.openai.com/plugins/deploy/submission) y [envío de plugins con MCP remoto](https://developers.openai.com/plugins/guides/submit-claude-plugin).
 - [CLI de Skills](https://github.com/vercel-labs/skills) para instalación en otros agentes.
