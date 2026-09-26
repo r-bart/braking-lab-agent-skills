@@ -1,0 +1,137 @@
+{
+  "race-engineer": {
+    "direct": {
+      "es": "¿Qué puede hacer el Race Engineer con mi cuenta de Braking Lab?",
+      "en": "What can the Race Engineer do with my Braking Lab account?"
+    },
+    "indirect": {
+      "es": "Acabo de conectarlo y no sé por dónde empezar. Oriéntame según lo que tengo disponible.",
+      "en": "I just connected it and don't know where to start. Guide me through what's available to me."
+    },
+    "negative": {
+      "expected": "lap-comparison",
+      "es": "Compara mis dos últimas vueltas y dime en cuál frené antes.",
+      "en": "Compare my last two laps and tell me where I braked earlier."
+    }
+  },
+  "debrief": {
+    "direct": {
+      "es": "Haz un debrief de mi última sesión y dame tres prioridades basadas en la telemetría.",
+      "en": "Debrief my latest session and give me three priorities grounded in telemetry."
+    },
+    "indirect": {
+      "es": "Terminé una tanda en Spa. ¿Qué hice bien y qué debería trabajar en la próxima?",
+      "en": "I finished a stint at Spa. What went well, and what should I work on next?"
+    },
+    "negative": {
+      "expected": "lap-comparison",
+      "es": "Solo quiero comparar dos vueltas concretas, sin analizar toda la sesión.",
+      "en": "I only want to compare two specific laps, not review the whole session."
+    }
+  },
+  "lap-comparison": {
+    "direct": {
+      "es": "Compara mis dos últimas vueltas válidas y explica la mayor diferencia de frenada.",
+      "en": "Compare my last two valid laps and explain the biggest braking difference."
+    },
+    "indirect": {
+      "es": "En la segunda vuelta perdí tiempo respecto a la primera. ¿Dónde cambió mi conducción?",
+      "en": "I lost time on the second lap compared with the first. Where did my driving change?"
+    },
+    "negative": {
+      "expected": "debrief",
+      "es": "Revisa toda mi última sesión y dime qué practicar mañana.",
+      "en": "Review my whole latest session and tell me what to practice tomorrow."
+    }
+  },
+  "setup-coaching": {
+    "direct": {
+      "es": "El coche subvira a la salida de curva. ¿Qué cambio de setup probarías primero y por qué?",
+      "en": "The car understeers on corner exit. What setup change would you test first, and why?"
+    },
+    "indirect": {
+      "es": "Al soltar el freno se me va de atrás. Ayúdame a decidir un ajuste pequeño que pueda probar.",
+      "en": "The rear steps out when I release the brake. Help me choose one small adjustment to test."
+    },
+    "negative": {
+      "expected": "setup-evaluation",
+      "es": "Ya probé la versión nueva del setup. ¿Fue mejor que la anterior?",
+      "en": "I already drove the new setup version. Was it better than the previous one?"
+    }
+  },
+  "setup-evaluation": {
+    "direct": {
+      "es": "Evalúa si la última versión de mi setup mejoró tras conducirla y separa datos de sensaciones.",
+      "en": "Evaluate whether my latest setup version improved after I drove it, separating data from feel."
+    },
+    "indirect": {
+      "es": "Cambié el ala y corrí otra tanda. ¿Qué sabemos realmente del efecto?",
+      "en": "I changed the wing and drove another stint. What do we actually know about the effect?"
+    },
+    "negative": {
+      "expected": "setup-coaching",
+      "es": "Todavía no he tocado el setup. ¿Qué probarías para reducir el subviraje?",
+      "en": "I haven't changed the setup yet. What would you test to reduce understeer?"
+    }
+  },
+  "setup-library": {
+    "direct": {
+      "es": "Enséñame mis setups de LMU y las versiones que tengo guardadas.",
+      "en": "Show me my LMU setups and their saved versions."
+    },
+    "indirect": {
+      "es": "No recuerdo cuál es la última versión de mi setup de Spa. Búscala en mi biblioteca.",
+      "en": "I can't remember the latest version of my Spa setup. Find it in my library."
+    },
+    "negative": {
+      "expected": "setup-coaching",
+      "es": "El coche gira demasiado al entrar. ¿Qué ajuste probarías?",
+      "en": "The car rotates too much on entry. What adjustment would you test?"
+    }
+  },
+  "calendar-events": {
+    "direct": {
+      "es": "Añade al Race Calendar mi carrera del sábado en Monza.",
+      "en": "Add my Saturday race at Monza to the Race Calendar."
+    },
+    "indirect": {
+      "es": "La carrera que apunté para el domingo se ha movido al lunes. Corrige ese evento.",
+      "en": "The race I scheduled for Sunday has moved to Monday. Update that event."
+    },
+    "negative": {
+      "expected": "race-week",
+      "es": "La carrera ya está en el calendario. Organiza mi práctica para llegar preparado.",
+      "en": "The race is already on my calendar. Organize my practice so I'm ready."
+    }
+  },
+  "track-notes": {
+    "direct": {
+      "es": "Guarda en Track Notes que en la curva 3 freno junto al cartel de 100 metros.",
+      "en": "Save in Track Notes that I brake by the 100-meter board for Turn 3."
+    },
+    "indirect": {
+      "es": "Quiero recordar para la próxima visita que la salida de la curva 5 engaña con el piano. Apúntalo.",
+      "en": "I want to remember next time that the Turn 5 exit curb is deceptive. Make a note of it."
+    },
+    "negative": {
+      "expected": "race-week",
+      "es": "Ya tengo notas del circuito. ¿Cómo preparo la carrera de este fin de semana?",
+      "en": "I already have track notes. How should I prepare for this weekend's race?"
+    }
+  },
+  "race-week": {
+    "direct": {
+      "es": "Prepara mi semana de carrera para el evento que ya tengo en el Race Calendar.",
+      "en": "Prepare my race week for the event already on my Race Calendar."
+    },
+    "indirect": {
+      "es": "Corro el domingo y solo tengo dos tandas libres. ¿Qué practico en cada una?",
+      "en": "I'm racing Sunday and only have time for two stints. What should I practice in each?"
+    },
+    "negative": {
+      "expected": "calendar-events",
+      "es": "Todavía no hay carrera en mi calendario. Añade el evento del sábado.",
+      "en": "The race isn't on my calendar yet. Add Saturday's event."
+    }
+  }
+}

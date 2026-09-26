@@ -24,6 +24,6 @@ The skills guide common tasks. They do not limit what the MCP can do, change you
 
 ## Pilot status
 
-ChatGPT completed sign-in and several read-only tasks on one account. Claude completed sign-in, but the account's usage limit prevented the first answer. Claude Code and Codex installed the plugin; their authenticated workflows still need testing. No write or confirmation flow has been verified, and neither plugin has a public directory listing.
+ChatGPT completed sign-in and several read-only tasks on one account. Version 0.1.1 is installed in ChatGPT, Claude, Claude Code, and Codex. Codex loaded the expected skill in all 54 Spanish and English routing cases. Claude's usage limit prevented the first answer, and authenticated workflows in Claude Code and Codex still need testing. No write or confirmation flow has been verified, and neither plugin has a public directory listing.
 
-See the [validation record](docs/validation/2026-09-26-packaging.md) for the tests and limits. The [test plan](docs/test-plan.md), [distribution plan](docs/distribution-plan.md), and [maintainer notes](docs/maintainers.md) cover the work before a public release.
+See the [current test results](docs/validation/2026-09-26-test-run.md) and [packaging record](docs/validation/2026-09-26-packaging.md) for the evidence and limits. The [test plan](docs/test-plan.md), [distribution plan](docs/distribution-plan.md), and [maintainer notes](docs/maintainers.md) cover the work before a public release.

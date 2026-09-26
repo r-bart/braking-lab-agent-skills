@@ -10,6 +10,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from verify_contract import main as verify_contract
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "tests" / "schemas"
@@ -90,6 +92,8 @@ def main() -> None:
         assert not directory.is_symlink(), f"Skill must be a real directory: {name}"
         assert (directory / "SKILL.md").is_file(), f"Missing SKILL.md: {name}"
         subprocess.run(["agentskills", "validate", str(directory)], check=True)
+
+    verify_contract()
 
     print("Package verified: 9 skills, 2 provider manifests, one production MCP URL")
 

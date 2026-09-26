@@ -24,6 +24,6 @@ Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no ca
 
 ## Estado del piloto
 
-ChatGPT completó el inicio de sesión y varias consultas de lectura en una cuenta. Claude completó el inicio de sesión, pero el límite de uso de la cuenta impidió la primera respuesta. Claude Code y Codex instalaron el plugin; aún faltan pruebas de sus flujos autenticados. No se ha verificado ningún flujo de escritura o confirmación, y ninguno de los plugins tiene todavía una ficha pública.
+ChatGPT completó el inicio de sesión y varias consultas de lectura en una cuenta. La versión 0.1.1 está instalada en ChatGPT, Claude, Claude Code y Codex. Codex cargó la skill esperada en los 54 casos de selección en español e inglés. El límite de uso de Claude impidió la primera respuesta, y aún faltan pruebas de flujos autenticados en Claude Code y Codex. No se ha verificado ningún flujo de escritura o confirmación, y ninguno de los plugins tiene todavía una ficha pública.
 
-Consulta el [registro de validación](docs/validation/2026-09-26-packaging.md) para ver las pruebas y sus límites. El [plan de pruebas](docs/test-plan.md), el [plan de distribución](docs/distribution-plan.md) y las [notas de mantenimiento](docs/maintainers.md) recogen el trabajo previo a la publicación.
+Consulta los [resultados de pruebas actuales](docs/validation/2026-09-26-test-run.md) y el [registro de empaquetado](docs/validation/2026-09-26-packaging.md) para ver las evidencias y sus límites. El [plan de pruebas](docs/test-plan.md), el [plan de distribución](docs/distribution-plan.md) y las [notas de mantenimiento](docs/maintainers.md) recogen el trabajo previo a la publicación.

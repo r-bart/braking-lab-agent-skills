@@ -1,14 +1,14 @@
 # Plan de pruebas del set de skills del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** pendiente de ejecutar
+- **Estado:** en ejecución; véase el [registro del candidato privado](validation/2026-09-26-test-run.md)
 - **Alcance:** las nueve skills de `skills/`, usadas con el MCP del Race Engineer en Codex y Claude Code. El empaquetado y la distribución siguen el [plan de distribución](distribution-plan.md), cuya ejecución depende de estas pruebas.
 
 ## Objetivo y punto de partida
 
 El objetivo es poder afirmar, con resultados reproducibles, que las skills se activan para las tareas adecuadas, usan el contrato vigente del MCP, respetan permisos y confirmaciones, y explican la evidencia sin exagerarla. «Listo» significa superar los criterios de salida de este documento; ninguna batería finita garantiza que un asistente nunca se equivoque.
 
-Ya existen nueve `SKILL.md`. Su formato pasó el validador de Agent Skills y los nombres de funciones se contrastaron con el catálogo local del MCP el 2026-09-26. El repositorio `r-bart/braking-lab-agent-skills` está subido a GitHub y es privado. Falta probar el comportamiento con cuentas autenticadas: la conexión local de staging requiere volver a autenticarse. Las pruebas estáticas no sustituyen ese paso.
+Ya existen nueve `SKILL.md`. Su formato pasó el validador de Agent Skills y los nombres de funciones se contrastaron con una instantánea versionada del catálogo local del MCP el 2026-09-26. El repositorio `r-bart/braking-lab-agent-skills` está subido a GitHub y es privado. ChatGPT y Claude están conectados para el piloto de solo lectura; la conexión local de staging requiere volver a autenticarse para los casos con fixtures. Las pruebas estáticas no sustituyen ese paso.
 
 ## Enfoque
 
@@ -34,9 +34,9 @@ Si falla OAuth o staging, continuar las fases estáticas y de redacción. Las pr
 
 **Antes:** validación local puntual. **Después:** una comprobación repetible que falla ante cambios incompatibles.
 
-- [ ] Validar los nueve directorios con `agentskills validate skills/<nombre>`; comprobar nombre de carpeta, frontmatter, `description` y referencias locales.
+- [x] Validar los nueve directorios con `agentskills validate skills/<nombre>`; comprobar nombre de carpeta, frontmatter, `description` y referencias locales.
 - [ ] Comparar todas las funciones citadas con un contrato de nombres y versión exportado del `TOOL_CATALOG` del MCP fijado. El contrato de la release debe corresponder al servidor desplegado, no solo al código local. Detectar funciones retiradas y distinguirlas de campos o estados que no son funciones.
-- [ ] Comprobar formato Markdown, enlaces de los READMEs y ausencia de secretos, rutas privadas y artefactos de staging en los archivos que podrían publicarse más adelante.
+- [x] Comprobar formato Markdown, enlaces de los READMEs y ausencia de secretos, rutas privadas y artefactos de staging en los archivos que podrían publicarse más adelante.
 - [ ] Incorporar estas comprobaciones a CI para cada PR del repo privado. Mantener el resultado verde tras cada tarea posterior.
 
 **Salida:** nueve skills válidas, cero referencias de función desconocidas y CI verde en el commit candidato.
@@ -51,6 +51,8 @@ Crear un corpus versionado en `tests/cases/` con, para cada skill, un pedido **d
 - [ ] Corregir descripciones o límites que se solapen y volver a ejecutar todo el corpus tras cambios de routing.
 
 **Salida:** los 54 casos tienen una ejecución correcta por cliente; las repeticiones sensibles no muestran activación equivocada ni una escritura no solicitada. Todo fallo se corrige o queda identificado como límite del cliente y documentado antes de declarar soporte.
+
+**Resultado parcial del 2026-09-26:** los 54 casos pasaron en sesiones efímeras de Codex CLI con una instrucción de prueba que prohibía llamar al MCP. La selección de skill en Claude Code, las repeticiones y las respuestas con datos siguen pendientes; véase el [registro](validation/2026-09-26-test-run.md).
 
 ## Fase 3 — resultados con el MCP de staging
 
