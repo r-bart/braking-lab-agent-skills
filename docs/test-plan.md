@@ -37,7 +37,7 @@ Si falla OAuth o staging, continuar las fases estáticas y de redacción. Las pr
 - [x] Validar los nueve directorios con `agentskills validate skills/<nombre>`; comprobar nombre de carpeta, frontmatter, `description` y referencias locales.
 - [ ] Comparar todas las funciones citadas con un contrato de nombres y versión exportado del `TOOL_CATALOG` del MCP fijado. El contrato de la release debe corresponder al servidor desplegado, no solo al código local. Detectar funciones retiradas y distinguirlas de campos o estados que no son funciones.
 - [x] Comprobar formato Markdown, enlaces de los READMEs y ausencia de secretos, rutas privadas y artefactos de staging en los archivos que podrían publicarse más adelante.
-- [ ] Incorporar estas comprobaciones a CI para cada PR del repo privado. Mantener el resultado verde tras cada tarea posterior.
+- [x] Incorporar estas comprobaciones a CI para cada PR del repo privado. Mantener el resultado verde tras cada tarea posterior.
 
 **Salida:** nueve skills válidas, cero referencias de función desconocidas y CI verde en el commit candidato.
 
