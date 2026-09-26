@@ -108,7 +108,7 @@ Ejecutar los flujos que requieran formulario en un cliente que soporte la elicit
 - [ ] Los 54 casos de selección pasan en Codex y Claude Code, más las repeticiones sensibles.
 - [ ] Las nueve filas de integración y todas las escrituras aplicables tienen evidencia de staging, con lectura posterior.
 - [ ] No queda ningún fallo de seguridad, privacidad, consentimiento, propiedad, pérdida de datos o afirmación falsa de evidencia. Los demás fallos se corrigen y se reejecutan; no se rebajan criterios para cerrar la tanda.
-- [ ] Existe una matriz de soporte por cliente que distingue lectura, escritura ordinaria y escritura con `elicitation.form`. Lo no probado se marca **no verificado**.
+- [x] Existe una [matriz de soporte por cliente](validation/client-support-matrix.md) que distingue lectura, escritura ordinaria y escritura con `elicitation.form`. Lo no probado se marca **no verificado**.
 - [ ] Una revisión final independiente lee cambios, resultados depurados y README EN/ES. Se guarda un informe fechado en `docs/validation/` con commits, clientes, casos pasados y límites conocidos.
 - [ ] Se etiqueta en el repositorio privado un candidato de skills después de pasar las puertas anteriores. Ese hito no publica un plugin ni decide la estrategia de distribución.
 
