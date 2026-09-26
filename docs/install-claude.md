@@ -5,7 +5,7 @@ El piloto necesita una cuenta de Braking Lab y acceso al repositorio privado `r-
 ## Claude Code
 
 1. Registra el marketplace: `claude plugin marketplace add r-bart/braking-lab-agent-skills`.
-2. Instala el plugin: `claude plugin install braking-lab-race-engineer@braking-lab`.
+2. Instala el plugin: `claude plugin install braking-lab-race-engineer@braking-lab`. Si usas HTTPS para acceder al repositorio privado, ante un error SSH ejecuta `CLAUDE_CODE_PLUGIN_PREFER_HTTPS=1 claude plugin install braking-lab-race-engineer@braking-lab`.
 3. Abre una sesión nueva. Ejecuta `/mcp` y conecta tu cuenta de Braking Lab cuando Claude lo pida.
 4. Pregunta: «Compara mis dos últimas vueltas y dime dónde está la mayor diferencia».
 
