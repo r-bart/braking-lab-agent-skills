@@ -1,0 +1,15 @@
+---
+name: lap-comparison
+description: Compare two to five Braking Lab telemetry laps, select a valid reference, and explain measured time and braking differences without overstating missing zones.
+---
+
+# Lap comparison
+
+Use `execute_code` and check `getFunctionSchema` for current inputs.
+
+1. Find owned candidate sessions with `getSessions`, then lap IDs and context with `getSessionDetail`. Choose a reference that fits the driver's question, such as their best clean lap or a specified prior lap. Make the reference explicit. For a public reference, inspect `getDesktopLeaderboard` and select only a row with `hasTelemetry`; prefilter by simulator, track layout, and car as far as the returned data allows.
+2. Compare two to five owned laps with `compareLaps`, ordering `lapIds` as `[referenceLapId, ...comparedLapIds]`. Cross-session comparisons require compatible simulator, track, layout, and car; do not paper over an unknown identity. For an owned lap against a public leaderboard lap, use `compareTraces` with `isPublicB: true`; the server checks fewer identity dimensions on that path, so explain any unresolved compatibility.
+3. Explain the largest supported deltas and their direction. Braking zones align by track location, not by ordinal. A null delta or an `ambiguous`, `unmatched`, or `identity_unknown` zone means unavailable evidence, not equal performance. Use `getLapTrace`, `getZoneTrace`, or `compareTraces` when traces would resolve a concrete question and signals exist.
+4. If the driver asks to keep a compatible driver-versus-reference result, inspect `saveComparison` and its evidence requirements before saving. `getComparisons` can contain legacy unverified entries; label their evidence accordingly.
+
+Imported Garage61 or legacy IDs from `getImportedLaps` cannot be used with these desktop telemetry comparison functions. One-off comparison questions stay read-only. A complete session debrief belongs to the `debrief` workflow. Explain access or tier refusals rather than silently switching to unsupported evidence.
