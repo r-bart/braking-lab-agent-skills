@@ -1,8 +1,8 @@
-# Skills del Race Engineer de Braking Lab
+# Race Engineer en tu asistente de IA
 
 [English](README.md)
 
-Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o el siguiente cambio de setup que quieres probar. Estas skills ayudan a tu asistente de IA a usar el **Race Engineer de Braking Lab** con tus propios datos. Mantienen las respuestas cerca de la evidencia: si falta una señal, no se presenta como una medición; un cambio de setup sigue siendo una hipótesis hasta que lo pruebas en pista.
+Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o el siguiente cambio de setup que quieres probar. Estas nueve skills ayudan a tu asistente de IA a usar el **Race Engineer de Braking Lab** con tus propios datos. Si falta una señal, la respuesta debe decirlo. Un cambio de setup sigue siendo una hipótesis hasta que lo pruebas en pista.
 
 | Puedes preguntar                                   | Skill              |
 | -------------------------------------------------- | ------------------ |
@@ -16,14 +16,14 @@ Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o e
 | «¿Qué debería practicar antes de la carrera?»      | `race-week`        |
 | «Compara mis dos últimas vueltas.»                 | `lap-comparison`   |
 
-## Prueba Race Engineer
+## Participa en el piloto privado
 
-El paquete privado de prueba incluye las nueve skills y la conexión al MCP de Race Engineer. Sigue la guía para [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md) u [otro agente](docs/install-other-agents.md). Después inicia sesión en la cuenta de Braking Lab donde están tus datos y pregunta con tus propias palabras.
+Necesitas acceso a este repositorio privado y una cuenta de Braking Lab con tus datos de conducción. Descarga el paquete de la [versión preliminar 0.1.0](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0) y sigue la guía para [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md) u [otro agente](docs/install-other-agents.md). Conecta tu cuenta de Braking Lab en el asistente y pregunta con tus propias palabras.
 
 Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no cambian tu plan ni conceden más acceso. Tu cliente conectado puede seguir usando otras funciones del Race Engineer. Las acciones que guardan o cambian datos siguen sujetas a los permisos de tu cuenta y a las confirmaciones del servidor. [Consulta a qué datos puede acceder el Race Engineer](https://www.brakinglab.com/es/docs/race-engineer/security).
 
-## Estado actual
+## Estado del piloto
 
-Los paquetes para Claude, ChatGPT y Agent Plugins se construyen desde las mismas nueve skills. Sus manifiestos y estructura han pasado la validación local. ChatGPT y Claude chat importaron los paquetes privados; Claude Code y Codex instalaron desde el repositorio privado. La [versión preliminar privada 0.1.0](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0) contiene los tres archivos. ChatGPT completó OAuth y varias consultas de lectura; Claude completó OAuth, pero el límite de uso de la cuenta impidió su primera respuesta. Quedan pruebas de selección de skills, cuotas y confirmaciones. Ningún plugin tiene aún una ficha pública en su directorio.
+ChatGPT completó el inicio de sesión y varias consultas de lectura en una cuenta. Claude completó el inicio de sesión, pero el límite de uso de la cuenta impidió la primera respuesta. Claude Code y Codex instalaron el plugin; aún faltan pruebas de sus flujos autenticados. No se ha verificado ningún flujo de escritura o confirmación, y ninguno de los plugins tiene todavía una ficha pública.
 
-Sigue el [plan de pruebas](docs/test-plan.md) para las comprobaciones pendientes. El [plan de distribución](docs/distribution-plan.md) recoge los pasos para Claude, ChatGPT y otros agentes cuando terminen las pruebas; las [notas para mantenimiento](docs/maintainers.md) conservan los detalles de empaquetado.
+Consulta el [registro de validación](docs/validation/2026-09-26-packaging.md) para ver las pruebas y sus límites. El [plan de pruebas](docs/test-plan.md), el [plan de distribución](docs/distribution-plan.md) y las [notas de mantenimiento](docs/maintainers.md) recogen el trabajo previo a la publicación.

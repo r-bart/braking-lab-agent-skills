@@ -7,8 +7,10 @@ This repository distributes the Braking Lab Race Engineer skills. Keep `skills/`
 - Keep the plugin name and version aligned in `plugin.json`, `.claude-plugin/plugin.json`, and both marketplace entries.
 - Keep `mcp.json` and `.mcp.json` pointed at the same reviewed production endpoint. Their transport types differ by format.
 - Each archive must contain exactly one connection mechanism: Claude uses `.mcp.json`, ChatGPT uses `.app.json`, and portable Agent Plugins uses `mcp.json`.
-- `openai/app.json` contains a personal pilot app mapping. Replace it with a reviewed public mapping during submission; an imported private package is not a public directory listing.
+- `openai/app.json` contains a personal pilot app mapping. It is not a public directory listing or a submission artifact.
+- For a public OpenAI submission, send the production MCP endpoint and skills through a new **With MCP** portal draft. The personal app ID is only for the private pilot; it cannot be submitted as an existing integration reference.
 - Do not commit credentials, private telemetry, setup corpus files, or staging endpoints into a distributable package.
+- Installation guides must link to release assets or explain how to build locally. `dist/` is ignored and is not a path available after cloning the repository.
 
 ## Before a release
 

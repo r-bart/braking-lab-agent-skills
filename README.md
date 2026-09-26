@@ -1,8 +1,8 @@
-# Race Engineer skills for Braking Lab
+# Race Engineer in your AI assistant
 
 [Español](README.es.md)
 
-Ask about the lap you just drove, the race you are preparing for, or the setup change you want to try. These skills help your AI assistant use the **Braking Lab Race Engineer** with your own data. They keep answers close to the evidence: a missing signal is never presented as a measurement, and a setup change stays a hypothesis until you drive it.
+Ask about the lap you just drove, the race you are preparing for, or the setup change you want to try. These nine skills help your AI assistant use the **Braking Lab Race Engineer** with your own data. If a signal is missing, the answer should say so. A setup change stays a hypothesis until you try it on track.
 
 | You can ask                                          | Skill              |
 | ---------------------------------------------------- | ------------------ |
@@ -16,14 +16,14 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 | “What should I practice before race day?”            | `race-week`        |
 | “Compare my last two laps.”                          | `lap-comparison`   |
 
-## Try the Race Engineer
+## Join the private pilot
 
-The private pilot package includes the nine skills and the Race Engineer MCP connection. Follow the guide for [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md), or [another agent](docs/install-other-agents.md). Then sign in to the Braking Lab account that holds your data and ask a question in your own words.
+You need access to this private repository and a Braking Lab account with your driving data. Get the package from the [0.1.0 pilot release](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0), then follow the guide for [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md), or [another agent](docs/install-other-agents.md). Connect your Braking Lab account in the assistant and ask a question in your own words.
 
 The skills guide common tasks. They do not limit what the MCP can do, change your plan, or grant extra access. Your connected client can still use other Race Engineer functions. Actions that save or change data remain subject to your Braking Lab permissions and the server's confirmation rules. [See what the Race Engineer can access](https://www.brakinglab.com/en/docs/race-engineer/security).
 
-## Current status
+## Pilot status
 
-The Claude, ChatGPT, and portable Agent Plugins packages are built from the same nine skills. Their manifests and skill structure have passed local validation. ChatGPT and Claude chat imported the private packages; Claude Code and Codex installed from the private repository. The [private 0.1.0 pilot release](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.0) contains the three archives. ChatGPT completed OAuth and several read-only tasks; Claude completed OAuth but its first task was blocked by the account's usage limit. Further checks of skill selection, quotas, and confirmation flows are pending. Neither plugin has a public directory listing yet.
+ChatGPT completed sign-in and several read-only tasks on one account. Claude completed sign-in, but the account's usage limit prevented the first answer. Claude Code and Codex installed the plugin; their authenticated workflows still need testing. No write or confirmation flow has been verified, and neither plugin has a public directory listing.
 
-Follow the [test plan](docs/test-plan.md) for verification. The [distribution plan](docs/distribution-plan.md) covers Claude, ChatGPT, and other agents after the tests; packaging details are in [maintainer notes](docs/maintainers.md).
+See the [validation record](docs/validation/2026-09-26-packaging.md) for the tests and limits. The [test plan](docs/test-plan.md), [distribution plan](docs/distribution-plan.md), and [maintainer notes](docs/maintainers.md) cover the work before a public release.

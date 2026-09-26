@@ -13,6 +13,6 @@ Comprueba la instalación con `claude plugin details braking-lab-race-engineer`.
 
 ## Claude chat
 
-El archivo privado `dist/braking-lab-claude-<versión>.zip` contiene las mismas nueve skills. En Claude, abre **Personalizar → Plugins → Agregar plugin → Subir plugin** e importa el archivo. La importación se probó en la cuenta Personal: la ficha mostró nueve skills y un conector Braking Lab. Abre **Conectores → Conectar** para autorizar tu cuenta. OAuth se completó en el piloto; la primera tarea con datos quedó bloqueada por el límite de uso mensual de esa cuenta.
+Descarga [`braking-lab-claude-0.1.0.zip`](https://github.com/r-bart/braking-lab-agent-skills/releases/download/v0.1.0/braking-lab-claude-0.1.0.zip) de la versión privada. En Claude, abre **Personalizar → Plugins → Agregar plugin → Subir plugin** e importa el archivo. La importación se probó en la cuenta Personal: la ficha mostró nueve skills y un conector Braking Lab. Abre **Conectores → Conectar** para autorizar tu cuenta. OAuth se completó en el piloto; la primera tarea con datos quedó bloqueada por el límite de uso mensual de esa cuenta.
 
 Si aparecen dos conexiones «Braking Lab», revisa la conexión MCP que ya tenías antes de instalar el plugin y conserva solo una activa. La skill no concede acceso adicional: los permisos y las confirmaciones dependen de tu cuenta y del servidor.
