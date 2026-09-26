@@ -19,7 +19,7 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 ## Try the skills
 
 1. [Connect the Race Engineer MCP](https://www.brakinglab.com/en/docs/race-engineer/mcp-setup) and sign in to the Braking Lab account that holds your data. The skills do not connect or authenticate the MCP by themselves.
-2. Clone the [public repository](https://github.com/r-bart/braking-lab-agent-skills). For a local trial, link or copy its nine `skills/<name>/` folders into `~/.codex/skills/` for Codex or `~/.claude/skills/` for Claude Code. Start a new session if your client has not discovered them yet.
+2. Clone the [private repository](https://github.com/r-bart/braking-lab-agent-skills) with an account that has access. For a local trial, link or copy its nine `skills/<name>/` folders into `~/.codex/skills/` for Codex or `~/.claude/skills/` for Claude Code. Start a new session if your client has not discovered them yet.
 3. Ask a question in your own words. The assistant chooses the relevant skill; you can also invoke one by name in clients that support it.
 
 The skills guide common tasks. They do not limit what the MCP can do, change your plan, or grant extra access. Your connected client can still use other Race Engineer functions. Actions that save or change data remain subject to your Braking Lab permissions and the server's confirmation rules. [See what the Race Engineer can access](https://www.brakinglab.com/en/docs/race-engineer/security).
@@ -28,4 +28,4 @@ The skills guide common tasks. They do not limit what the MCP can do, change you
 
 All nine skills are written and their format and function names have been checked against the MCP catalog. Live checks with an authenticated test account, including skill selection, quota limits, and confirmation flows, are still pending. This repository does not yet contain a Claude or Codex plugin package or a directory listing.
 
-For the proposed distribution layout and verification work, see [maintainer notes](docs/maintainers.md).
+Follow the [test plan](docs/test-plan.md) for the remaining verification work. Packaging and distribution notes are in [maintainer notes](docs/maintainers.md) for later.

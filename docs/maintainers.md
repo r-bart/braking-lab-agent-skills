@@ -1,5 +1,7 @@
 # Maintainer notes
 
+The repository is private during skill validation. Complete the [test plan](test-plan.md) before deciding on plugin packaging or distribution. Changing the repository's visibility to private on 2026-09-26 cannot retract access to content from the period when it was public.
+
 ## One skill source, two distribution paths
 
 Keep `skills/` as the only authored copy. The nine `SKILL.md` files use the [Agent Skills format](https://agentskills.io/specification) and contain no Claude- or Codex-only frontmatter. The MCP server remains the source of tools, authentication, authorization, quotas, schemas, and confirmation.
@@ -27,6 +29,7 @@ Codex and ChatGPT share [OpenAI's public plugin directory](https://developers.op
 | Manual review of report, calendar, notes, setup, and consent boundaries         | Completed on 2026-09-26                             |
 | Authenticated MCP behavior on staging                                           | Pending: local connection requires reauthentication |
 | Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                             |
+| Detailed skill test plan                                                        | Written; execution pending                          |
 | Claude and OpenAI plugin manifest validation                                    | Pending packaging                                   |
 | Public directory review                                                         | Pending                                             |
 
