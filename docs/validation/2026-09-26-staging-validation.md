@@ -46,8 +46,14 @@ La suite completa `MCP_ACCEPTANCE=1 pnpm test:e2e` terminó con **78 tests corre
 
 Este resultado valida el código MCP local contra la base real de staging. No ejecuta los dos casos de transporte opt-in, no certifica el despliegue remoto y no constituye una prueba de uso de las skills por Claude o ChatGPT.
 
+## Aceptación interactiva del MCP desplegado — 27 de septiembre
+
+Se ejecutó por separado `interactive-session.e2e.test.ts` con su activación explícita y una clave anon del mismo proyecto de staging: **1/1 pasado, 0 fallidos** (128,95 segundos). La prueba creó dos propietarios sintéticos nuevos, comprobó OAuth de lectura y escritura, aislamiento de sesión y propietario, revocación y rotación de grants, y los rechazos sin escritura al declinar o cancelar `elicitation.form`. Un cliente sin capacidad de formulario y la ruta sin sesión fallaron cerrados; abortar el cliente y dejar vencer el plazo de elicitación del servidor tampoco produjo la mutación. El propio test verificó la eliminación de ambos usuarios y sus filas, así como el cierre del gate de escritura pública.
+
+Este caso sí habla con el MCP desplegado, pero usa un cliente SDK de prueba. No demuestra que Claude, ChatGPT o Codex ofrezcan el formulario en su interfaz. El otro caso opt-in, `staging-transport-smoke.e2e.test.ts`, sigue sin ejecutar.
+
 ## Puertas de salida pendientes
 
-La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Falta conectar una cuenta de staging con derechos Plus/Ultra al MCP desplegado y recorrer debrief, comparación, setups, Track Notes y race week con datos; verificar sus escrituras por lectura posterior; probar formularios `elicitation.form` en un cliente compatible; y ejecutar el corpus de 54 prompts en Claude Code. El CLI de Claude informó de límite de gasto mensual y restablecimiento semanal el 1 de octubre a las 19:00 (Madrid). La suite E2E local está verde; las pruebas opt-in de sesión interactiva y transporte remoto siguen pendientes.
+La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Falta conectar una cuenta de staging con derechos Plus/Ultra al MCP desplegado y recorrer debrief, comparación, setups, Track Notes y race week con datos; verificar sus escrituras por lectura posterior; probar formularios `elicitation.form` en un cliente real compatible; y ejecutar el corpus de 54 prompts en Claude Code. El CLI de Claude informó de límite de gasto mensual y restablecimiento semanal el 1 de octubre a las 19:00 (Madrid). La suite E2E local y la aceptación interactiva del protocolo desplegado están verdes; el smoke opt-in del transporte de evaluación sigue pendiente.
 
 Hasta resolver estas puertas, la release sigue siendo privada y preliminar. No hay evidencia suficiente para afirmar soporte funcional completo de las nueve skills ni para enlazar una instalación pública desde la landing.
