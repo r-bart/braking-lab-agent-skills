@@ -16,14 +16,24 @@ Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o e
 | «¿Qué debería practicar antes de la carrera?»      | `race-week`        |
 | «Compara mis dos últimas vueltas.»                 | `lap-comparison`   |
 
-## Participa en el piloto privado
+## Instala la beta pública
 
-Necesitas acceso a este repositorio privado y una cuenta de Braking Lab con tus datos de conducción. Descarga el paquete de la [versión preliminar 0.1.1](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.1) y sigue la guía para [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md) u [otro agente](docs/install-other-agents.md). Conecta tu cuenta de Braking Lab en el asistente y pregunta con tus propias palabras.
+En macOS o Linux, ejecuta el instalador interactivo:
+
+```sh
+curl -fsSL https://www.brakinglab.com/install.sh | sh
+```
+
+Elige agente, ubicación y skills. El instalador descarga una versión fija, comprueba su SHA-256 y configura el MCP de Braking Lab en **Codex** o **Claude Code** si sus CLI están disponibles. Después autorizas tu cuenta de Braking Lab desde ese cliente. Para **Cursor** u otro agente local, instala las skills y muestra la URL del MCP; conéctalo en tu agente antes de preguntar por tus datos. [Detalles de instalación y comprobación](docs/install-cli.md).
+
+También puedes usar [`npx skills add r-bart/braking-lab-agent-skills`](https://www.skills.sh/docs/cli) para instalar las skills con el CLI existente. Esa vía no configura el MCP. Para el plugin nativo de Claude Code, sigue la [guía de Claude](docs/install-claude.md). La ficha pública de ChatGPT sigue en preparación; consulta el [estado de ChatGPT](docs/install-chatgpt.md).
+
+Necesitas una cuenta de Braking Lab para las respuestas basadas en datos. El instalador nunca pide tu contraseña ni un token de Braking Lab. OAuth ocurre en tu asistente.
 
 Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no cambian tu plan ni conceden más acceso. Tu cliente conectado puede seguir usando otras funciones del Race Engineer. Las acciones que guardan o cambian datos siguen sujetas a los permisos de tu cuenta y a las confirmaciones del servidor. [Consulta a qué datos puede acceder el Race Engineer](https://www.brakinglab.com/es/docs/race-engineer/security).
 
-## Estado del piloto
+## Estado de la beta
 
-ChatGPT completó el inicio de sesión y varias consultas de lectura en una cuenta. La versión 0.1.1 está instalada en ChatGPT, Claude, Claude Code y Codex. Codex cargó la skill esperada en los 54 casos de selección en español e inglés. El conector de staging de Codex también verificó el alta, la edición y el borrado de una carrera sintética con lectura posterior; una cuenta Basic rechazó correctamente la creación de Track Notes. Los 80 casos del arnés MCP pasaron en tres tandas: 78 contra la base de staging con código local, uno de protocolo interactivo contra el MCP desplegado y uno de orquestación hermética. Claude Code sigue bloqueado por el límite de uso de la cuenta. Los nueve recorridos con datos, los formularios de consentimiento en clientes reales y el soporte de escritura por cliente aún no están verificados. Ninguno de los plugins tiene todavía una ficha pública.
+Las nueve skills superaron las comprobaciones de formato y catálogo MCP. ChatGPT completó OAuth y consultas de lectura en una cuenta; Codex en staging verificó alta, edición y borrado de una carrera con lectura posterior. Quedan por comprobar la primera respuesta con datos en Claude Code y los flujos completos de otros clientes. La [matriz de soporte](docs/validation/client-support-matrix.md) registra lo observado. Instalar las skills por sí solo no conecta el Race Engineer.
 
-Consulta la [matriz de soporte por cliente](docs/validation/client-support-matrix.md), los [resultados de pruebas actuales](docs/validation/2026-09-26-test-run.md), la [validación de staging](docs/validation/2026-09-26-staging-validation.md) y el [registro de empaquetado](docs/validation/2026-09-26-packaging.md) para ver las evidencias y sus límites. El [plan de pruebas](docs/test-plan.md), el [plan de distribución](docs/distribution-plan.md) y las [notas de mantenimiento](docs/maintainers.md) recogen el trabajo previo a la publicación.
+El código, el instalador y los archivos de versión están en este repositorio. Las [notas para mantenimiento](docs/maintainers.md) explican el empaquetado y las comprobaciones.

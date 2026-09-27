@@ -19,3 +19,5 @@ jobs:
       - run: python scripts/verify_package.py
       - run: python scripts/build_archive.py
       - run: cd dist && sha256sum -c SHA256SUMS
+      - run: python tests/installer_smoke.py
+      - run: sh -n install.sh

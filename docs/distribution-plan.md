@@ -1,8 +1,12 @@
 # Plan de distribución del Race Engineer
 
 - **Fecha:** 2026-09-26
-- **Estado:** paquetes privados importados e instalados; pruebas autenticadas y publicaciones pendientes
-- **Fuente:** este repositorio privado, con una sola copia de las nueve skills en `skills/`
+- **Estado:** beta pública de skills e instalador local; fichas de directorio pendientes
+- **Fuente:** este repositorio, con una sola copia de las nueve skills en `skills/`
+
+## Decisión posterior — beta pública anticipada
+
+El propietario autorizó publicar las skills y un instalador interactivo sin paquete npm antes de las fichas de Claude y ChatGPT. El instalador sirve a agentes locales y configura el MCP automáticamente solo en Codex y Claude Code cuando encuentra sus CLI. La publicación pública no equivale a soporte verificado en todos los clientes ni a una ficha de ChatGPT. La meta de un lanzamiento amplio con Claude, ChatGPT y CLI se mantiene para las fichas y la landing de producto.
 
 ## Decisión de lanzamiento — 27 de septiembre
 

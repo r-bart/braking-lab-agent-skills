@@ -46,7 +46,6 @@ def main() -> None:
     mcp = validate_json(ROOT / "mcp.json", SCHEMAS / "mcp.schema.json")
     claude = read_json(ROOT / ".claude-plugin" / "plugin.json")
     claude_mcp = read_json(ROOT / ".mcp.json")
-    openai_app = read_json(ROOT / "openai" / "app.json")
     marketplace = read_json(ROOT / ".claude-plugin" / "marketplace.json")
     codex_marketplace = read_json(ROOT / ".agents" / "plugins" / "marketplace.json")
 
@@ -75,10 +74,6 @@ def main() -> None:
         "path": "./",
     }
     assert "apps" not in portable["extensions"]["com.openai"]
-    assert re.fullmatch(
-        r"asdk_app_[A-Za-z0-9_-]+", openai_app["apps"]["braking-lab"]["id"]
-    )
-    assert openai_app["apps"]["braking-lab"]["required"] is True
     interface = portable["extensions"]["com.openai"]["interface"]
     for asset_key in ("composerIcon", "logo"):
         asset_path = interface[asset_key]

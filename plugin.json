@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "braking-lab-race-engineer",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Race Engineer skills and MCP access for your Braking Lab telemetry, setups, race calendar, and track notes.",
   "author": {
     "name": "Braking Lab",

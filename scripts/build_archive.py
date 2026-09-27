@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Build three provider archives from one canonical skills directory."""
+"""Build public provider archives from one canonical skills directory."""
 
 from __future__ import annotations
 
 import json
 from hashlib import sha256
 from pathlib import Path
+from shutil import copyfile
 from zipfile import ZIP_DEFLATED, ZipFile
 
 
@@ -32,11 +33,6 @@ def build(flavor: str) -> Path:
         if flavor == "claude":
             add_file(archive, ROOT / ".claude-plugin" / "plugin.json")
             add_file(archive, ROOT / ".mcp.json")
-        elif flavor == "chatgpt":
-            chatgpt_manifest = json.loads(json.dumps(MANIFEST))
-            chatgpt_manifest["extensions"]["com.openai"]["apps"] = "./.app.json"
-            archive.writestr("plugin.json", json.dumps(chatgpt_manifest, indent=2) + "\n")
-            add_file(archive, ROOT / "openai" / "app.json", ".app.json")
         elif flavor == "portable":
             add_file(archive, ROOT / "plugin.json")
             add_file(archive, ROOT / "mcp.json")
@@ -46,7 +42,7 @@ def build(flavor: str) -> Path:
     with ZipFile(output) as archive:
         names = set(archive.namelist())
         assert len(names) == len(archive.namelist()), "Duplicate archive entries"
-        assert sum(name in names for name in ("mcp.json", ".mcp.json", ".app.json")) == 1
+        assert sum(name in names for name in ("mcp.json", ".mcp.json")) == 1
         assert len([name for name in names if name.endswith("/SKILL.md")]) == 9
     print(f"Built {output}")
     return output
@@ -54,9 +50,13 @@ def build(flavor: str) -> Path:
 
 def main() -> None:
     OUTPUT_DIR.mkdir(exist_ok=True)
-    archives = [build(flavor) for flavor in ("claude", "chatgpt", "portable")]
+    archives = [build(flavor) for flavor in ("claude", "portable")]
+    installer = OUTPUT_DIR / f"braking-lab-install-{VERSION}.sh"
+    copyfile(ROOT / "install.sh", installer)
+    installer.chmod(0o755)
     checksums = "".join(
-        f"{sha256(path.read_bytes()).hexdigest()}  {path.name}\n" for path in archives
+        f"{sha256(path.read_bytes()).hexdigest()}  {path.name}\n"
+        for path in [*archives, installer]
     )
     (OUTPUT_DIR / "SHA256SUMS").write_text(checksums, encoding="utf-8")
 

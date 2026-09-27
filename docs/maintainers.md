@@ -1,29 +1,29 @@
 # Maintainer notes
 
-The repository is private during skill validation. The provider packages can be tested privately while the remaining [test plan](test-plan.md) runs; public listings follow the [distribution plan](distribution-plan.md) only after its release gates pass. Changing the repository's visibility to private on 2026-09-26 cannot retract access to content from the period when it was public.
+The skills and no-npm CLI installer are released as a public beta before either directory listing. The [test plan](test-plan.md) and [distribution plan](distribution-plan.md) still govern claims about client support and a full product launch.
 
 ## One skill source, two distribution paths
 
 Keep `skills/` as the only authored copy. The nine `SKILL.md` files use the [Agent Skills format](https://agentskills.io/specification) and contain no Claude- or Codex-only frontmatter. The MCP server remains the source of tools, authentication, authorization, quotas, schemas, and confirmation.
 
-This repository contains two thin platform layers and three generated archives:
+This repository contains two thin platform layers, two generated archives, and one versioned installer:
 
 ```text
 skills/                         Shared Agent Skills
 plugin.json                     Portable Agent Plugins manifest
 mcp.json                        Portable MCP configuration
 .claude-plugin/plugin.json      Claude plugin manifest
-.claude-plugin/marketplace.json Private Claude Code marketplace
+.claude-plugin/marketplace.json Public Claude Code marketplace
 .agents/plugins/marketplace.json Codex marketplace pointing at the same root
 .mcp.json                       Claude MCP configuration
-openai/app.json                 Registered ChatGPT MCP app mapping for the private pilot
-scripts/build_archive.py        Claude, ChatGPT, portable ZIPs from one skill source
+install.sh                      Interactive macOS/Linux installer
+scripts/build_archive.py        Claude and portable ZIPs plus installer from one skill source
 scripts/verify_package.py      Structural and schema checks
 ```
 
-Run `python scripts/build_archive.py` to create the archives and `SHA256SUMS` under ignored `dist/`. The Claude archive includes `.mcp.json`; the ChatGPT archive includes a generated root manifest and `.app.json`; the portable archive includes `mcp.json`. Each has exactly one MCP connection mechanism. `openai/app.json` names a personal registered production endpoint for the private pilot; it is not a public submission artifact. Do not copy the skills into separate provider repositories or maintain two versions of the workflow text.
+Run `python scripts/build_archive.py` to create the archives, installer, and `SHA256SUMS` under ignored `dist/`. The Claude archive includes `.mcp.json`; the portable archive includes `mcp.json`. Each has exactly one MCP connection mechanism. The personal ChatGPT pilot mapping is absent from public source and releases. Do not copy the skills into separate provider repositories or maintain two versions of the workflow text.
 
-For a public OpenAI listing, create a new **With MCP** submission in the portal using the production HTTPS endpoint and include the skills in that submission. The personal app ID and `.app.json` cannot be submitted as a reference to an existing integration. The [submission draft](openai-submission-draft.md) contains proposed listing copy and reviewer cases; its fixtures and fields must be verified before use. The [submission requirements](https://developers.openai.com/plugins/deploy/submission) also call for domain verification and OAuth workspace domain support. The current MCP discovery advertises only `race-engineer:read` and `race-engineer:write`; `openid`, `email`, a UserInfo Endpoint, and the domain challenge need separate server work and review in the monorepo before public submission.
+For a public OpenAI listing, create a new **With MCP** submission in the portal using the production HTTPS endpoint and include the skills in that submission. The personal pilot app ID cannot be submitted as an existing integration reference. The [submission draft](openai-submission-draft.md) contains proposed listing copy and reviewer cases; its fixtures and fields must be verified before use. The [submission requirements](https://developers.openai.com/plugins/deploy/submission) also call for domain verification and OAuth workspace domain support. The current MCP discovery advertises only `race-engineer:read` and `race-engineer:write`; `openid`, `email`, a UserInfo Endpoint, and the domain challenge need separate server work and review in the monorepo before public submission.
 
 Codex and ChatGPT share [OpenAI's public plugin directory](https://developers.openai.com/plugins/concepts/plugins). OpenAI's [portable plugin format](https://developers.openai.com/plugins/build/plugins) uses root `plugin.json` and `mcp.json`; `.codex-plugin/plugin.json` remains a compatibility format. Claude uses [its own plugin manifest](https://code.claude.com/docs/en/plugins-reference) and [marketplace or directory distribution](https://code.claude.com/docs/en/plugin-marketplaces). A GitHub repository is source code, not a listing in either public directory. Submission and approval are separate on the two platforms.
 
@@ -34,10 +34,10 @@ Codex and ChatGPT share [OpenAI's public plugin directory](https://developers.op
 | Nine named `SKILL.md` files with valid YAML frontmatter                         | Passed locally                                      |
 | Function names against the private MCP `TOOL_CATALOG`                           | Passed on 2026-09-26                                |
 | Manual review of report, calendar, notes, setup, and consent boundaries         | Completed on 2026-09-26                             |
-| Authenticated MCP behavior on staging                                           | Pending: local connection requires reauthentication |
+| Authenticated MCP behavior on staging                                           | 80 harness cases passed; client limits documented    |
 | Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                             |
 | Detailed skill test plan                                                        | Written; execution pending                          |
-| Claude and OpenAI plugin manifest validation                                    | Passed locally; private installs completed          |
+| Claude and portable plugin manifest validation                                  | Passed locally; public beta release prepared        |
 | Public directory review                                                         | Pending                                             |
 
 The source catalog is `braking-lab-monorepo/apps/mcp-server/src/mcp/code-mode/catalog/` in the private project. Published skills must name only functions present in the deployed catalog. A successful YAML check cannot establish correct tool behavior.

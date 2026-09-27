@@ -16,14 +16,24 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 | “What should I practice before race day?”            | `race-week`        |
 | “Compare my last two laps.”                          | `lap-comparison`   |
 
-## Join the private pilot
+## Install the public beta
 
-You need access to this private repository and a Braking Lab account with your driving data. Get the package from the [0.1.1 pilot release](https://github.com/r-bart/braking-lab-agent-skills/releases/tag/v0.1.1), then follow the guide for [Claude](docs/install-claude.md), [ChatGPT](docs/install-chatgpt.md), [Codex](docs/install-codex.md), or [another agent](docs/install-other-agents.md). Connect your Braking Lab account in the assistant and ask a question in your own words.
+On macOS or Linux, run the interactive installer:
+
+```sh
+curl -fsSL https://www.brakinglab.com/install.sh | sh
+```
+
+Choose your agent, install location, and skills. The installer downloads a versioned release, checks its SHA-256 digest, and configures the Braking Lab MCP in **Codex** or **Claude Code** when their CLIs are available. You then authorize your Braking Lab account in that client. For **Cursor** or another local agent, it installs the skills and shows the MCP URL; connect the MCP in that agent before asking about your data. [Installation and verification details](docs/install-cli.md).
+
+Alternatively, use [`npx skills add r-bart/braking-lab-agent-skills`](https://www.skills.sh/docs/cli) to install skills through the existing Skills CLI. That route does not configure the MCP. For Claude Code's native plugin, use the [Claude guide](docs/install-claude.md). ChatGPT's public directory listing is still under preparation; see the [ChatGPT status](docs/install-chatgpt.md).
+
+You need a Braking Lab account for data-backed answers. The installer never asks for your Braking Lab password or token. OAuth happens in your AI client.
 
 The skills guide common tasks. They do not limit what the MCP can do, change your plan, or grant extra access. Your connected client can still use other Race Engineer functions. Actions that save or change data remain subject to your Braking Lab permissions and the server's confirmation rules. [See what the Race Engineer can access](https://www.brakinglab.com/en/docs/race-engineer/security).
 
-## Pilot status
+## Beta status
 
-ChatGPT completed sign-in and several read-only tasks on one account. Version 0.1.1 is installed in ChatGPT, Claude, Claude Code, and Codex. Codex loaded the expected skill in all 54 Spanish and English routing cases. The Codex staging connector also verified a synthetic calendar create, update, and delete with readback; a Basic account correctly refused Track Notes creation. All 80 MCP harness cases passed across three runs: 78 against the staging database with local code, one interactive protocol case against the deployed staging MCP, and one hermetic orchestration smoke. Claude Code remains blocked by the account's usage limit. The nine data-backed workflows, consent forms in real clients, and client-specific write support are not yet verified. Neither plugin has a public directory listing.
+The nine skills passed format and MCP catalog checks. ChatGPT completed OAuth and reading tasks on one account; Codex staging verified calendar create, update, and delete with readback. Claude Code's first data-backed answer and other clients' end-to-end flows still need validation. The [client support matrix](docs/validation/client-support-matrix.md) records what was observed. A skill installation alone does not connect the Race Engineer.
 
-See the [client support matrix](docs/validation/client-support-matrix.md), [current test results](docs/validation/2026-09-26-test-run.md), [staging validation](docs/validation/2026-09-26-staging-validation.md), and [packaging record](docs/validation/2026-09-26-packaging.md) for the evidence and limits. The [test plan](docs/test-plan.md), [distribution plan](docs/distribution-plan.md), and [maintainer notes](docs/maintainers.md) cover the work before a public release.
+Source, installer, and release assets are available in this repository. [Maintainer notes](docs/maintainers.md) explain packaging and checks.
