@@ -3,7 +3,7 @@
 The public beta installer runs on macOS and Linux. It needs `sh`, `curl`, `unzip`, and either `shasum` or `sha256sum`. It downloads the versioned portable release from GitHub, verifies its SHA-256 digest against that release's `SHA256SUMS`, and copies the selected skills into your agent's skills directory. It does not run code from the ZIP.
 
 ```sh
-curl -fsSL https://www.brakinglab.com/install.sh | sh
+curl -fsSL https://github.com/r-bart/braking-lab-agent-skills/releases/download/v0.2.0/braking-lab-install-0.2.0.sh | sh
 ```
 
 The menu asks for an agent (Codex, Claude Code, Cursor, or another local agent), a user-wide or project installation, and which of the nine skills to install. To avoid prompts, download the script and run, for example, `sh install.sh --agent codex --scope user --skills all --yes`. Run `sh install.sh --list` to see the names. The script does not replace a skill directory that it did not install; on updates, it keeps the previous managed copy in a hidden backup directory next to the skills.
