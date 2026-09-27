@@ -8,7 +8,7 @@ Se ejecutó `DISABLE_TELEMETRY=1 npx --yes skills add <ruta-local-del-repo> --li
 
 ## ChatGPT público
 
-El portal de OpenAI Platform mostró «Complete identity verification» al intentar crear un borrador **With MCP**: no permite crearlo ni subir el paquete antes de verificar la identidad publicadora. El propietario eligió publicarlo como desarrollador individual y el trámite externo de Persona quedó abierto para que lo complete directamente. El repositorio mantiene pendientes el soporte de OAuth para restricciones de dominio de workspace, la prueba de dominio que genere el portal, una cuenta demo de producción, una grabación y los materiales de revisión. La aprobación y publicación del directorio dependen de OpenAI después del envío.
+El propietario eligió publicarlo como desarrollador individual y completó el trámite externo de Persona. Al actualizar la página de la organización, OpenAI Platform mostraba «Identity in review». Un nuevo intento de crear el borrador **With MCP** seguía mostrando «Complete identity verification»; por tanto, la identidad está enviada pero todavía no aprobada y el portal no permite crear el borrador. El repositorio mantiene pendientes el soporte de OAuth para restricciones de dominio de workspace, la prueba de dominio que genere el portal, una cuenta demo de producción, una grabación y los materiales de revisión. La aprobación y publicación del directorio dependen de OpenAI después del envío.
 
 ## Claude
 
