@@ -7,10 +7,7 @@
   "plugins": [
     {
       "name": "braking-lab-race-engineer",
-      "source": {
-        "source": "github",
-        "repo": "r-bart/braking-lab-agent-skills"
-      },
+      "source": "./",
       "description": "Review laps, prepare races, and explore setups using your Braking Lab data."
     }
   ]
