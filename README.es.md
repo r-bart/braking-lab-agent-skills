@@ -1,6 +1,6 @@
 # Race Engineer en tu asistente de IA
 
-![Race Engineer de Braking Lab: tus vueltas, tus setups, tu siguiente paso](assets/readme-cover-es.svg)
+![Pack oficial de skills del Race Engineer para tu agente favorito](assets/readme-cover-es.svg)
 
 [English](README.md)
 
