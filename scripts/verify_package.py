@@ -62,10 +62,7 @@ def main() -> None:
         "url": PRODUCTION_MCP,
     }
     assert marketplace["plugins"][0]["name"] == portable["name"]
-    assert marketplace["plugins"][0]["source"] == {
-        "source": "github",
-        "repo": "r-bart/braking-lab-agent-skills",
-    }
+    assert marketplace["plugins"][0]["source"] == "./"
     assert codex_marketplace["name"] == "braking-lab"
     assert len(codex_marketplace["plugins"]) == 1
     assert codex_marketplace["plugins"][0]["name"] == portable["name"]

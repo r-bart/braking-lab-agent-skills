@@ -21,7 +21,7 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 On macOS or Linux, run the interactive installer:
 
 ```sh
-curl -fsSL https://github.com/r-bart/braking-lab-agent-skills/releases/download/v0.2.0/braking-lab-install-0.2.0.sh | sh
+curl -fsSL https://www.brakinglab.com/install.sh | sh
 ```
 
 Choose your agent, install location, and skills. The installer downloads a versioned release, checks its SHA-256 digest, and configures the Braking Lab MCP in **Codex** or **Claude Code** when their CLIs are available. You then authorize your Braking Lab account in that client. For **Cursor** or another local agent, it installs the skills and shows the MCP URL; connect the MCP in that agent before asking about your data. [Installation and verification details](docs/install-cli.md).
