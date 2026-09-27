@@ -58,7 +58,7 @@ Se activó por separado `staging-transport-smoke.e2e.test.ts`: **1/1 pasado**. E
 
 El propietario autorizó una prueba de lectura con su usuario de staging. Se localizó una cuenta de staging con telemetría y el código local del MCP, usando el cliente de servicio restringido al proyecto de staging, pudo listar sesiones y leer el detalle de una sesión reciente, zonas de frenada, curvas, consistencia, una traza limitada y síntomas. Todas esas consultas terminaron correctamente; no se guardó ningún informe ni se cambió dato alguno. El registro omite identidad, IDs y valores de telemetría.
 
-El conector Braking Lab (STA) de Codex seguía autenticado como la cuenta sintética Basic `e2e_basic`. El intento de añadir la otra cuenta desde ChatGPT abrió una página local `127.0.0.1` bloqueada por Chrome antes del consentimiento. Por ello, esta lectura valida las consultas locales con datos existentes, **no** el recorrido de una skill en un cliente autenticado como el propietario.
+El conector Braking Lab (STA) de Codex seguía autenticado como la cuenta sintética Basic `e2e_basic`. El intento de añadir otra cuenta desde ChatGPT abrió una página local `127.0.0.1` bloqueada por Chrome antes del consentimiento. Tras una aprobación posterior en el navegador, ChatGPT mostró dos conexiones; se seleccionó cada una y se ejecutó `whoami` desde un chat nuevo. Las dos devolvieron `e2e_basic` y plan Basic. Una nueva consulta `whoami` en Codex también devolvió `e2e_basic`. Por ello, esta lectura valida las consultas locales con datos existentes, **no** el recorrido de una skill en un cliente autenticado como el propietario. La aprobación observada no permite afirmar que la cuenta del propietario haya quedado conectada.
 
 ## Puertas de salida pendientes
 
