@@ -4,6 +4,16 @@
 - **Estado:** paquetes privados importados e instalados; pruebas autenticadas y publicaciones pendientes
 - **Fuente:** este repositorio privado, con una sola copia de las nueve skills en `skills/`
 
+## Decisión de lanzamiento — 27 de septiembre
+
+La publicación dirigida a usuarios se hará con **las tres vías disponibles a la vez**: Claude, ChatGPT y una instalación por CLI para otras personas. No se anunciará un lanzamiento parcial de solo Claude o solo repositorio público. La URL de la landing se activará cuando las tres rutas tengan instrucciones reales y una primera consulta autenticada comprobada.
+
+- **Claude:** plugin de Claude Code desde el marketplace Git del repositorio y ZIP para Claude chat. La ficha del directorio de Anthropic puede tramitarse en paralelo; no es requisito para compartir el plugin desde GitHub.
+- **ChatGPT:** ficha pública del Plugins Directory compartido con Codex. El ZIP del piloto usa una app personal y no sirve como prueba de instalación para cuentas ajenas. El portal exige identidad publicadora verificada antes incluso de crear un borrador. El 27 de septiembre, la organización `rbart ventures` ofrecía iniciar verificación individual o de empresa; el propietario eligió identidad individual. El trámite de Persona queda en manos del propietario.
+- **CLI:** usar primero `npx skills add r-bart/braking-lab-agent-skills -g` desde el repositorio público, más los pasos MCP/OAuth del cliente. Ese comando instala skills, no la conexión. Probar una instalación limpia y una consulta autenticada por cada cliente que se anuncie. Crear un CLI propio solo si esas pruebas demuestran que hace falta para completar el recorrido.
+
+El calendario de ChatGPT depende de la revisión de OpenAI después del envío. Preparar paquetes y repositorio no acorta ni sustituye esa revisión. Mantener la release privada hasta que el directorio apruebe el plugin y las tres rutas puedan lanzarse juntas.
+
 ## Objetivo
 
 Que un piloto de Braking Lab pueda elegir Claude o ChatGPT, instalar el Race Engineer desde el directorio de su asistente, autorizar su cuenta de Braking Lab y empezar con una pregunta útil. Para otros agentes, aprovechar el paquete portable cuando instale skills y MCP; donde no lo haga, ofrecer instalación de skills por CLI y una guía corta para conectar el MCP. La instalación no debe prometer operaciones que un cliente no pueda completar, en particular las que requieren `elicitation.form`.
@@ -123,6 +133,7 @@ Cada tarea termina con los archivos válidos y el repo en un estado instalable p
 #### Tarea 3.2 — seguridad de publicación
 
 - [ ] Revisar todos los archivos e historial que se expondrían si el repositorio se hiciera público. Decidir licencia, identidad publicadora, soporte, privacidad y términos; no cambiar la visibilidad del repo como efecto lateral de preparar el paquete.
+- [ ] Separar el mapeo `openai/app.json` de la distribución pública: contiene el ID de la app personal del piloto. La release pública no debe ofrecer el ZIP de ChatGPT del piloto como instalación general; la ficha aprobada por OpenAI será la ruta para otras cuentas.
 - [ ] Fijar versión de skills y contrato MCP; comprobar que la URL publicable es la de producción, que staging no aparece en el paquete y que el servidor de producción ofrece las funciones probadas.
 - [ ] Preparar rollback: versión anterior del paquete, desactivar o retirar una ficha, y mensaje para usuarios afectados sin prometer que desinstalar borra datos de su cuenta.
 
@@ -135,7 +146,7 @@ Cada tarea termina con los archivos válidos y el repo en un estado instalable p
 #### Tarea 4.1 — envío a directorios
 
 - [ ] Enviar el plugin de Claude con su paquete, información de acceso al MCP y materiales que exija Anthropic. Resolver su validación y revisión antes de publicar.
-- [ ] Crear en el portal de OpenAI un envío **With MCP** con la URL HTTPS de producción e incluir las nueve skills en ese mismo borrador. No presentar `openai/app.json`, el ID de la app personal ni el ZIP privado como referencia de una integración ya publicada: el portal debe escanear el MCP directamente. Completar identidad verificada, dominio, política de privacidad, cinco casos positivos, tres negativos y anotaciones reales de todas las herramientas.
+- [ ] Crear en el portal de OpenAI un envío **With MCP** con la URL HTTPS de producción e incluir las nueve skills en ese mismo borrador. No presentar `openai/app.json`, el ID de la app personal ni el ZIP privado como referencia de una integración ya publicada: el portal debe escanear el MCP directamente. Completar identidad verificada, dominio, política de privacidad, cuenta demo de producción sin MFA ni confirmación por correo, grabación de los casos principales, cinco casos positivos, tres negativos y anotaciones reales de todas las herramientas. El portal no permite crear el borrador antes de verificar la identidad publicadora.
 - [ ] Preparar en el servidor MCP la prueba de dominio `/.well-known/openai-apps-challenge` y el soporte OAuth exigido para restricciones de dominio de workspace: scopes `openid` y `email`, UserInfo Endpoint con `email` y `email_verified: true`. El catálogo actual anuncia solo `race-engineer:read` y `race-engineer:write`; este cambio pertenece al monorepo y requiere implementación y pruebas separadas antes de solicitar revisión pública.
 - [ ] Mantener estados separados: «enviado», «aprobado» y «publicado» no son equivalentes. No enlazar una ficha antes de confirmar que está visible para una cuenta ajena.
 
@@ -149,9 +160,9 @@ Cada tarea termina con los archivos válidos y el repo en un estado instalable p
 
 **Verificación:** los dos recorridos desde la landing funcionan en móvil y escritorio; cada enlace llega a la ficha correcta y la guía coincide con el producto publicado.
 
-### Fase 5 — CLI para otros agentes
+### Fase 5 — CLI para otros agentes (ejecutar antes del lanzamiento conjunto)
 
-**Antes:** los canales principales están disponibles. **Después:** cada cliente adicional anunciado tiene una ruta de instalación probada. Se usa el paquete Agent Plugins cuando el cliente carga skills y MCP; el CLI cubre los clientes que necesitan instalar las skills por separado.
+**Antes:** el repositorio sigue privado y se pueden probar instalaciones locales. **Después:** cada cliente adicional anunciado tiene una ruta de instalación probada y lista para activarse al abrir el repositorio. Se usa el paquete Agent Plugins cuando el cliente carga skills y MCP; el CLI cubre los clientes que necesitan instalar las skills por separado.
 
 #### Tarea 5.1 — probar el paquete portable y el CLI existente
 
@@ -181,8 +192,8 @@ dependencies:
   "3.1": ["1.2", "2.1"]
   "3.2": ["3.1", "2.2"]
   "4.1": ["3.2"]
-  "4.2": ["4.1"]
-  "5.1": ["4.2"]
+  "4.2": ["4.1", "5.1"]
+  "5.1": ["2.1", "3.1"]
   "5.2": ["5.1"]
 ```
 
@@ -211,7 +222,7 @@ dependencies:
 
 ## Criterio final
 
-El trabajo termina cuando las skills superan su plan de pruebas, Claude y ChatGPT se instalan desde sus fichas reales y completan OAuth y una primera tarea, la landing guía a ambas sin pasos técnicos ocultos, y cada agente adicional anunciado tiene una prueba de instalación y conexión MCP. Codex se presenta como compatible solo después de su prueba propia. La fuente de skills sigue siendo única; los resultados y límites están documentados por versión.
+El lanzamiento conjunto ocurre cuando Claude se instala desde el marketplace Git o el ZIP probado, ChatGPT se instala desde una ficha pública aprobada, y la vía CLI se reproduce desde un repositorio público en cada cliente anunciado. Las tres rutas deben completar OAuth y una primera consulta con la cuenta correcta; la landing enlaza a destinos comprobados. Las operaciones aún no verificadas se describen como límites de la versión, sin atribuirles compatibilidad. La fuente de skills sigue siendo única y los resultados se documentan por versión.
 
 ## Referencias del formato
 
