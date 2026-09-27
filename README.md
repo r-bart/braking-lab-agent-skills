@@ -1,5 +1,7 @@
 # Race Engineer in your AI assistant
 
+![Braking Lab Race Engineer: your laps, your setups, your next move](assets/readme-cover.svg)
+
 [Español](README.es.md)
 
 Ask about the lap you just drove, the race you are preparing for, or the setup change you want to try. These nine skills help your AI assistant use the **Braking Lab Race Engineer** with your own data. If a signal is missing, the answer should say so. A setup change stays a hypothesis until you try it on track.

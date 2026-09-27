@@ -1,5 +1,7 @@
 # Race Engineer en tu asistente de IA
 
+![Race Engineer de Braking Lab: tus vueltas, tus setups, tu siguiente paso](assets/readme-cover-es.svg)
+
 [English](README.md)
 
 Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o el siguiente cambio de setup que quieres probar. Estas nueve skills ayudan a tu asistente de IA a usar el **Race Engineer de Braking Lab** con tus propios datos. Si falta una señal, la respuesta debe decirlo. Un cambio de setup sigue siendo una hipótesis hasta que lo pruebas en pista.
