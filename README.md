@@ -18,17 +18,32 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 
 ## Install the public beta
 
-On macOS or Linux, run the interactive installer:
+### Claude
+
+Install the native Claude Code plugin, which includes the nine skills and the MCP connection:
 
 ```sh
-curl -fsSL https://www.brakinglab.com/install.sh | sh
+claude plugin marketplace add r-bart/braking-lab-agent-skills
+claude plugin install braking-lab-race-engineer@braking-lab
 ```
 
-Choose your agent, install location, and skills. The installer downloads a versioned release, checks its SHA-256 digest, and configures the Braking Lab MCP in **Codex** or **Claude Code** when their CLIs are available. You then authorize your Braking Lab account in that client. For **Cursor** or another local agent, it installs the skills and shows the MCP URL; connect the MCP in that agent before asking about your data. [Installation and verification details](docs/install-cli.md).
+Open a new Claude Code session, run `/mcp`, and authorize your Braking Lab account. Claude chat users can [import the plugin ZIP](docs/install-claude.md) if their account supports plugin uploads.
 
-Alternatively, use [`npx skills add r-bart/braking-lab-agent-skills`](https://www.skills.sh/docs/cli) to install skills through the existing Skills CLI. That route does not configure the MCP. For Claude Code's native plugin, use the [Claude guide](docs/install-claude.md). ChatGPT's public directory listing is still under preparation; see the [ChatGPT status](docs/install-chatgpt.md).
+### ChatGPT
 
-You need a Braking Lab account for data-backed answers. The installer never asks for your Braking Lab password or token. OAuth happens in your AI client.
+The public ChatGPT directory listing is still in preparation. Accounts with custom MCP connectors in Developer Mode can connect to `https://mcp.brakinglab.com/mcp` now. See the [ChatGPT status](docs/install-chatgpt.md).
+
+### Codex, Cursor, and other agents
+
+Use the existing [Skills CLI](https://www.skills.sh/docs/cli) to choose your agent, install location, and skills:
+
+```sh
+npx skills add r-bart/braking-lab-agent-skills
+```
+
+Then connect `https://mcp.brakinglab.com/mcp` in your agent and authorize your Braking Lab account. The Skills CLI installs the skills; it does not configure the MCP. [Client-specific steps and an optional installer without Node](docs/install-cli.md).
+
+You need a Braking Lab account for data-backed answers. Authorization happens in your AI client; the skills installation never asks for your Braking Lab password or token.
 
 The skills guide common tasks. They do not limit what the MCP can do, change your plan, or grant extra access. Your connected client can still use other Race Engineer functions. Actions that save or change data remain subject to your Braking Lab permissions and the server's confirmation rules. [See what the Race Engineer can access](https://www.brakinglab.com/en/docs/race-engineer/security).
 
@@ -36,4 +51,4 @@ The skills guide common tasks. They do not limit what the MCP can do, change you
 
 The nine skills passed format and MCP catalog checks. ChatGPT completed OAuth and reading tasks on one account; Codex staging verified calendar create, update, and delete with readback. Claude Code's first data-backed answer and other clients' end-to-end flows still need validation. The [client support matrix](docs/validation/client-support-matrix.md) records what was observed. A skill installation alone does not connect the Race Engineer.
 
-Source, installer, and release assets are available in this repository. [Maintainer notes](docs/maintainers.md) explain packaging and checks.
+Source and release assets are available in this repository. [Maintainer notes](docs/maintainers.md) explain packaging and checks.
