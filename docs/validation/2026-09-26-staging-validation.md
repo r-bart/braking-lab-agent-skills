@@ -54,6 +54,12 @@ Este caso sí habla con el MCP desplegado, pero usa un cliente SDK de prueba. No
 
 Se activó por separado `staging-transport-smoke.e2e.test.ts`: **1/1 pasado**. Es una simulación hermética sin red ni credenciales que verifica el orden seed → lectura → espacio de parámetros → remix → recuperación → cierre → limpieza. Su nombre no debe interpretarse como una segunda prueba del transporte desplegado. Así, los 80 casos del arnés se ejecutaron en tres tandas: 78 en el E2E local, uno contra el MCP remoto con SDK y uno sintético.
 
+## Lectura autorizada de telemetría existente — 27 de septiembre
+
+El propietario autorizó una prueba de lectura con su usuario de staging. Se localizó una cuenta de staging con telemetría y el código local del MCP, usando el cliente de servicio restringido al proyecto de staging, pudo listar sesiones y leer el detalle de una sesión reciente, zonas de frenada, curvas, consistencia, una traza limitada y síntomas. Todas esas consultas terminaron correctamente; no se guardó ningún informe ni se cambió dato alguno. El registro omite identidad, IDs y valores de telemetría.
+
+El conector Braking Lab (STA) de Codex seguía autenticado como la cuenta sintética Basic `e2e_basic`. El intento de añadir la otra cuenta desde ChatGPT abrió una página local `127.0.0.1` bloqueada por Chrome antes del consentimiento. Por ello, esta lectura valida las consultas locales con datos existentes, **no** el recorrido de una skill en un cliente autenticado como el propietario.
+
 ## Puertas de salida pendientes
 
 La validación solicitada se ha ejecutado, pero el criterio de «listo» de [`../test-plan.md`](../test-plan.md) **no se cumple**. Falta conectar una cuenta de staging con derechos Plus/Ultra al MCP desplegado y recorrer debrief, comparación, setups, Track Notes y race week con datos; verificar sus escrituras por lectura posterior; probar formularios `elicitation.form` en un cliente real compatible; y ejecutar el corpus de 54 prompts en Claude Code. El CLI de Claude informó de límite de gasto mensual y restablecimiento semanal el 1 de octubre a las 19:00 (Madrid). Las tres tandas del arnés están verdes, cada una con el alcance indicado arriba.
