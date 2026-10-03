@@ -1,7 +1,7 @@
 {
   "name": "braking-lab-race-engineer",
   "displayName": "Braking Lab Race Engineer",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "Review laps, prepare races, and explore setups using your Braking Lab data.",
   "author": {
     "name": "Braking Lab",

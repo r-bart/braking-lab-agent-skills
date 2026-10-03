@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "tests" / "contract" / "tool-catalog.json"
 FUNCTION_NAME = re.compile(
-    r"(?:get|list|compare|save|create|update|delete|link|unlink|search|"
+    r"(?:get|read|import|list|compare|save|create|update|delete|link|unlink|search|"
     r"generate|preview|commit|retire|confirm|record|add|remix|build|"
     r"report|explain)[A-Z][A-Za-z0-9]*$"
 )

@@ -1,5 +1,5 @@
 {
-  "version": "98-3aab4c5384da7fea",
+  "version": "101-8278996a53464d31",
   "names": [
     "getSessions",
     "getSessionsFacets",
@@ -88,8 +88,11 @@
     "listReferenceSetups",
     "buildSetupFromInterview",
     "reportReferenceMiss",
+    "readOwnedSetupVersionResource",
+    "compareOwnedSetupVersionResources",
     "explainSetupParam",
     "getSetupTendencies",
+    "readOwnedExerciseResource",
     "createExerciseFromZone",
     "listCustomExercises",
     "getExerciseResults",
@@ -100,5 +103,5 @@
     "getDocumentation",
     "getFunctionSchema"
   ],
-  "sourceRevision": "27ea2e9f16d6db3101f8d601dfa73083030be425"
+  "sourceRevision": "84b69c33f29bf9a19bff920b11c56469dce76af6"
 }

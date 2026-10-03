@@ -26,7 +26,9 @@ def add_file(archive: ZipFile, path: Path, name: str | None = None) -> None:
 def build(flavor: str) -> Path:
     output = OUTPUT_DIR / f"braking-lab-{flavor}-{VERSION}.zip"
     with ZipFile(output, "w", compression=ZIP_DEFLATED) as archive:
-        add_file(archive, ROOT / "assets" / "icon.png")
+        interface = MANIFEST["extensions"]["com.openai"]["interface"]
+        for asset_path in sorted({interface[key] for key in ("logo", "composerIcon")}):
+            add_file(archive, ROOT / asset_path)
         for path in SKILL_FILES:
             add_file(archive, path)
 

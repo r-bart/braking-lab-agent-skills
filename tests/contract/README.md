@@ -1,12 +1,16 @@
 # MCP function snapshot
 
-`tool-catalog.json` was exported from `apps/mcp-server/src/mcp/code-mode/tool-catalog.ts`
-in Braking Lab monorepo commit `1d123a617c2ff901641a5637d30d3b81e1fdc841`.
-`version` is the server's `CATALOG_VERSION` from that source; `names` lists the
-97 functions in catalog order. `scripts/verify_contract.py` checks every
-function cited by a skill against this snapshot.
+`tool-catalog.json` records the reviewed canonical export from
+`apps/mcp-server/src/mcp/code-mode/catalog/index.ts` in the Braking Lab monorepo.
+The JSON's `sourceRevision` is the exact source commit; `version` is that source's
+`CATALOG_VERSION`; `names` contains its function names in catalog order. Read
+those values from the JSON instead of maintaining a second revision or count in
+this document. `scripts/verify_contract.py` checks every skill reference against
+that snapshot.
 
-Before a release, compare the snapshot with the catalog actually deployed in
-staging. A local source revision alone does not prove deployment parity. When
-the server catalog changes, re-export the version and names from the reviewed
-source revision, then run `scripts/verify_package.py` and the staging journeys.
+Re-export only after the canonical merge is committed and the source checkout
+is clean. Reject an unresolved merge or dirty tracked/untracked inputs rather
+than stamping a pre-merge HEAD onto newer functions. Compare the exported
+version/names with the catalog actually deployed in staging before release;
+a local source revision does not establish deployment parity. Run
+`scripts/verify_package.py` and the staging journeys after the refresh.

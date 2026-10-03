@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "braking-lab-race-engineer",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "Race Engineer skills and MCP access for your Braking Lab telemetry, setups, race calendar, and track notes.",
   "author": {
     "name": "Braking Lab",
@@ -23,8 +23,8 @@
         "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
         "termsOfServiceURL": "https://www.brakinglab.com/en/terms",
         "brandColor": "#FA5F29",
-        "composerIcon": "./assets/icon.png",
-        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/braking-lab-v5.png",
+        "logo": "./assets/braking-lab-v5.png",
         "defaultPrompt": [
           "Review my latest session and show where I lost time.",
           "Compare my last two laps and explain the biggest difference.",
