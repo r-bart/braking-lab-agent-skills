@@ -1,5 +1,5 @@
 {
-  "version": "101-8278996a53464d31",
+  "version": "101-871b1a790537712e",
   "names": [
     "getSessions",
     "getSessionsFacets",
@@ -103,5 +103,5 @@
     "getDocumentation",
     "getFunctionSchema"
   ],
-  "sourceRevision": "84b69c33f29bf9a19bff920b11c56469dce76af6"
+  "sourceRevision": "fcc0797f01aba8eea26014f55b2f537a43a272d9"
 }
