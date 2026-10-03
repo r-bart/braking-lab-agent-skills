@@ -1,11 +1,17 @@
 ---
 name: race-engineer
-description: Orient a driver in Braking Lab Race Engineer, check the connected account and plan, and find which MCP actions are available. Use for broad capability or account questions before a specific coaching task is chosen.
+description: Orient a driver in Braking Lab Race Engineer, check the connected account and plan, and find which MCP actions are available. Use for opening the Paddock workspace or broad capability and account questions before a specific coaching task is chosen.
 ---
 
 # Race Engineer
 
 Use the connected Braking Lab MCP through `execute_code`. Its `brakinglab.*` catalog, tool description, and `brakinglab.getFunctionSchema({ name })` define current arguments and behavior. For example, `await brakinglab.whoami({})` identifies the authorized account; `await brakinglab.getCapabilities({})` summarizes available work. Check the exact schema if the connected server differs.
+
+## Report opening status accurately
+
+A successful `ray_paddock`, `ray_evidence`, or `ray_openResource` call means the opening request completed, not that the host rendered the interface. Unless the host acknowledges actual visible rendering or the driver confirms it, say that you requested opening the workspace. Do not say it opened successfully or that the integration works based only on a tool result or a loaded resource.
+
+If the host reports an unavailable app or failed rendering, state that the interface could not be opened, even when the tool returned success. Explain the observed failure without inventing a cause. Respect a request to open only: do not create or modify data while checking the UI. One opener result, resource load, or settings check does not establish full integration, end-to-end acceptance, or 100% readiness.
 
 ## Orient the driver
 

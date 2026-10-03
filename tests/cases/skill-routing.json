@@ -12,6 +12,11 @@
       "expected": "lap-comparison",
       "es": "Compara mis dos últimas vueltas y dime en cuál frené antes.",
       "en": "Compare my last two laps and tell me where I braked earlier."
+    },
+    "host-render-failure": {
+      "es": "Abre la interfaz Paddock sin crear ni modificar datos. La herramienta devuelve éxito, pero el host muestra «No se ha podido abrir Mi Paddock». Explica el resultado observado.",
+      "en": "Open the Paddock interface without creating or changing data. The tool returns success, but the host reports that My Paddock could not be opened. Explain the observed result.",
+      "expectedReply": "Report that the host could not open the interface. Tool success is not proof of visible rendering or complete integration; do not claim a successful opening or create or modify data."
     }
   },
   "debrief": {

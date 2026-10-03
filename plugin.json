@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "braking-lab-race-engineer",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Race Engineer skills and MCP access for your Braking Lab telemetry, setups, race calendar, and track notes.",
   "author": {
     "name": "Braking Lab",
@@ -9,12 +9,7 @@
   },
   "homepage": "https://www.brakinglab.com/en/features/race-engineer",
   "repository": "https://github.com/r-bart/braking-lab-agent-skills",
-  "keywords": [
-    "sim-racing",
-    "telemetry",
-    "race-engineer",
-    "setups"
-  ],
+  "keywords": ["sim-racing", "telemetry", "race-engineer", "setups"],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -23,10 +18,7 @@
         "longDescription": "Work with Ray in your Paddock: review telemetry, compare laps, prepare races, explore your setups, keep track notes and turn braking evidence into practice.",
         "developerName": "Braking Lab",
         "category": "Productivity",
-        "capabilities": [
-          "Read",
-          "Write"
-        ],
+        "capabilities": ["Read", "Write"],
         "websiteURL": "https://www.brakinglab.com",
         "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
         "termsOfServiceURL": "https://www.brakinglab.com/en/terms",

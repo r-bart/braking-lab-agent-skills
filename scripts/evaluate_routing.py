@@ -19,8 +19,7 @@ def cases() -> list[dict[str, str]]:
     corpus = json.loads(CASES.read_text(encoding="utf-8"))
     result = []
     for skill, kinds in corpus.items():
-        for kind in ("direct", "indirect", "negative"):
-            entry = kinds[kind]
+        for kind, entry in kinds.items():
             expected = entry.get("expected", skill)
             for lang in ("es", "en"):
                 result.append(
@@ -33,7 +32,8 @@ def cases() -> list[dict[str, str]]:
                         "prompt": entry[lang],
                     }
                 )
-    assert len(result) == 54
+    assert set(corpus) == {path.name for path in (ROOT / "skills").iterdir() if path.is_dir()}
+    assert len(result) == sum(len(kinds) * 2 for kinds in corpus.values())
     return result
 
 
@@ -77,9 +77,9 @@ def run_case(case: dict[str, str], timeout: int) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=54)
+    parser.add_argument("--limit", type=int)
     parser.add_argument("--lang", choices=("es", "en"))
-    parser.add_argument("--kind", choices=("direct", "indirect", "negative"))
+    parser.add_argument("--kind", choices=("direct", "indirect", "negative", "host-render-failure"))
     parser.add_argument("--timeout", type=int, default=90)
     args = parser.parse_args()
     selected = [

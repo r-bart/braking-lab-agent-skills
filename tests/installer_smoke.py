@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import tempfile
@@ -9,7 +10,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "dist/braking-lab-portable-0.3.0.zip"
+VERSION = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]
+ARCHIVE = ROOT / f"dist/braking-lab-portable-{VERSION}.zip"
 INSTALLER = ROOT / "install.sh"
 
 

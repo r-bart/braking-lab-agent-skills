@@ -6,18 +6,18 @@
 
 Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o el siguiente cambio de setup que quieres probar. Estas diez skills ayudan a tu asistente de IA a usar el **Race Engineer de Braking Lab** con tus propios datos. Si falta una señal, la respuesta debe decirlo. Un cambio de setup sigue siendo una hipótesis hasta que lo pruebas en pista.
 
-| Puedes preguntar                                   | Skill              |
-| -------------------------------------------------- | ------------------ |
-| «¿Qué puede hacer mi Race Engineer?»               | `race-engineer`    |
-| «¿Dónde perdí tiempo en mi última sesión en Spa?»  | `debrief`          |
-| «El coche subvira a la salida. ¿Qué cambiarías?»   | `setup-coaching`   |
-| «Enséñame las versiones de mi setup de LMU.»       | `setup-library`    |
-| «Añade la carrera del sábado al calendario.»       | `calendar-events`  |
-| «¿Ayudó el cambio de setup después de probarlo?»   | `setup-evaluation` |
-| «Guarda mi referencia de frenada para la curva 3.» | `track-notes`      |
-| «¿Qué debería practicar antes de la carrera?»      | `race-week`        |
-| «Compara mis dos últimas vueltas.»                 | `lap-comparison`   |
-| "Crea un ejercicio de frenado y revisa sus resultados." | `training` |
+| Puedes preguntar                                        | Skill              |
+| ------------------------------------------------------- | ------------------ |
+| «¿Qué puede hacer mi Race Engineer?»                    | `race-engineer`    |
+| «¿Dónde perdí tiempo en mi última sesión en Spa?»       | `debrief`          |
+| «El coche subvira a la salida. ¿Qué cambiarías?»        | `setup-coaching`   |
+| «Enséñame las versiones de mi setup de LMU.»            | `setup-library`    |
+| «Añade la carrera del sábado al calendario.»            | `calendar-events`  |
+| «¿Ayudó el cambio de setup después de probarlo?»        | `setup-evaluation` |
+| «Guarda mi referencia de frenada para la curva 3.»      | `track-notes`      |
+| «¿Qué debería practicar antes de la carrera?»           | `race-week`        |
+| «Compara mis dos últimas vueltas.»                      | `lap-comparison`   |
+| "Crea un ejercicio de frenado y revisa sus resultados." | `training`         |
 
 ## Instala la beta pública
 
@@ -52,6 +52,6 @@ Las skills guían tareas habituales. No limitan lo que puede hacer el MCP, no ca
 
 ## Estado de la beta
 
-Las nueve skills superaron las comprobaciones de formato y catálogo MCP. ChatGPT completó OAuth y consultas de lectura en una cuenta; Codex en staging verificó alta, edición y borrado de una carrera con lectura posterior. Quedan por comprobar la primera respuesta con datos en Claude Code y los flujos completos de otros clientes. La [matriz de soporte](docs/validation/client-support-matrix.md) registra lo observado. Instalar las skills por sí solo no conecta el Race Engineer.
+Las diez skills superaron las comprobaciones de formato y catálogo MCP. ChatGPT completó OAuth y consultas de lectura en una cuenta; Codex en staging verificó alta, edición y borrado de una carrera con lectura posterior. Quedan por comprobar la primera respuesta con datos en Claude Code y los flujos completos de otros clientes. La [matriz de soporte](docs/validation/client-support-matrix.md) registra lo observado. Instalar las skills por sí solo no conecta el Race Engineer. Una petición de apertura de Paddock completada no confirma que la interfaz sea visible; la aceptación en el host real sigue pendiente.
 
 El código y los archivos de versión están en este repositorio. Las [notas para mantenimiento](docs/maintainers.md) explican el empaquetado y las comprobaciones.

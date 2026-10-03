@@ -17,7 +17,7 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 | “Save my braking reference for Turn 3.”              | `track-notes`      |
 | “What should I practice before race day?”            | `race-week`        |
 | “Compare my last two laps.”                          | `lap-comparison`   |
-| "Create a braking exercise and review its results." | `training` |
+| "Create a braking exercise and review its results."  | `training`         |
 
 ## Install the public beta
 
@@ -52,6 +52,6 @@ The skills guide common tasks. They do not limit what the MCP can do, change you
 
 ## Beta status
 
-The nine skills passed format and MCP catalog checks. ChatGPT completed OAuth and reading tasks on one account; Codex staging verified calendar create, update, and delete with readback. Claude Code's first data-backed answer and other clients' end-to-end flows still need validation. The [client support matrix](docs/validation/client-support-matrix.md) records what was observed. A skill installation alone does not connect the Race Engineer.
+The ten skills passed format and MCP catalog checks. ChatGPT completed OAuth and reading tasks on one account; Codex staging verified calendar create, update, and delete with readback. Claude Code's first data-backed answer and other clients' end-to-end flows still need validation. The [client support matrix](docs/validation/client-support-matrix.md) records what was observed. A skill installation alone does not connect the Race Engineer. A successful Paddock opening request does not confirm visible rendering; acceptance in the real host is still pending.
 
 Source and release assets are available in this repository. [Maintainer notes](docs/maintainers.md) explain packaging and checks.
