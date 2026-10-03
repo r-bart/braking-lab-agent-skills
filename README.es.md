@@ -4,7 +4,7 @@
 
 [English](README.md)
 
-Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o el siguiente cambio de setup que quieres probar. Estas nueve skills ayudan a tu asistente de IA a usar el **Race Engineer de Braking Lab** con tus propios datos. Si falta una señal, la respuesta debe decirlo. Un cambio de setup sigue siendo una hipótesis hasta que lo pruebas en pista.
+Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o el siguiente cambio de setup que quieres probar. Estas diez skills ayudan a tu asistente de IA a usar el **Race Engineer de Braking Lab** con tus propios datos. Si falta una señal, la respuesta debe decirlo. Un cambio de setup sigue siendo una hipótesis hasta que lo pruebas en pista.
 
 | Puedes preguntar                                   | Skill              |
 | -------------------------------------------------- | ------------------ |
@@ -17,12 +17,13 @@ Pregunta por la vuelta que acabas de hacer, la carrera que estás preparando o e
 | «Guarda mi referencia de frenada para la curva 3.» | `track-notes`      |
 | «¿Qué debería practicar antes de la carrera?»      | `race-week`        |
 | «Compara mis dos últimas vueltas.»                 | `lap-comparison`   |
+| "Crea un ejercicio de frenado y revisa sus resultados." | `training` |
 
 ## Instala la beta pública
 
 ### Claude
 
-Instala el plugin nativo de Claude Code, que incluye las nueve skills y la conexión MCP:
+Instala el plugin nativo de Claude Code, que incluye las diez skills y la conexión MCP:
 
 ```sh
 claude plugin marketplace add r-bart/braking-lab-agent-skills

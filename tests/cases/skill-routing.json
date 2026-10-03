@@ -133,5 +133,20 @@
       "es": "Todavía no hay carrera en mi calendario. Añade el evento del sábado.",
       "en": "The race isn't on my calendar yet. Add Saturday's event."
     }
+  },
+  "training": {
+    "direct": {
+      "es": "Crea un ejercicio con esa frenada y revisa mis resultados de práctica por ID.",
+      "en": "Create an exercise from that braking zone and review my practice results by ID."
+    },
+    "indirect": {
+      "es": "Quiero trabajar esta frenada con los pedales antes de volver a pista.",
+      "en": "I want to practice this braking input with my pedals before going back on track."
+    },
+    "negative": {
+      "expected": "setup-coaching",
+      "es": "El coche subvira en la salida; quiero una hipótesis pequeña de setup.",
+      "en": "The car understeers on exit; I want a small setup hypothesis."
+    }
   }
 }

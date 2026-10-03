@@ -25,6 +25,7 @@ EXPECTED_SKILLS = {
     "setup-evaluation",
     "setup-library",
     "track-notes",
+    "training",
 }
 PRODUCTION_MCP = "https://mcp.brakinglab.com/mcp"
 
@@ -87,7 +88,7 @@ def main() -> None:
 
     verify_contract()
 
-    print("Package verified: 9 skills, 2 provider manifests, one production MCP URL")
+    print("Package verified: 10 skills, 2 provider manifests, one production MCP URL")
 
 
 if __name__ == "__main__":

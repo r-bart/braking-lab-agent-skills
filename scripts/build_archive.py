@@ -43,7 +43,7 @@ def build(flavor: str) -> Path:
         names = set(archive.namelist())
         assert len(names) == len(archive.namelist()), "Duplicate archive entries"
         assert sum(name in names for name in ("mcp.json", ".mcp.json")) == 1
-        assert len([name for name in names if name.endswith("/SKILL.md")]) == 9
+        assert len([name for name in names if name.endswith("/SKILL.md")]) == 10
     print(f"Built {output}")
     return output
 

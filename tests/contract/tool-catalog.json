@@ -1,5 +1,5 @@
 {
-  "version": "97-90f662d1d158357c",
+  "version": "98-3aab4c5384da7fea",
   "names": [
     "getSessions",
     "getSessionsFacets",
@@ -69,6 +69,7 @@
     "getDatapack",
     "listHardwareSetups",
     "getHardwareSetup",
+    "importSetupFile",
     "listCarSetups",
     "getCarSetup",
     "getSetupTelemetryContext",
@@ -99,5 +100,5 @@
     "getDocumentation",
     "getFunctionSchema"
   ],
-  "sourceRevision": "1d123a617c2ff901641a5637d30d3b81e1fdc841"
+  "sourceRevision": "40d6a6748577639fc7b721f7c921623badd38634"
 }

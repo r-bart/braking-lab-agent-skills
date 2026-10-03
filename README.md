@@ -4,7 +4,7 @@
 
 [Español](README.es.md)
 
-Ask about the lap you just drove, the race you are preparing for, or the setup change you want to try. These nine skills help your AI assistant use the **Braking Lab Race Engineer** with your own data. If a signal is missing, the answer should say so. A setup change stays a hypothesis until you try it on track.
+Ask about the lap you just drove, the race you are preparing for, or the setup change you want to try. These ten skills help your AI assistant use the **Braking Lab Race Engineer** with your own data. If a signal is missing, the answer should say so. A setup change stays a hypothesis until you try it on track.
 
 | You can ask                                          | Skill              |
 | ---------------------------------------------------- | ------------------ |
@@ -17,12 +17,13 @@ Ask about the lap you just drove, the race you are preparing for, or the setup c
 | “Save my braking reference for Turn 3.”              | `track-notes`      |
 | “What should I practice before race day?”            | `race-week`        |
 | “Compare my last two laps.”                          | `lap-comparison`   |
+| "Create a braking exercise and review its results." | `training` |
 
 ## Install the public beta
 
 ### Claude
 
-Install the native Claude Code plugin, which includes the nine skills and the MCP connection:
+Install the native Claude Code plugin, which includes the ten skills and the MCP connection:
 
 ```sh
 claude plugin marketplace add r-bart/braking-lab-agent-skills
