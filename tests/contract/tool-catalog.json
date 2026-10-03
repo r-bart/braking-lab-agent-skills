@@ -1,5 +1,5 @@
 {
-  "version": "97-90f662d1d158357c",
+  "version": "101-871b1a790537712e",
   "names": [
     "getSessions",
     "getSessionsFacets",
@@ -69,6 +69,7 @@
     "getDatapack",
     "listHardwareSetups",
     "getHardwareSetup",
+    "importSetupFile",
     "listCarSetups",
     "getCarSetup",
     "getSetupTelemetryContext",
@@ -87,8 +88,11 @@
     "listReferenceSetups",
     "buildSetupFromInterview",
     "reportReferenceMiss",
+    "readOwnedSetupVersionResource",
+    "compareOwnedSetupVersionResources",
     "explainSetupParam",
     "getSetupTendencies",
+    "readOwnedExerciseResource",
     "createExerciseFromZone",
     "listCustomExercises",
     "getExerciseResults",
@@ -99,5 +103,5 @@
     "getDocumentation",
     "getFunctionSchema"
   ],
-  "sourceRevision": "1d123a617c2ff901641a5637d30d3b81e1fdc841"
+  "sourceRevision": "1402306fc6e10fe4601460eb50667d517c3b237f"
 }

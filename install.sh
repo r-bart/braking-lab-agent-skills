@@ -2,10 +2,10 @@
 # Install the Braking Lab Race Engineer skills without npm.
 set -eu
 
-VERSION=0.2.0
+VERSION=0.3.0
 REPO=r-bart/braking-lab-agent-skills
 MCP_URL=https://mcp.brakinglab.com/mcp
-SKILLS='calendar-events debrief lap-comparison race-engineer race-week setup-coaching setup-evaluation setup-library track-notes'
+SKILLS='calendar-events debrief lap-comparison race-engineer race-week setup-coaching setup-evaluation setup-library track-notes training'
 
 agent=
 scope=

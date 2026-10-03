@@ -4,7 +4,7 @@ The skills and no-npm CLI installer are released as a public beta before either 
 
 ## One skill source, two distribution paths
 
-Keep `skills/` as the only authored copy. The nine `SKILL.md` files use the [Agent Skills format](https://agentskills.io/specification) and contain no Claude- or Codex-only frontmatter. The MCP server remains the source of tools, authentication, authorization, quotas, schemas, and confirmation.
+Keep `skills/` as the only authored copy. The ten `SKILL.md` files use the [Agent Skills format](https://agentskills.io/specification) and contain no Claude- or Codex-only frontmatter. The MCP server remains the source of tools, authentication, authorization, quotas, schemas, and confirmation.
 
 This repository contains two thin platform layers, two generated archives, and one versioned installer:
 
@@ -29,16 +29,16 @@ Codex and ChatGPT share [OpenAI's public plugin directory](https://developers.op
 
 ## Current review status
 
-| Check                                                                           | State                                               |
-| ------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Nine named `SKILL.md` files with valid YAML frontmatter                         | Passed locally                                      |
-| Function names against the private MCP `TOOL_CATALOG`                           | Passed on 2026-09-26                                |
-| Manual review of report, calendar, notes, setup, and consent boundaries         | Completed on 2026-09-26                             |
-| Authenticated MCP behavior on staging                                           | 80 harness cases passed; client limits documented    |
-| Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                             |
-| Detailed skill test plan                                                        | Written; execution pending                          |
-| Claude and portable plugin manifest validation                                  | Passed locally; public beta release prepared        |
-| Public directory review                                                         | Pending                                             |
+| Check                                                                           | State                                             |
+| ------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Ten named `SKILL.md` files with valid YAML frontmatter                          | Passed locally                                    |
+| Function names against the private MCP `TOOL_CATALOG`                           | Passed on 2026-09-26                              |
+| Manual review of report, calendar, notes, setup, and consent boundaries         | Completed on 2026-09-26                           |
+| Authenticated MCP behavior on staging                                           | 80 harness cases passed; client limits documented |
+| Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                           |
+| Detailed skill test plan                                                        | Written; execution pending                        |
+| Claude and portable plugin manifest validation                                  | Passed locally; public beta release prepared      |
+| Public directory review                                                         | Pending                                           |
 
 The source catalog is `braking-lab-monorepo/apps/mcp-server/src/mcp/code-mode/catalog/` in the private project. Published skills must name only functions present in the deployed catalog. A successful YAML check cannot establish correct tool behavior.
 
