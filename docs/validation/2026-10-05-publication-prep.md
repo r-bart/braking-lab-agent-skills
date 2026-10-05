@@ -4,7 +4,7 @@ Fecha: 2026-10-05. Evolución del MCP, OAuth, Ray Paddock y diez skills existent
 
 ## Fuente y distribución
 
-Los snapshots de contrato se exportaron del commit limpio `ecbd42366fe2a59386946ae8171d156b36a61b1f` del monorepo, integrado en `develop` por PR 124 (evolución de PR 123). Catálogo `101-ed5a84b844b4a006`: 101 operaciones y 110 herramientas typed. Cada operación de dominio es visible para app/model y declara readOnlyHint/destructiveHint/openWorldHint; se conservan permisos, scopes y elicitación directa.
+Los snapshots de contrato se exportaron del commit limpio `430c58219af4a3b3473de21a192c376619f36b5c` del monorepo, integrado en `develop` por PR 125 (evolución de PR 124 y PR 123). Catálogo `101-ed5a84b844b4a006`: 101 operaciones y 110 herramientas typed. Cada operación de dominio es visible para app/model y declara readOnlyHint/destructiveHint/openWorldHint; se conservan permisos, scopes y elicitación directa.
 
 El ZIP portable público contiene `mcp.json` de producción; Claude contiene `.mcp.json`. Ambos contienen los diez skills y ningún binding privado de app, hooks, credenciales, fixtures o documento interno. La reproducción determinista y los límites de empaquetado tienen pruebas. `verify_submission.py --ready` exige una URL real de vídeo y sigue fallando hasta que exista; el verificador no pretende certificar comportamiento ni aprobación.
 
@@ -37,6 +37,18 @@ Se probaron las seis áreas a 320 px, nombres extremos sin overflow horizontal, 
 Railway completó el rediseño desde PR 124: deployment `dab66326-52f0-44b9-afc7-b9e7177ffa1f`, commit `ecbd42366fe2a59386946ae8171d156b36a61b1f`. `/health` verificó esa identidad y el MCP autenticado confirmó entorno staging, sourceHash `df9926595216b51ac8337cb12786d4239424e4b3492da25cf820f77e08baa207`, catálogo y contractHash sin cambios. La aceptación real sobre esta identidad pasó los veinte hitos en 155,85 segundos, incluida limpieza verificada. El gate temporal se restauró a su valor original; ejecución y restauración finalizaron con código cero. Se retiraron el contenedor PostgreSQL y las credenciales efímeras locales del harness después de validar. La pestaña real de ChatGPT no pudo controlarse en la última comprobación de Chrome; su revisión visual final permanece pendiente, sin extrapolar el renderizado del build anterior.
 
 ## Controles locales
+
+### Repaso de cada vista con Emil UI Polish y UI Review
+
+PR 125 incorpora la revisión de las seis áreas y sus detalles: tipografía de sistema, tema del host, métricas compactas, contraste de badges/campos, paginación compartida y búsqueda de parámetros en páginas de 20. Las versiones históricas ofrecen una consulta a Ray sobre la versión exacta. La entrada inline tiene un único CTA para abrir fullscreen; las pestañas y flujos profundos se montan solo allí. Se retira el logo duplicado que el host ya muestra. Informe: `thoughts/reviews/2026-10-05_ray-every-view-polish.md` en el monorepo.
+
+El candidato de staging se desplegó correctamente: `88ceded4-c242-408b-8648-58613496d117`, commit `430c58219af4a3b3473de21a192c376619f36b5c`. `/health` verifica ambos y el MCP autenticado confirma entorno staging, versión 0.5.1, sourceHash `cc0fc0422e7e1e4d2c391ab3bf2e2ec2aa80ebbe95d679c004ee4c6baa25f763`, catálogo y contractHash sin cambios. No se modificó el gate ni se rerun el harness remoto de veinte hitos en este pase de UI.
+
+Calificación local del candidato: tipos, lint, formato y build de Ray pasan; **110 pruebas de UI en 16 archivos**, incluidas 16 nuevas; **4.088 pruebas MCP** en 331 archivos pasan (una skipped y tres todo), además de las nueve focalizadas del recurso/registro. El HTML es 795,19 kB, gzip 222,56 kB, aproximadamente un 40% menos que el anterior. Los 31 tests del paquete público y los validadores de contrato/metadata también pasan con los snapshots actuales. GitHub CI seguía en cola al registrar esta evidencia; no se cuenta como aprobado.
+
+Se comprobó expansión inline→fullscreen con foco al contenido, páginas 1–4 de 75 parámetros, búsqueda/cambio de versión, preferencias/revisión/Escape, detalles de notas y resultados, vacío/fallo parcial/lectura lenta/nombres largos a 320 px y tema claro a 1280 px. El veredicto es **Approve with changes** para staging: los dos esqueletos genéricos de 90 px aún cambian de geometría al recibir datos; falta ajustar las cargas y aceptar el renderizado final en ChatGPT antes de producción. La captura `dist/ray-every-view-polish.png` es un fixture sintético local, no evidencia remota ni cuenta de reviewer. El ZIP público sigue draft y permanecen pendientes la cuenta dedicada, el vídeo y la verificación del portal.
+
+### Evidencia de la calificación anterior
 
 - MCP: tipos, lint y build pasan. Suite final: 4.088 pruebas pasan en 331 archivos; una skipped y tres todo existentes. Las 26 pruebas focalizadas de recurso, registro y transporte también pasan.
 - UI Ray final: tipos, lint, format, build y 94 pruebas en 14 archivos pasan. HTML 984,68 kB; nueve pruebas focalizadas de recurso/registro MCP pasan después del rediseño.
