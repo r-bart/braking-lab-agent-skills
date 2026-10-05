@@ -34,7 +34,7 @@ La revisión solicitada aplicó las skills de Emil pertinentes a UI, accesibilid
 
 Se probaron las seis áreas a 320 px, nombres extremos sin overflow horizontal, vacío/lectura fallida, preferencias y sus focos (incluido Retry), y las tres páginas de 41 notas y 41 ejercicios con Next desactivado al final. La captura de escritorio usa datos sintéticos de un fixture local; no se presenta como telemetría real. La revisión visual del nuevo build dentro de ChatGPT, Safari/iPhone físico, lector de pantalla y rendimiento móvil físico siguen pendientes de aceptación.
 
-Railway construye el rediseño desde PR 124; la calificación del build anterior descrita arriba no demuestra por sí sola aceptación del nuevo recurso UI.
+Railway completó el rediseño desde PR 124: deployment `dab66326-52f0-44b9-afc7-b9e7177ffa1f`, commit `ecbd42366fe2a59386946ae8171d156b36a61b1f`. `/health` verificó esa identidad y el MCP autenticado confirmó entorno staging, sourceHash `df9926595216b51ac8337cb12786d4239424e4b3492da25cf820f77e08baa207`, catálogo y contractHash sin cambios. La aceptación real sobre esta identidad pasó los veinte hitos en 155,85 segundos, incluida limpieza verificada. El gate temporal se restauró a su valor original; ejecución y restauración finalizaron con código cero. Se retiraron el contenedor PostgreSQL y las credenciales efímeras locales del harness después de validar. La pestaña real de ChatGPT no pudo controlarse en la última comprobación de Chrome; su revisión visual final permanece pendiente, sin extrapolar el renderizado del build anterior.
 
 ## Controles locales
 
