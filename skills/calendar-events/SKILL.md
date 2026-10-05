@@ -5,7 +5,9 @@ description: Manage a driver's Braking Lab race calendar. Use when they ask to f
 
 # Race calendar events
 
-Use `execute_code` and `getFunctionSchema` for exact inputs. At the start of a conversation, verify the connected account with `whoami`; an empty calendar may mean the wrong account is connected.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
+For Code Mode, use `execute_code` and `getFunctionSchema` for exact inputs. At the start of a conversation, verify the connected account with `whoami`; an empty calendar may mean the wrong account is connected.
 
 1. Locate the event with `getAllRaces` and `getRaceDetail`. Confirm the exact event before editing or deleting; similar series and repeated race weeks can have near-identical names.
 2. Create with `createRaceEvent` using name, simulator, series, car, track, and race date. When using an official schedule, inspect the chosen result first, then use `createRaceFromSchedule` or `createRaceFromLMUSchedule`. If the server reports an equivalent existing race, reuse that ID instead of creating a duplicate.

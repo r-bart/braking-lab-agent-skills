@@ -5,7 +5,9 @@ description: Diagnose handling and propose a testable Braking Lab setup change. 
 
 # Setup coaching
 
-Use `execute_code`. Check `getFunctionSchema` before mutations; the connected MCP catalog is authoritative. At the start of a conversation, verify the connected account with `whoami` before interpreting missing setups or telemetry.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
+For Code Mode, use `execute_code`. Check `getFunctionSchema` before mutations; the connected MCP catalog is authoritative. At the start of a conversation, verify the connected account with `whoami` before interpreting missing setups or telemetry.
 
 1. Establish simulator, car, track, conditions, the actual setup/version, and the driver's handling complaint. Use `getCarSetup`, `getCarParamSpace`, `explainSetupParam`, and `getSetupTendencies` for available controls and interpretation. Use telemetry only where the session is compatible; `getSetupTelemetryContext` separates compatibility, attribution, selection quality, and signal availability. Compatible telemetry alone does not prove that the named version was driven.
 2. Inspect `getSetupExperimentHistory` before suggesting another change. Explain what is measured, what is subjective, and what remains unknown. Avoid causal claims from two runs.

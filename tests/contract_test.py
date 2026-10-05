@@ -66,6 +66,7 @@ class RayContractTest(unittest.TestCase):
 
     def test_sensitive_mutation_cannot_become_a_read(self):
         self.tool("ray_recordSetupComparison")["readOnlyHint"] = True
+        self.tool("ray_recordSetupComparison")["destructiveHint"] = False
         with self.assertRaisesRegex(AssertionError, "Sensitive mutation"):
             self.check()
 
@@ -82,6 +83,24 @@ class RayContractTest(unittest.TestCase):
                 self.tool(f"ray_{name}")["visibility"] = ["app"]
                 with self.assertRaisesRegex(AssertionError, "discoverable"):
                     self.check()
+
+    def test_every_domain_operation_must_remain_model_discoverable(self):
+        self.tool('ray_getLatestSession')['visibility'] = ['app']
+        with self.assertRaisesRegex(AssertionError, 'individually discoverable'):
+            self.check()
+
+    def test_annotations_cannot_be_omitted(self):
+        for annotation in ('destructiveHint', 'openWorldHint'):
+            with self.subTest(annotation=annotation):
+                original = self.tool('ray_getLatestSession').pop(annotation)
+                with self.assertRaisesRegex(AssertionError, 'policy'):
+                    self.check()
+                self.tool('ray_getLatestSession')[annotation] = original
+
+    def test_overwrite_cannot_be_declared_non_destructive(self):
+        self.tool('ray_updateTrackNotepad')['destructiveHint'] = False
+        with self.assertRaisesRegex(AssertionError, 'Overwrite'):
+            self.check()
 
 
 if __name__ == "__main__":

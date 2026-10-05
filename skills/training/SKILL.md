@@ -5,6 +5,8 @@ description: Turn a measured Braking Lab braking zone into a pedal exercise and 
 
 # Training loop
 
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
 At conversation start verify `whoami`. Check `getCapabilities`, then the current schema of each operation with `getFunctionSchema`. Match the driver's language and keep measured driving evidence separate from pedal practice scores.
 
 1. Inspect the exact session, lap and braking zone through `getSessionDetail`, `getLapTrace` and `getBrakingZones`. Use a measured weakness with enough captured samples; missing timing, channels or zone coverage remain unknown. Do not turn an ordinal corner index into a track turn name.

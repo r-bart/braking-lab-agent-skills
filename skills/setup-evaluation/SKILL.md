@@ -5,7 +5,9 @@ description: Evaluate a Braking Lab setup after it was driven. Use when a driver
 
 # Setup evaluation
 
-Use `execute_code` and inspect exact schemas with `getFunctionSchema`. At the start of a conversation, verify the connected account with `whoami`. Treat objective comparisons as observational and driver feedback as a separate judgment.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
+For Code Mode, use `execute_code` and inspect exact schemas with `getFunctionSchema`. At the start of a conversation, verify the connected account with `whoami`. Treat objective comparisons as observational and driver feedback as a separate judgment.
 
 For direct confirmation operations, prefer the exposed typed tools `ray_commitSetupAssociation`, `ray_retireSetupAssociation`, and `ray_recordSetupComparison`. A modern host completes the server's `input_required` form and retries the unchanged operation with its opaque continuation. Never compose `inputResponses`, request state, or consent booleans yourself. The driver must approve through the client's form. If these typed tools are absent, use the existing `execute_code` operation only when discovery reports direct client elicitation available. If neither mechanism is available, explain the limitation and keep the evidence readable without writing.
 

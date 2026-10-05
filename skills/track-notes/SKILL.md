@@ -5,7 +5,9 @@ description: Manage Braking Lab Track Notes. Use when a driver asks to find, add
 
 # Track notes
 
-Use `execute_code`; inspect `getFunctionSchema` for exact mutation arguments. At the start of a conversation, verify the connected account with `whoami` before interpreting missing notes.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
+For Code Mode, use `execute_code`; inspect `getFunctionSchema` for exact mutation arguments. At the start of a conversation, verify the connected account with `whoami` before interpreting missing notes.
 
 1. Find the right layout, car, and simulator with `getTrackNotepads`; load full content with `getTrackNotepad` before editing. Create a new notepad with `createTrackNotepad` only after checking whether the driver already has one for that context.
 2. `updateTrackNotepad` replaces any supplied `cornerNotes`, `pins`, or `videos` array in full. Start from the fetched arrays, change the intended entries, and submit complete revised arrays. Preserve unrelated entries. Put gear, braking landmark, pressure, turn-in, apex, speed, throttle, and exit data in their structured fields; use free-text `notes` for the remainder.

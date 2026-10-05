@@ -5,7 +5,9 @@ description: Analyze a Braking Lab telemetry session or stint and identify drivi
 
 # Session debrief
 
-Use `execute_code` and inspect exact function schemas with `brakinglab.getFunctionSchema({ name })` when needed. At the start of a conversation, verify the connected account with `whoami` before interpreting missing sessions.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
+For Code Mode, use `execute_code` and inspect exact function schemas with `brakinglab.getFunctionSchema({ name })` when needed. At the start of a conversation, verify the connected account with `whoami` before interpreting missing sessions.
 
 1. Identify the right run using `getSessions` or `getLatestSession`, then `getSessionDetail`. Resolve ambiguous car, track, date, or stint with the driver.
 2. Analyze only available signals: `getCornerAnalysis`, `getBrakingZones`, `getZoneConsistency`, `getDrivingSymptoms`, `getSectorAnalysis`, and relevant traces or lap comparisons. Separate observations from hypotheses. Missing signals and a single matched braking observation cannot establish measured consistency. Align braking observations by location, not zone number alone. For LMU, yaw-derived understeer or oversteer diagnoses are directional, especially when borderline.

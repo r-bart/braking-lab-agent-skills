@@ -1,5 +1,6 @@
 {
-  "version": "101-871b1a790537712e",
+  "version": "101-ed5a84b844b4a006",
+  "sourceRevision": "ecbd42366fe2a59386946ae8171d156b36a61b1f",
   "names": [
     "getSessions",
     "getSessionsFacets",
@@ -102,6 +103,5 @@
     "getCapabilities",
     "getDocumentation",
     "getFunctionSchema"
-  ],
-  "sourceRevision": "1402306fc6e10fe4601460eb50667d517c3b237f"
+  ]
 }

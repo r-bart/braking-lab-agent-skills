@@ -30,6 +30,12 @@ def verify_ray_contract(snapshot: dict, domain: dict, skills: dict[str, str]) ->
     assert {f"ray_{name}" for name in domain["names"]} <= known.keys(), "Missing domain mirrors"
     for tool in tools:
         assert isinstance(tool["readOnlyHint"], bool), "Unknown read-only policy"
+        assert isinstance(tool.get("destructiveHint"), bool), "Missing destructive policy"
+        assert isinstance(tool.get("openWorldHint"), bool), "Missing open-world policy"
+        if tool["readOnlyHint"]:
+            assert not tool["destructiveHint"], "Read-only tool cannot be destructive"
+        if tool["name"] in {f"ray_{name}" for name in domain["names"]}:
+            assert "model" in tool["visibility"], "Every domain operation must be individually discoverable"
         assert set(tool["required"]) <= set(tool["inputFields"]), "Invalid required fields"
         assert set(tool["visibility"]) <= {"app", "model"}, "Unknown tool visibility"
     unknown = {
@@ -46,6 +52,10 @@ def verify_ray_contract(snapshot: dict, domain: dict, skills: dict[str, str]) ->
         tool = known[f"ray_{name}"]
         assert tool["readOnlyHint"] is False, "Sensitive mutation cannot become read-only"
         assert "model" in tool["visibility"], "Direct confirmation tool must be discoverable"
+    for name in ("updateRaceEvent", "updateTrackNotepad", "linkSessionToRace", "unlinkNotepadFromRace",
+                 "saveRaceStrategy", "saveRaceReadinessReport", "recordSetupEvaluation", "addSetupVersion",
+                 "remixSetup", "buildSetupFromInterview", "nativeSettingsUpdate", "updateSettings"):
+        assert known[f"ray_{name}"]["destructiveHint"] is True, "Overwrite must be declared destructive"
     return len(set().union(*(set(RAY_NAME.findall(content)) for content in skills.values())))
 
 

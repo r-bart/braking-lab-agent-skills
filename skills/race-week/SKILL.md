@@ -5,7 +5,9 @@ description: Prepare for an existing Braking Lab race using practice, readiness,
 
 # Race week
 
-Use `execute_code`; inspect current schemas with `getFunctionSchema` before mutations. At the start of a conversation, verify the connected account with `whoami` before interpreting an empty race list.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+
+For Code Mode, use `execute_code`; inspect current schemas with `getFunctionSchema` before mutations. At the start of a conversation, verify the connected account with `whoami` before interpreting an empty race list.
 
 1. Resolve the exact race with `getUpcomingRaces` or `getAllRaces`, then `getRaceDetail`. Use its linked sessions and notepad IDs as the starting context. Find relevant unlinked practice with `getUnlinkedSessionsForRace`, but get driver confirmation of the race and practice phase before `linkSessionToRace`. Relinking moves a session from its prior race; omitting `practiceType` clears any existing FP assignment.
 2. Review `getPreparation` and `getPreparationTemplates`. If the driver wants a plan, collect track and car familiarity plus the race goal, then `createPreparation` using the appropriate template or manual flow. Use `updatePreparation`, `updatePreparationPhase`, and `updateChecklistItem` for later progress.
