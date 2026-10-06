@@ -14,7 +14,7 @@ STAGING_MCP = 'https://mcp-staging.brakinglab.com/mcp'
 STABLE_VERSION = r'(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)'
 
 def build(installed_plugin: Path | None = None, version: str | None = None) -> Path:
-    release_version = version or build_archive.VERSION
+    release_version = build_archive.VERSION if version is None else version
     if not re.fullmatch(STABLE_VERSION, release_version):
         raise ValueError('Staging version must be a strict stable semantic version')
     build_archive.verify_submission(build_archive.MANIFEST, build_archive.ROOT)

@@ -99,7 +99,7 @@ class ArchiveTest(unittest.TestCase):
                 self.assertEqual(legacy['interface'],updated['extensions']['com.openai']['interface'])
                 self.assertEqual(legacy['version'],'1.1.0')
                 self.assertEqual(json.loads(archive.read('.app.json')),binding)
-            for invalid in ['1.0.0','0.9.0','01.2.0','1.1.0/escape','2.0']:
+            for invalid in ['', '1.0.0','0.9.0','01.2.0','1.1.0/escape','2.0','1.1.0-beta']:
                 with self.subTest(version=invalid), self.assertRaises(ValueError):
                     build_staging.build(root,invalid)
             with self.assertRaisesRegex(ValueError,'exceed'):
