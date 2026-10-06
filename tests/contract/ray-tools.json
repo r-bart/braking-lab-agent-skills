@@ -1,6 +1,6 @@
 {
   "version": "101-ed5a84b844b4a006",
-  "sourceRevision": "430c58219af4a3b3473de21a192c376619f36b5c",
+  "sourceRevision": "3c06e08622f48a9b2e71847d901d426c79d8b5a3",
   "tools": [
     {
       "name": "ray_addSetupVersion",
@@ -380,7 +380,9 @@
         "app",
         "model"
       ],
-      "inputFields": [],
+      "inputFields": [
+        "selection"
+      ],
       "required": []
     },
     {

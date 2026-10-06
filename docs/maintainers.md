@@ -57,3 +57,7 @@ The source catalog is `braking-lab-monorepo/apps/mcp-server/src/mcp/code-mode/ca
 ## Voice and documentation
 
 User-facing copy follows Braking Lab's landing and docs: direct second person, concrete racing situations, product names left intact, no first-person brand voice, and no claim that a single lap or two-run setup comparison proves a cause. English and Peninsular Spanish should carry the same meaning; Spanish addresses the driver as **tú**. Keep developer contracts in this file and the skills, so the README stays useful to a driver seeing the repository for the first time.
+
+## Actualizar el piloto privado de Ray
+
+El paquete público sigue en 1.0.0; el piloto privado usa su propia secuencia (1.1.0 para la nueva ficha y workspace). Obtén primero la fuente vigente y su release mediante Plugin Creator; verifica que el directorio local coincide con esa fuente. Construye con `python scripts/build_staging.py --installed-plugin /ruta/privada/del/piloto --version 1.1.0`, sustituyendo el número por una versión estrictamente mayor que la instalada. El constructor rechaza versiones iguales o inferiores, mantiene el binding y los prompts exactos y sincroniza el overlay legacy. Este ZIP privado nunca se sube como candidato público ni se adjunta a un release de GitHub. Actualiza con el release esperado y verifica la fuente guardada de nuevo.

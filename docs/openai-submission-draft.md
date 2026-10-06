@@ -1,6 +1,8 @@
 # Preparación del envío público a OpenAI — 1.0.0
 
-Estado a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El paquete público apunta a producción, que sigue en MCP 0.4.0 sin la UI Ray. Staging ya desplegó MCP 0.5.1 y recibió la migración de identidad; su batería real de OAuth y protocolos pasó. El plugin privado existente se actualizó a 1.0.0 y el Paddock se renderizó en ChatGPT después de refrescar herramientas. El despliegue integrado del consentimiento y las correcciones finales de preferencias/origen de UI está calificado: aceptación real de veinte hitos y renderizado del Paddock con preferencias en ChatGPT. Ver el [registro de preparación](validation/2026-10-05-publication-prep.md). Esto no constituye publicación ni aprobación de OpenAI.
+Actualización del 6 de octubre: la ficha privada es **Braking Lab - Ray · Staging 1.1.0**, con logo, diez skills y conexión existentes conservados. La UI y el contrato de selección de octubre 6 esperan su despliegue y aceptación propios; el registro anterior que sigue es histórico. Ver [montaje de staging](validation/2026-10-06-ray-staging-package.md).
+
+Estado histórico a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El paquete público apunta a producción, que sigue en MCP 0.4.0 sin la UI Ray. Staging ya desplegó MCP 0.5.1 y recibió la migración de identidad; su batería real de OAuth y protocolos pasó. El plugin privado existente se actualizó a 1.0.0 y el Paddock se renderizó en ChatGPT después de refrescar herramientas. El despliegue integrado del consentimiento y las correcciones finales de preferencias/origen de UI está calificado: aceptación real de veinte hitos y renderizado del Paddock con preferencias en ChatGPT. Ver el [registro de preparación](validation/2026-10-05-publication-prep.md). Esto no constituye publicación ni aprobación de OpenAI.
 
 ## Decisiones confirmadas
 
@@ -14,8 +16,8 @@ Estado a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El
 
 La fuente de verdad es `plugin.json`, no una segunda ficha escrita a mano:
 
-- `displayName`: Braking Lab Race Engineer
-- `shortDescription`: Your personal race engineer
+- `displayName`: Braking Lab - Ray
+- `shortDescription`: Your race engineer
 - `developerName`: Braking Lab
 - `websiteURL`: https://www.brakinglab.com/en/features/race-engineer
 - `supportURL`: https://www.brakinglab.com/en/docs/faq#how-do-i-contact-support

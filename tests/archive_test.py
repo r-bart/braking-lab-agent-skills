@@ -56,7 +56,7 @@ class ArchiveTest(unittest.TestCase):
         with TemporaryDirectory() as temp, patch.object(build_archive, 'OUTPUT_DIR', Path(temp)/'out'):
             root=Path(temp)
             interface=deepcopy(build_archive.MANIFEST['extensions']['com.openai']['interface'])
-            (root/'plugin.json').write_text(json.dumps({'name':'braking-lab-ray-paddock-staging','extensions':{'com.openai':{'apps':'./.app.json', 'interface':interface}}}))
+            (root/'plugin.json').write_text(json.dumps({'name':'braking-lab-ray-paddock-staging','version':'0.9.0','extensions':{'com.openai':{'apps':'./.app.json', 'interface':interface}}}))
             binding={'apps':{'braking-lab':{'id':'asdk_app_fixture_only', 'required':True}}}
             (root/'.app.json').write_text(json.dumps(binding))
             output=build_staging.build(root)
@@ -77,6 +77,33 @@ class ArchiveTest(unittest.TestCase):
         with TemporaryDirectory() as temp, ZipFile(BytesIO(), 'w') as archive:
             with self.assertRaisesRegex(ValueError,'escapes'):
                 build_archive.add_file(archive, Path(temp)/'outside')
+    def test_private_update_preserves_prompts_binding_and_legacy_metadata(self):
+        import json
+        with TemporaryDirectory() as temp, patch.object(build_archive, 'OUTPUT_DIR', Path(temp)/'out'):
+            root=Path(temp)
+            interface=deepcopy(build_archive.MANIFEST['extensions']['com.openai']['interface'])
+            interface['defaultPrompt']='Keep this exact starter prompt.'
+            manifest={'name':'braking-lab-ray-paddock-staging','version':'1.0.0','extensions':{'com.openai':{'apps':'./.app.json','interface':interface}}}
+            (root/'plugin.json').write_text(json.dumps(manifest))
+            binding={'apps':{'braking-lab':{'id':'asdk_app_fixture_only','required':True}}}
+            (root/'.app.json').write_text(json.dumps(binding))
+            (root/'.codex-plugin').mkdir()
+            (root/'.codex-plugin/plugin.json').write_text(json.dumps({'name':manifest['name'],'version':'1.0.0','apps':'./.app.json','interface':interface}))
+            output=build_staging.build(root,'1.1.0')
+            with ZipFile(output) as archive:
+                updated=json.loads(archive.read('plugin.json'))
+                legacy=json.loads(archive.read('.codex-plugin/plugin.json'))
+                self.assertEqual(updated['name'],manifest['name'])
+                self.assertEqual(updated['version'],'1.1.0')
+                self.assertEqual(updated['extensions']['com.openai']['interface']['defaultPrompt'],interface['defaultPrompt'])
+                self.assertEqual(legacy['interface'],updated['extensions']['com.openai']['interface'])
+                self.assertEqual(legacy['version'],'1.1.0')
+                self.assertEqual(json.loads(archive.read('.app.json')),binding)
+            for invalid in ['1.0.0','0.9.0','01.2.0','1.1.0/escape','2.0']:
+                with self.subTest(version=invalid), self.assertRaises(ValueError):
+                    build_staging.build(root,invalid)
+            with self.assertRaisesRegex(ValueError,'exceed'):
+                build_staging.build(root)
     def test_unknown_provider_is_rejected_before_creating_an_archive(self):
         with self.assertRaisesRegex(ValueError,'Unknown package flavor'):
             build_archive.build('private-pilot')

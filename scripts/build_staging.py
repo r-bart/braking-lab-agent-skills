@@ -4,23 +4,26 @@ from copy import deepcopy
 import argparse
 from hashlib import sha256
 import json
+import re
 from pathlib import Path
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 
 import build_archive
 
 STAGING_MCP = 'https://mcp-staging.brakinglab.com/mcp'
+STABLE_VERSION = r'(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)'
 
-def build(installed_plugin: Path | None = None) -> Path:
+def build(installed_plugin: Path | None = None, version: str | None = None) -> Path:
+    release_version = version or build_archive.VERSION
+    if not re.fullmatch(STABLE_VERSION, release_version):
+        raise ValueError('Staging version must be a strict stable semantic version')
     build_archive.verify_submission(build_archive.MANIFEST, build_archive.ROOT)
     manifest=deepcopy(build_archive.MANIFEST)
     manifest['name']='braking-lab-ray-paddock-staging'
     extension=manifest['extensions']['com.openai']
     extension.pop('publication', None)
     extension.pop('review', None)
-    extension['interface']['displayName']='Braking Lab Ray Staging'
-    extension['interface']['shortDescription']='Test your race engineer'
-    extension['interface']['longDescription']='Private staging test of Braking Lab Ray. Synthetic reviewer fixtures and test accounts only; this package is not a public directory release.'
+    manifest['version'] = release_version
     connection_name = 'mcp.json'
     connection = {'mcpServers':{'braking-lab':{'type':'streamable-http','url':STAGING_MCP}}}
     flavor = 'staging'
@@ -36,7 +39,12 @@ def build(installed_plugin: Path | None = None) -> Path:
         if installed.get('extensions', {}).get('com.openai', {}).get('apps') != './.app.json':
             raise ValueError('Existing staging connection is not an app mapping')
         manifest = deepcopy(installed)
-        manifest['version'] = build_archive.VERSION
+        current_version = installed.get('version')
+        if not isinstance(current_version, str) or not re.fullmatch(STABLE_VERSION, current_version):
+            raise ValueError('Installed staging version must be a strict stable semantic version')
+        if tuple(map(int, release_version.split('.'))) <= tuple(map(int, current_version.split('.'))):
+            raise ValueError('Private update version must exceed the installed version')
+        manifest['version'] = release_version
         extension = manifest['extensions']['com.openai']
         extension['onboardingSkill'] = './skills/race-engineer/SKILL.md'
         connection = json.loads((installed_plugin/'.app.json').read_text())
@@ -56,12 +64,20 @@ def build(installed_plugin: Path | None = None) -> Path:
             legacy_overlay = json.loads(overlay_path.read_text())
             if legacy_overlay.get('name') != manifest['name'] or legacy_overlay.get('apps') != './.app.json':
                 raise ValueError('Unexpected staging legacy overlay')
-            legacy_overlay['version'] = build_archive.VERSION
-            legacy_overlay['interface'] = deepcopy(extension['interface'])
-            legacy_overlay['onboardingSkill'] = extension['onboardingSkill']
+            legacy_overlay['version'] = release_version
         flavor = 'staging-chatgpt'
+    manifest['description'] = 'Ray, your Braking Lab race engineer: owned telemetry, race preparation, coaching, setups, strategy, track notes and training in staging.'
+    interface = extension['interface']
+    interface['displayName'] = 'Braking Lab - Ray · Staging'
+    interface['shortDescription'] = 'Your race engineer · staging'
+    interface['longDescription'] = 'Ray is your Braking Lab race engineer. Review captured telemetry, compare laps and owned setup versions, prepare races, read coaching reports, work on strategy, keep track notes and turn braking evidence into practice. The UI shows your evidence; the conversation stays in ChatGPT. Uses your connected Braking Lab staging account. Available features follow your existing membership and data. Saves affect staging. Capture and physical pedal practice run separately in Braking Lab.'
+    interface['supportURL'] = build_archive.MANIFEST['extensions']['com.openai']['interface']['supportURL']
+    interface['websiteURL'] = build_archive.MANIFEST['extensions']['com.openai']['interface']['websiteURL']
+    if legacy_overlay is not None:
+        legacy_overlay['interface'] = deepcopy(interface)
+        legacy_overlay['description'] = manifest['description']
     build_archive.OUTPUT_DIR.mkdir(exist_ok=True)
-    output=build_archive.OUTPUT_DIR/f'braking-lab-{flavor}-{build_archive.VERSION}.zip'
+    output=build_archive.OUTPUT_DIR/f'braking-lab-{flavor}-{release_version}.zip'
     with ZipFile(output, 'w', compression=ZIP_DEFLATED) as archive:
         for path in build_archive.SKILL_FILES:
             build_archive.add_file(archive,path)
@@ -89,4 +105,6 @@ def build(installed_plugin: Path | None = None) -> Path:
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--installed-plugin', type=Path, help='Local existing private staging plugin; preserve its connection without publishing the binding')
-    build(parser.parse_args().installed_plugin)
+    parser.add_argument('--version', help='Greater stable semantic version for an existing private plugin update')
+    args = parser.parse_args()
+    build(args.installed_plugin, args.version)
