@@ -1,12 +1,12 @@
 # Ray: ficha privada y paquete de staging
 
-Fecha: 6 de octubre de 2026. El candidato público permanece en **1.0.0**, sin envío a revisión. El piloto privado existente se actualizó mediante Plugin Creator a **1.1.1**, conservando su identidad, audiencia personal privada y conexión de staging.
+Fecha: 6 de octubre de 2026. El candidato público permanece en **1.0.0**, sin envío a revisión. El piloto privado existente se actualizó mediante Plugin Creator a **1.1.3**, conservando su identidad, audiencia personal privada y conexión de staging.
 
 ## Ficha y activos
 
-- Nombre visible: **Braking Lab - Ray · Staging**. El candidato público usa **Braking Lab - Ray**.
+- Nombre visible: **Braking Lab - Race Engineer · Staging**. El candidato público usa **Braking Lab - Race Engineer**.
 - Descripción: ingeniero de pista para preparación, telemetría, coaching, setups, estrategia, notas y entrenamiento. La UI muestra evidencia y la conversación permanece en el host.
-- Logo e icono del compositor: `assets/braking-lab-isotype.png`, copia byte a byte del icono canónico de Capture (`apps/capture/src-tauri/icons/icon.png`), PNG RGBA de 512 × 512 px; color de marca `#FA5F29`. Es la misma geometría del isotipo compartido por la SPA. La release 1.1.1 actualiza expresamente ambos paths y su overlay legacy. No se añade la firma manuscrita descartada.
+- Logo e icono del compositor: `assets/braking-lab-isotype.png`, copia byte a byte del icono canónico de Capture (`apps/capture/src-tauri/icons/icon.png`), PNG RGBA de 512 × 512 px; color de marca `#FA5F29`. Es la misma geometría del isotipo compartido por la SPA. Las releases 1.1.1–1.1.3 actualizan expresamente ambos paths y su overlay legacy. No se añade la firma manuscrita descartada.
 - Web, soporte, privacidad y términos: enlaces existentes verificados con HTTP y contenido esperado.
 - Se mantienen el tipo, texto y orden de los tres prompts iniciales, las diez skills y la conexión existente. La lectura de la fuente guardada confirma estos valores y el overlay legacy sincronizado.
 - No se incorpora checkout ni promoción de upgrade. Las funciones siguen los permisos existentes de la cuenta.
@@ -20,6 +20,12 @@ Los snapshots se exportaron desde el commit limpio del monorepo `3c06e08622f48a9
 El constructor privado acepta una versión estable explícita y rechaza valores no canónicos, versiones iguales e inferiores. Conserva la conexión exacta y los prompts; no infiere un binding de producción. La documentación de mantenimiento describe la lectura previa y la protección mediante release esperado.
 
 Validaciones completadas: **32 tests** de contratos, metadatos y archivos; schema de paquete/MCP; diez skills mediante Agent Skills; referencias de dominio/Ray; Strict Claude; generación de archivos reproducibles y URLs públicas. La revisión posterior comprobó identidad, prompts, audiencia, mapping y límites de distribución. No se detectaron bloqueos en el cambio de empaquetado.
+
+## Discrepancia del icono en el host
+
+La fuente guardada de 1.1.3 conserva el PNG canónico de 9.813 bytes y ambos paths. Sin embargo, `plugin/read` del app-server oficial devuelve `logo`, `composerIcon` y sus URLs a `null`: el host continúa usando un icono genérico. Se probaron el manifiesto legacy como fuente de presentación y un archivo completo con directorio raíz canónico; ninguno resolvió la ingestión del activo. No se considera completado el icono visible de la ficha ni se crean nuevas versiones para repetir estos intentos.
+
+La conexión asociada también conserva el título antiguo de `ray_paddock`, “Mi Paddock”. El PR 128 del monorepo lo sustituye por **Braking Lab - Race Engineer**, anuncia el isotipo nuevo en los metadatos modernos del MCP y distingue las referencias de UI de otros builds mediante un error recuperable. El despliegue y la actualización de la caché del host se califican por separado.
 
 ## Lo que esta evidencia no certifica
 

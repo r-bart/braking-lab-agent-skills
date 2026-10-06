@@ -68,7 +68,7 @@ def build(installed_plugin: Path | None = None, version: str | None = None) -> P
         flavor = 'staging-chatgpt'
     manifest['description'] = 'Ray, your Braking Lab race engineer: owned telemetry, race preparation, coaching, setups, strategy, track notes and training in staging.'
     interface = extension['interface']
-    interface['displayName'] = 'Braking Lab - Ray · Staging'
+    interface['displayName'] = 'Braking Lab - Race Engineer · Staging'
     interface['shortDescription'] = 'Your race engineer · staging'
     interface['longDescription'] = 'Ray is your Braking Lab race engineer. Review captured telemetry, compare laps and owned setup versions, prepare races, read coaching reports, work on strategy, keep track notes and turn braking evidence into practice. The UI shows your evidence; the conversation stays in ChatGPT. Uses your connected Braking Lab staging account. Available features follow your existing membership and data. Saves affect staging. Capture and physical pedal practice run separately in Braking Lab.'
     for key in ['logo', 'composerIcon']:
