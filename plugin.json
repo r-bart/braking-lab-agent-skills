@@ -9,7 +9,12 @@
   },
   "homepage": "https://www.brakinglab.com/en/features/race-engineer",
   "repository": "https://github.com/r-bart/braking-lab-agent-skills",
-  "keywords": ["sim-racing", "telemetry", "race-engineer", "setups"],
+  "keywords": [
+    "sim-racing",
+    "telemetry",
+    "race-engineer",
+    "setups"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -18,7 +23,10 @@
         "longDescription": "Connect your Braking Lab account to review telemetry, compare laps, prepare races, inspect owned setup versions and keep track notes. Ray can open your Paddock and an evidence panel in compatible ChatGPT hosts. Braking Lab Capture and physical pedal practice run in Braking Lab. Features depend on your existing account permissions and available data; setup and performance comparisons are observational, not proof of causality.",
         "developerName": "Braking Lab",
         "category": "Productivity",
-        "capabilities": ["Read", "Write"],
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
         "websiteURL": "https://www.brakinglab.com/en/features/race-engineer",
         "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
         "termsOfServiceURL": "https://www.brakinglab.com/en/terms",
@@ -57,10 +65,10 @@
               "expected_behavior": "Identify two owned compatible clean laps and state the reference and delta direction. Explain measured differences; absent signals remain unknown. No saved comparison or causal setup claim."
             },
             {
-              "description": "Read race preparation and owned setup provenance.",
-              "prompt": "Help me prepare for my next race. Show my existing preparation and the versions of my LMU setup for that car. Do not make changes.",
-              "tools_triggered": "ray_whoami, ray_getUpcomingRaces, ray_getRaceDetail, ray_getPreparation, ray_listCarSetups, ray_getCarSetup",
-              "expected_behavior": "Use the future reviewer race and matching owned LMU setup, summarize preparation and version provenance. Never infer that a setup version was driven merely because it matches the car. No race, preparation or setup write."
+              "description": "Compare two owned setup versions independently of telemetry.",
+              "prompt": "Compare my setups named Reviewer Demo Verified Garage A and Reviewer Demo Verified Garage B. Show the saved versions and explain their provenance. Do not make changes or assume either setup was driven.",
+              "tools_triggered": "ray_whoami, ray_listCarSetups, ray_getCarSetup, ray_readOwnedSetupVersionResource, ray_compareOwnedSetupVersionResources",
+              "expected_behavior": "Resolve the two uniquely named owned iRacing setups and pin their setupId and versionId. State A as baseline and B as target, report the observed parameter change and provenance of two independent initial versions. Do not infer a parent-child relationship, compatibility with the separate LMU telemetry, actual use, or driving improvement. No mutation or association is created."
             },
             {
               "description": "Explicitly update a single owned track note and read back the result.",

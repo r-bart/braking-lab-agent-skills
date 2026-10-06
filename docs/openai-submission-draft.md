@@ -7,7 +7,7 @@ Estado a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El
 - Todos los países: `publication.countries: []`.
 - Sin compras ni cobros dentro del plugin. Se accede a los permisos de la cuenta existente. Los enlaces de ayuda de cuenta son informativos; no promocionar planes ni enviar a checkout desde el plugin.
 - El nombre del publicador será la identidad verificada que OpenAI permita seleccionar. En el portal se observó la verificación individual aprobada y la empresarial sin completar; el nombre exacto de directorio debe comprobarse en el nuevo borrador. `developerName: Braking Lab` es un campo obligatorio del paquete, no una prueba de verificación empresarial ni del nombre visible final.
-- **Pendiente crear una cuenta exclusiva para reviewers con contenido ficticio**, a petición del propietario. No existe todavía.
+- **Cuenta exclusiva de staging creada el 6 de octubre, con contenido parcial y sin administrador.** Login real y lecturas propias RLS comprobados. Las trazas sintéticas ya se ingirieron por Capture y se leyeron; hay dos setups iRacing comparables, el import LMU queda en cobertura adicional pendiente la carrera y preparación demo están listas; faltan recorrido ChatGPT y cuenta final con buzón controlado; no hay reviewer en producción. Ver [fixture de reviewer](reviewer-fixtures.md).
 - **Pendiente grabar y alojar el vídeo de demostración** con esa cuenta. No existe todavía; no se incluye una URL inventada en el manifiesto.
 
 ## Ficha preparada
@@ -57,13 +57,13 @@ Herramientas previstas: `ray_whoami, ray_getLatestSession, ray_getSessionDetail,
 
 Identify two owned compatible clean laps and state the reference and delta direction. Explain measured differences; absent signals remain unknown. No saved comparison or causal setup claim.
 
-**P4. Read race preparation and owned setup provenance.**
+**P4. Compare two owned setup versions independently of telemetry.**
 
-> Help me prepare for my next race. Show my existing preparation and the versions of my LMU setup for that car. Do not make changes.
+> Compare my setups named Reviewer Demo Verified Garage A and Reviewer Demo Verified Garage B. Show the saved versions and explain their provenance. Do not make changes or assume either setup was driven.
 
-Herramientas previstas: `ray_whoami, ray_getUpcomingRaces, ray_getRaceDetail, ray_getPreparation, ray_listCarSetups, ray_getCarSetup`.
+Herramientas previstas: `ray_whoami, ray_listCarSetups, ray_getCarSetup, ray_readOwnedSetupVersionResource, ray_compareOwnedSetupVersionResources`.
 
-Use the future reviewer race and matching owned LMU setup, summarize preparation and version provenance. Never infer that a setup version was driven merely because it matches the car. No race, preparation or setup write.
+Resolve the two uniquely named owned iRacing setups and pin their setupId and versionId. State A as baseline and B as target, report the observed parameter change and provenance of two independent initial versions. Do not infer a parent-child relationship, compatibility with the separate LMU telemetry, actual use, or driving improvement. No mutation or association is created.
 
 **P5. Explicitly update a single owned track note and read back the result.**
 
