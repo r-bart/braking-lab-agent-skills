@@ -43,7 +43,7 @@ La prueba de **Preguntar a Ray** desde la página global devolvió `MCP app mess
 
 PR 133 también localiza `ready`, corrige «1 versiones» y sustituye términos internos de almacenamiento en la explicación de notas. Pasaron tipos/lint/formato/build y 243 tests de Ray, incluidos destinos, contexto privado, cambio de propietario, extensión ausente y fallo de envío sin duplicación. Tipos/lint/formato del MCP pasan. CI `37468746109` pasó y se integró en `develop` como `a4a512f6fea5501c83929cc577325a21cd098b74`. La calificación autenticada del deployment `1a36ade4-1a10-4e60-8e30-98008d91e2a2` pasó con source hash `29a2c954e6ddc8087e3f81875b4545d76dbffb47098c544613e434964bd62449`, contrato de dominio inalterado y UI digest `227b8048ad0787a3450b0f3660ac57a8128ecca0b7ee8f82b732d662e4374ac4`. Recursos actual/legacy devuelven 200 y hashes obsoletos 400/-32002. Se revocó el grant temporal exacto. La acción global «Preguntar a Ray por dónde empezar» creó una conversación nueva visible en Inicio, «Elegir próxima tarea». Se abrió y se comprobó la respuesta con lecturas reales de la cuenta, sesiones, setups y ejercicios; no hubo escrituras. La pestaña global no navega al chat nuevo. El host retiró su model context después del envío, aunque el chat sí se creó: el aviso actual de contexto retirado necesita interpretarse con ese comportamiento. El agente informó de un rechazo inicial de concurrencia y se recuperó agrupando lecturas; no se afirma ausencia total de contención para consultas generadas por el agente.
 
-Una segunda pregunta desde una sesión seleccionada creó otro chat y conservó la referencia. ChatGPT pausó después una lectura `execute_code` con aprobación nativa y un aviso de «instrucción sospechosa» sobre reglas de flujo de análisis, saludo, persistencia y cuenta/cuota. La aprobación sigue pendiente; no es un rechazo automático ni una prueba final de debrief. El diálogo no mostró el código completo. Debe revisarse este comportamiento para publicación sin retirar restricciones de consentimiento o permisos.
+Una segunda pregunta desde una sesión seleccionada creó otro chat y conservó la referencia. ChatGPT pausó después una lectura `execute_code` con aprobación nativa y un aviso de «instrucción sospechosa» sobre reglas de flujo de análisis, saludo, persistencia y cuenta/cuota. La aprobación quedó pendiente en esa primera observación; su desenlace está registrado en el seguimiento final. No era un rechazo automático ni una prueba final de debrief. El diálogo no mostró el código completo. Debe revisarse este comportamiento para publicación sin retirar restricciones de consentimiento o permisos.
 
 La comparación de dos vueltas históricas mostró un delta intermedio grande y zonas con posiciones repetidas. Esto queda como observación para revisar la calidad de la captura/alineación; no prueba por sí solo su causa ni valida la comparación como evidencia medida fiable. Los identificadores antiguos de coche/circuito en setups tampoco se convierten en identidades exactas por mostrarlos con otro nombre.
 
@@ -53,7 +53,7 @@ La capacidad de viewport del navegador de pruebas no cambió la anchura DOM obse
 
 Plugin Management retiró la conexión anterior **Braking Lab Race Engineer**; la lectura fresca de instaladas confirmó que ya no figura. La conexión canónica de staging permanece habilitada y se renombró por la UI sin cambiar su ID, endpoint o cuenta. El plugin privado y su dependencia MCP son dos entradas necesarias, no duplicados que deban eliminarse.
 
-La lectura del plugin privado legacy 0.3.2 confirma que apunta a esa conexión retirada y usa activos anteriores. Su desinstalación exacta está pendiente de confirmación. No se alteraron plugins ajenos al proyecto ni se creó una conexión de producción.
+La lectura del plugin privado legacy 0.3.2 confirma que apunta a esa conexión retirada y usa activos anteriores. Su desinstalación exacta se completó con Plugin Management y la barra lateral de instalados confirmó su ausencia. Permanecen el plugin final y su dependencia MCP. No se alteraron plugins ajenos al proyecto ni se creó una conexión de producción.
 
 El descriptor «Mi Paddock» visto anteriormente era obsoleto; la renovación en el navegador correcto ya permitió cargar el recurso actual. La guía para SPA/Capture es `apps/mcp-server/docs/ray-client-integration.md`. No cambia el contrato de dominio, OAuth, scopes, cuotas ni payloads de SPA/Capture; estos clientes no necesitan migración. La restauración de una comparación completa en la SPA necesitaría un contrato adicional explícito.
 
@@ -62,3 +62,54 @@ El descriptor «Mi Paddock» visto anteriormente era obsoleto; la renovación en
 El reviewer de staging es Franz Hermann, sin administrador, con contenido persistente de prueba. Sus trazas LMU y sus imports iRacing tienen procedencias separadas: no se afirma que esos setups se condujeron en esas vueltas. La prueba de nueve hitos del reviewer verifica lecturas, aislamiento y contratos; los ocho casos dentro del host correcto y consentimiento nativo siguen pendientes. Credenciales y grants permanecen privados.
 
 `verify_submission.py --ready` bloquea mientras no exista una URL real del vídeo. También quedan el buzón controlado del reviewer, aceptación del propietario y móvil, calificación de producción tras promoción autorizada y campos/atestaciones del portal. Ningún registro local equivale a aprobación de OpenAI.
+
+## Seguimiento de la prueba real
+
+El debrief seleccionado terminó después de aprobar una lectura puntual del host,
+sin habilitar permisos persistentes. La respuesta reconoció la población pequeña,
+la ausencia de una referencia comparable y magnitudes físicamente anómalas de
+la captura. No se guardó un informe ni se modificaron registros. Esto acredita
+el traspaso de selección y la lectura del agente, no la fiabilidad metrológica de
+esas vueltas históricas ni la aprobación de una escritura.
+
+PR 140 convierte el bloque de órdenes conversacionales de `execute_code` en un
+contrato factual de permisos, efectos y límites. La lectura no obliga a guardar
+un informe; los límites compartidos de concurrencia se distinguen del presupuesto
+por ejecución y un rechazo no cancela llamadas hermanas. La persona de Ray y las
+comprobaciones servidoras de autorización y consentimiento permanecen. La UI
+indica cuándo una pregunta se ha enviado a un chat nuevo y cómo continuar desde
+Inicio. Pasan 77 tests focalizados de MCP y 243 de Ray, tipos/lint/formato y build.
+CI `37490245422` completó todos los checks y Railway deployment
+`5cef4202-a4f2-4edd-8423-1bad0231a3d9` alcanzó SUCCESS con commit
+`b4ffbfaeef5b2de5354224105fec788615a8bd4c`. Source hash
+`bce9c5d7b7ce93a687f477765af599f04b2d3c3a845abe78e744e006ea02b189`,
+contrato de dominio inalterado y UI digest
+`607f15f745d1611b4699f65602c68df920b3869f0b3922a8270e6e0bced5c1ab`.
+La prueba autenticada de nueve hitos pasa: identidad, permisos, trazas,
+comparación propia, parentage de versiones, rechazo de parámetros y propietario
+ajeno, openers y HTML. Recursos actual/legacy devuelven 200; hashes obsoletos
+400/-32002. Un primer initialize agotó su espera; las siguientes pruebas de
+lecturas y recursos pasaron. Todos los grants exactos se revocaron, incluido
+el del intento fallido. No se atribuye una causa sin evidencia.
+
+Tras renovar las herramientas, la UI real cargó y «Preguntar a Ray» desde una
+sesión creó la conversación «Debrief de sesión». El aviso español explica
+correctamente que se debe abrir Inicio para continuar. El host restableció la
+UI al resumen tras el envío; no hubo navegación ni reintento automático.
+El agente volvió a encontrar contención al agrupar lecturas y reintentó
+secuencialmente. El host sigue mostrando un aviso de instrucción sospechosa
+sobre la descripción de execute_code. La ausencia de ese aviso no se declara
+validada y las comprobaciones de permisos no se retiran para silenciarlo.
+
+La respuesta anterior también consumió la consistencia legacy agrupada por
+ordinales de zona. Esa métrica necesita revisión de su política de calidad
+antes de aceptar resultados como evidencia medida para producción; reconocer
+anomalías en el texto no valida el algoritmo.
+
+La nueva conversación completó el debrief tras aprobación nativa de una lectura
+puntual. Verificó propietario y selección, rechazó interpretar la población
+pequeña/anómala como consistencia establecida y declaró no haber guardado ni
+modificado nada. No se aceptó su propuesta de guardar. El descriptor factual
+actual también se comprobó mediante tools/list autenticado: el aviso del host
+sigue siendo una incidencia reproducible, no un caso resuelto. No se concedieron
+permisos persistentes ni se eludió el clasificador.
