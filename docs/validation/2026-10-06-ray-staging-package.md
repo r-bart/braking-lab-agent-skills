@@ -50,3 +50,11 @@ El reviewer de staging es Franz Hermann, sin administrador y con contenido de pr
 ## Lecciones del pase
 
 Separar las versiones del piloto privado y el candidato público evita distribuir una conexión personal como una ficha pública. Una actualización del MCP no actualiza automáticamente los metadatos del plugin: hay que guardar una nueva release y leerla de nuevo. Al cambiar los activos canónicos, el constructor privado debe actualizar explícitamente ambos paths de icono y sincronizar el overlay; preservar toda la interfaz anterior conservaría referencias obsoletas. Los checks de empaquetado y la calificación del host son gates distintos; conservar esa distinción permite avanzar sin afirmar una integración todavía no observada.
+
+## Limpieza confirmada y descriptor pendiente de renovar
+
+La operación oficial de Plugin Management retiró la conexión anterior **Braking Lab Race Engineer**. Una lectura fresca de `app/installed` confirmó que ya no figura entre las apps instaladas y que **Braking Lab (STA)** sigue habilitada y disponible. No se retiraron otras apps ni se creó una conexión de producción. El catálogo MCP cacheado todavía conserva el descriptor sintético antiguo; su desaparición de todos los menús ya abiertos requiere renovación del host y no se declara verificada.
+
+El descriptor cacheado de la conexión final de staging se leyó mediante `mcpServerStatus/list`: todavía anuncia “Mi Paddock” y el recurso `ui://ray/paddock-v1-1d2d56cac3d416b84d6f5370d44150360e98fb5947e4891b6e5f085122d088b1.html`, distinto del artefacto actual calificado. Este dato confirma el desfase del catálogo; no captura la petición HTTP exacta de la imagen del usuario. La renovación del runtime local no actualizó el descriptor remoto.
+
+El acceso automatizado a la interfaz nativa fue rechazado por la revisión automática de permisos. Se pidió al propietario que indique las opciones del menú de conexión para completar la renovación por la interfaz del host. El icono genérico visible y el montaje nativo siguen pendientes; las validaciones del servidor y del paquete no se presentan como aceptación de ChatGPT.
