@@ -24,7 +24,7 @@ La fuente de verdad es `plugin.json`, no una segunda ficha escrita a mano:
 - `privacyPolicyURL`: https://www.brakinglab.com/en/privacy
 - `termsOfServiceURL`: https://www.brakinglab.com/en/terms
 - Categoría propuesta: Productivity; comprobar opciones del portal.
-- Icono y logo: `assets/braking-lab-v5.png`, PNG cuadrado de 512 px.
+- Icono y logo: `assets/braking-lab-isotype.png`, PNG cuadrado de 512 px.
 - MCP: `https://mcp.brakinglab.com/mcp`, una conexión en el ZIP portable.
 - Diez skills; onboarding `skills/race-engineer/SKILL.md`.
 - Descripción base en inglés y traducción `es-ES`. Tres prompts iniciales dentro de los límites de OpenAI.

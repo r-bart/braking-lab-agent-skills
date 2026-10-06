@@ -71,6 +71,8 @@ def build(installed_plugin: Path | None = None, version: str | None = None) -> P
     interface['displayName'] = 'Braking Lab - Ray · Staging'
     interface['shortDescription'] = 'Your race engineer · staging'
     interface['longDescription'] = 'Ray is your Braking Lab race engineer. Review captured telemetry, compare laps and owned setup versions, prepare races, read coaching reports, work on strategy, keep track notes and turn braking evidence into practice. The UI shows your evidence; the conversation stays in ChatGPT. Uses your connected Braking Lab staging account. Available features follow your existing membership and data. Saves affect staging. Capture and physical pedal practice run separately in Braking Lab.'
+    for key in ['logo', 'composerIcon']:
+        interface[key] = build_archive.MANIFEST['extensions']['com.openai']['interface'][key]
     interface['supportURL'] = build_archive.MANIFEST['extensions']['com.openai']['interface']['supportURL']
     interface['websiteURL'] = build_archive.MANIFEST['extensions']['com.openai']['interface']['websiteURL']
     if legacy_overlay is not None:

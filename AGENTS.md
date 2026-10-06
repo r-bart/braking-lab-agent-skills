@@ -10,6 +10,7 @@ This repository distributes the Braking Lab Race Engineer skills. Keep `skills/`
 - Each public archive has exactly one connection mechanism: Claude uses `.mcp.json`, and portable Agent Plugins uses `mcp.json`.
 - The private ChatGPT pilot app mapping is deliberately absent from the public source and release. For a public OpenAI submission, send the production MCP endpoint and skills through a new **With MCP** portal draft.
 - Do not commit credentials, private telemetry, setup corpus files, or staging endpoints into a distributable package.
+- Use the canonical current Braking Lab isotype for listing assets. Private updates must explicitly synchronize `logo` and `composerIcon` from the current public manifest and the legacy overlay, while retaining the existing connection and starter prompts. An old connected MCP app is not proof of the updated plugin's listing.
 - Installation guides must link to release assets or explain how to build locally. `dist/` is ignored and is not a path available after cloning the repository.
 
 ## Before a release

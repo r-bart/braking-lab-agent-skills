@@ -83,6 +83,7 @@ class ArchiveTest(unittest.TestCase):
             root=Path(temp)
             interface=deepcopy(build_archive.MANIFEST['extensions']['com.openai']['interface'])
             interface['defaultPrompt']='Keep this exact starter prompt.'
+            interface['logo']=interface['composerIcon']='./assets/braking-lab-v5.png'
             manifest={'name':'braking-lab-ray-paddock-staging','version':'1.0.0','extensions':{'com.openai':{'apps':'./.app.json','interface':interface}}}
             (root/'plugin.json').write_text(json.dumps(manifest))
             binding={'apps':{'braking-lab':{'id':'asdk_app_fixture_only','required':True}}}
@@ -98,6 +99,8 @@ class ArchiveTest(unittest.TestCase):
                 self.assertEqual(updated['extensions']['com.openai']['interface']['defaultPrompt'],interface['defaultPrompt'])
                 self.assertEqual(legacy['interface'],updated['extensions']['com.openai']['interface'])
                 self.assertEqual(legacy['version'],'1.1.0')
+                for key in ['logo','composerIcon']:
+                    self.assertEqual(updated['extensions']['com.openai']['interface'][key], build_archive.MANIFEST['extensions']['com.openai']['interface'][key])
                 self.assertEqual(json.loads(archive.read('.app.json')),binding)
             for invalid in ['', '1.0.0','0.9.0','01.2.0','1.1.0/escape','2.0','1.1.0-beta']:
                 with self.subTest(version=invalid), self.assertRaises(ValueError):
