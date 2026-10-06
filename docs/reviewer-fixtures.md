@@ -12,7 +12,7 @@ Guardar las credenciales en el campo seguro de testing del portal de OpenAI. Nun
 
 | Elemento | Contenido ficticio | Aceptación |
 | --- | --- | --- |
-| Perfil | Nombre visible `Braking Lab Reviewer Demo` | `ray_whoami` devuelve esta cuenta; identidad distinta de la cuenta real. |
+| Perfil | Nombre de cuenta `Franz Hermann`; username `Franz_Hermann` | `ray_whoami` devuelve esta cuenta; identidad distinta de la cuenta real. |
 | Telemetría reciente | Una sesión sintética identificada como demo, circuito/coche/simulador compatibles; dos vueltas limpias con trazas de freno, velocidad y distancia coherentes | Última sesión seleccionable; `getSessionDetail`, `getBrakingZones` y `compareLaps` devuelven señales reales del fixture. No simular una medición ausente. |
 | Señales incompletas | Otra sesión sintética, claramente marcada, sin una señal de freno | Una consulta a esa sesión explica la ausencia; no inventa un punto de frenada. Este es un recorrido adicional, no uno de los tres negativos de no invocación. |
 | Calendario | Evento `Reviewer Demo Race` con fecha concreta siete días después del envío; contexto compatible con la sesión | `getUpcomingRaces({})` lo devuelve. Vincular práctica y preparar notas; refrescar su fecha si caduca durante revisión. |
@@ -20,7 +20,7 @@ Guardar las credenciales en el campo seguro de testing del portal de OpenAI. Nun
 | Notas de pista | Un único notepad `Reviewer Demo Notes`, con generalNotes base, una nota de curva, un pin y un vídeo público seguro opcional | P5 añade una sola línea y conserva los otros campos. El reviewer tiene permisos normales de escritura sobre este fixture. |
 | Preferencias | Idioma inglés, unidades métricas, densidad comfortable | Cambiar ES/EN y unidades refleja preferencias; restaurar antes del vídeo. |
 
-Generar/importar sesiones mediante las rutas normales de Capture y de importación compatibles con el simulador. Usar setups de prueba propios o fixtures que puedan compartirse legalmente. No copiar telemetría de la cuenta del propietario ni insertar a mano filas que omitan relaciones, objetos y permisos requeridos.
+Generar/importar sesiones mediante las rutas normales de Capture y de importación compatibles con el simulador. Usar setups de prueba propios o fixtures que puedan compartirse legalmente. Solo copiar telemetría del propietario con su autorización expresa, bajo IDs y objetos propios del reviewer y con procedencia real documentada. No insertar a mano filas que omitan relaciones, objetos y permisos requeridos.
 
 ## Ejecución y mantenimiento
 
@@ -80,3 +80,9 @@ Las lecturas remotas reales devolvieron 61 parámetros por versión, identidad c
 Se verificaron las filas de la sesión por ID y propietario, y las únicas carrera/notas demo por propietario e ID. Los escritores normales actualizaron el contexto descriptivo a BMW_M4_LMGT3 y Reviewer Demo Circuit; el simulador coincide mediante el normalizador canónico (`lmu`/`le_mans_ultimate`). Falta identidad numérica de coche/circuito, por lo que no se presenta esa coincidencia de campos como atribución exacta. Se creó una preparación con plantilla admitida y se comprobó la reanudación sin duplicados. No se ejecutó asociación de setup, uso o sesión.
 
 Validación del paquete tras adaptar P4: 31 tests; `verify_package`, `verify_contract` y `verify_submission` pasan con dependencias de `requirements-dev.txt`. `verify_submission --ready` falla exclusivamente por la URL real del vídeo pendiente. No implica aceptación del portal ni prueba del P4 en ChatGPT.
+
+## Identidad Franz Hermann y telemetría autorizada
+
+El propietario pidió renombrar el reviewer como Franz Hermann el 6 de octubre. El username es `Franz_Hermann` porque la SPA no admite espacios; el nombre completo de Auth es `Franz Hermann`. Login y lecturas propias por RLS comprobados después del cambio.
+
+El propietario autorizó usar su telemetría de staging. El perfil coincidente en el staging canónico es `robertodzbt_staging`, actualmente sin sesiones ni vueltas almacenadas. No se copiaron datos reales ni se consultó producción; se conservan las dos vueltas sintéticas hasta identificar otra cuenta de staging o sincronizar la telemetría. Las credenciales permanecen exclusivamente en almacenamiento privado.
