@@ -68,7 +68,8 @@ Revisión posterior: identidad, prompts, skills y binding preservados; PNG váli
 rutas contenidas y manifests sincronizados. Resultado: configuración de la
 release corregida, renderizado de la ficha **sin resolver**. Se preparó una
 captura local de la cabecera sin correo ni telemetría para una incidencia a
-soporte. El envío requiere autorización explícita y aún no se ha realizado.
+soporte. El propietario ha aplazado esta incidencia para centrar el cierre en
+una versión estable y testable en staging. No se ha enviado ningún mensaje.
 
 Formato de branding contrastado con la documentación oficial:
 [Package your plugin](https://developers.openai.com/plugins/build/plugins) y
