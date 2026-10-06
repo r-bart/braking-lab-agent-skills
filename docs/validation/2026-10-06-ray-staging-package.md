@@ -1,6 +1,6 @@
 # Ray: paquete y calificación de staging
 
-Fecha: 6 de octubre de 2026. El candidato público permanece en **1.0.0**, sin envío a revisión. El piloto privado existente se actualizó mediante la subida manual de ChatGPT a **1.1.5**, conservando su identidad, audiencia personal y conexión de staging. No hay promoción de producción.
+Fecha: 6 de octubre de 2026. El candidato público permanece en **1.0.0**, sin envío a revisión. El piloto privado existente se actualizó mediante la subida manual de ChatGPT a **1.1.7**, conservando su identidad, audiencia personal y conexión de staging. No hay promoción de producción.
 
 ## Ficha y activos
 
@@ -113,3 +113,13 @@ modificado nada. No se aceptó su propuesta de guardar. El descriptor factual
 actual también se comprobó mediante tools/list autenticado: el aviso del host
 sigue siendo una incidencia reproducible, no un caso resuelto. No se concedieron
 permisos persistentes ni se eludió el clasificador.
+
+## Actualización acotada de la ficha
+
+El intento 1.1.6 mediante Plugin Creator guardó el nuevo path canónico pero no
+registró URLs de branding. La importación completa 1.1.7 restauró esas URLs y
+conservó los diez skills, prompts, binding e identidad; la ficha recargada sigue
+mostrando el SVG genérico. No se declara corregido el renderizado. La reproducción
+actualizada y la distinción entre ambos flujos están en
+[la incidencia de icono](ray-private-icon-host-discrepancy.md). MCP y UI siguen
+en el despliegue calificado PR 140; no se reinició staging por esta actualización.
