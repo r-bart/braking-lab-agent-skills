@@ -25,7 +25,11 @@ Validaciones completadas: **32 tests** de contratos, metadatos y archivos; schem
 
 La fuente guardada de 1.1.3 conserva el PNG canónico de 9.813 bytes y ambos paths. Sin embargo, `plugin/read` del app-server oficial devuelve `logo`, `composerIcon` y sus URLs a `null`: el host continúa usando un icono genérico. Se probaron el manifiesto legacy como fuente de presentación y un archivo completo con directorio raíz canónico; ninguno resolvió la ingestión del activo. No se considera completado el icono visible de la ficha ni se crean nuevas versiones para repetir estos intentos.
 
-La conexión asociada también conserva el título antiguo de `ray_paddock`, “Mi Paddock”. El PR 128 del monorepo lo sustituye por **Braking Lab - Race Engineer**, anuncia el isotipo nuevo en los metadatos modernos del MCP y distingue las referencias de UI de otros builds mediante un error recuperable. El despliegue y la actualización de la caché del host se califican por separado.
+El PR 128 está integrado y desplegado en staging desde `develop`: commit `e9ff69732243659c0d4aaa640fbf43831a5d6100`, deployment `0f6e179b-9196-45a7-9f17-853ea669940d`, estado `SUCCESS`. La CI pasó 4.103 tests del MCP, 222 de Ray, tipos/lint, Docker y SQL.
+
+La comprobación autenticada posterior con el reviewer verificó el título **Braking Lab - Race Engineer**, el isotipo anunciado en discovery moderno, 111 tools, la identidad propia, los hashes de fuente y contrato, y el HTML actual y el alias de compatibilidad con HTTP 200. El URI actual termina en `5252ea781cf1ff8bf0373e471ade43b81d7fca93163ea0d430ac73aa03962cf8.html` y su digest coincide con los bytes servidos. Un hash desconocido devuelve `-32002` con instrucciones de recuperación, sin sustituir el HTML. El grant temporal se revocó al terminar.
+
+Una lectura posterior de la conexión en el host todavía devuelve el título antiguo “Mi Paddock”. La fuente desplegada y el catálogo del host son estados distintos: la actualización de metadatos de esa conexión y el montaje nativo quedan pendientes. No se considera resuelto el fallo de la captura por una lectura directa del HTML.
 
 ## Lo que esta evidencia no certifica
 
