@@ -5,7 +5,7 @@
 ## Recorrido propuesto
 
 1. Mostrar el nombre del plugin y explicar que los datos son ficticios. Conectar mediante OAuth mostrando los permisos de datos e identidad, sin grabar contraseñas, tokens, IDs privados o el campo de credenciales del portal.
-2. **P1:** abrir el Paddock. Mostrar la cuenta conectada y los datos que realmente renderiza el host. Una llamada MCP correcta no es evidencia de UI visible. Si una fuente falla, debe mostrarse el aviso de disponibilidad parcial.
+2. **P1:** abrir Braking Lab - Race Engineer. Mostrar la cuenta conectada y los datos que realmente renderiza el host. Una llamada MCP correcta no es evidencia de UI visible. Si una fuente falla, debe mostrarse el aviso de disponibilidad parcial.
 3. **P2:** revisar la sesión reciente con hasta tres prioridades y sin guardar informe. Mostrar límites de señales y distinguir hechos de hipótesis.
 4. **P3:** comparar dos vueltas compatibles, indicando la referencia y la mayor diferencia medida.
 5. **P4:** comparar `Reviewer Demo Verified Garage A/B`, fijando sus dos versiones guardadas. Mostrar el único cambio observado y explicar que son imports independientes iRacing. No asociarlos a las vueltas LMU ni atribuir mejoras al setup.

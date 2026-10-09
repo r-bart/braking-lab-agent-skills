@@ -15,7 +15,7 @@
       "interface": {
         "displayName": "Braking Lab - Race Engineer",
         "shortDescription": "Your race engineer",
-        "longDescription": "Ray is your Braking Lab race engineer. Connect your account to review telemetry, compare laps and owned setup versions, prepare races, read coaching reports, work on strategy, keep track notes and turn braking evidence into practice. Ray can open the Paddock and focused evidence in compatible ChatGPT hosts; the conversation stays in ChatGPT. Features follow your existing account permissions and available data. Capture and physical pedal practice run separately in Braking Lab. Setup and performance comparisons are observational and do not establish causality.",
+        "longDescription": "Ray is your Braking Lab race engineer. Review captured telemetry, compare laps and discuss the evidence in ChatGPT. Open your race preparations, track maps and notes, coaching reports, or owned setup versions. Save changes after reviewing them; consent-sensitive operations require a separate confirmation. Features follow your existing account permissions and available data. Capture and physical pedal practice run separately in Braking Lab. Setup and performance comparisons describe observations and do not establish causality.",
         "developerName": "Braking Lab",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
@@ -39,10 +39,10 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Open the connected Paddock and identify the driver without writes.",
-              "prompt": "Open my Braking Lab Paddock and tell me which account is connected and what I can do.",
+              "description": "Open Race Engineer and identify the connected driver without writes.",
+              "prompt": "Open Braking Lab - Race Engineer and tell me which account is connected and what I can do.",
               "tools_triggered": "ray_paddock; ray_whoami, ray_getCapabilities",
-              "expected_behavior": "Identify the authenticated reviewer account and existing permissions. Request the Paddock opening; claim visible rendering only when the host confirms it. Explain unavailable sources without treating them as an empty library. Do not save or mutate data."
+              "expected_behavior": "Identify the authenticated reviewer account and existing permissions. Open the Race Engineer workspace through ray_paddock; claim visible rendering only when the host confirms it. Explain unavailable sources without treating them as an empty library. Do not save or mutate data."
             },
             {
               "description": "Read the latest owned synthetic telemetry session.",
@@ -90,11 +90,11 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Initial public review candidate: authenticated race engineering, Paddock and evidence entrypoints, owned setup inspection, track notes and native preferences. Reviewer demonstrations require the matching production MCP deployment.",
+        "release_notes": "Version 1.0.0: race preparation, track maps and notes, captured telemetry and coaching, and owned setup evidence in ChatGPT. Includes account-scoped evidence selection, native preferences, reviewed saves and separate confirmation for consent-sensitive setup operations. Physical telemetry capture and pedal practice run in Braking Lab.",
         "translations": {
           "es-ES": {
-            "subtitle": "Tu ingeniero de carreras",
-            "description": "Ray es tu ingeniero de pista de Braking Lab. Conecta tu cuenta para revisar telemetría, comparar vueltas y versiones de tus setups, preparar carreras, consultar informes de coaching, trabajar la estrategia, mantener notas de pista y convertir la evidencia de frenada en práctica. Ray puede abrir el Paddock y vistas de evidencia en clientes ChatGPT compatibles; la conversación permanece en ChatGPT. Las funciones dependen de tus permisos y datos disponibles. Capture y la práctica con pedales se ejecutan por separado en Braking Lab. Las comparaciones son observacionales y no demuestran causalidad."
+            "subtitle": "Tu ingeniero de pista",
+            "description": "Ray es tu ingeniero de pista de Braking Lab. Revisa la telemetría capturada, compara vueltas y habla de los datos en ChatGPT. Consulta tus preparaciones de carrera, mapas y notas de pista, informes de coaching o versiones de tus setups. Revisa los cambios antes de guardarlos; las operaciones que requieren consentimiento tienen una confirmación aparte. Las funciones dependen de tus permisos y datos disponibles. Capture y la práctica con pedales se ejecutan por separado en Braking Lab. Las comparaciones describen observaciones y no demuestran causalidad."
           }
         }
       }

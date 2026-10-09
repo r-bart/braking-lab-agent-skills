@@ -1,6 +1,6 @@
 # Preparación del envío público a OpenAI — 1.0.0
 
-Actualización del 6 de octubre: la ficha privada es **Braking Lab - Ray · Staging 1.1.0**, con logo, diez skills y conexión existentes conservados. La UI y el contrato de selección de octubre 6 esperan su despliegue y aceptación propios; el registro anterior que sigue es histórico. Ver [montaje de staging](validation/2026-10-06-ray-staging-package.md).
+Actualización del 9 de octubre: candidato público **Braking Lab - Race Engineer 1.0.0**, separado del plugin privado de staging 1.1.7. El isotipo actual, las diez skills y la conexión MCP se conservan. La ficha prioriza telemetría y conversación sobre los datos; las cuatro áreas de UI son Pitwall, Notas de Pista, Telemetría y AI Setups. Se comprobó el health público de producción: MCP 0.5.1, commit `8aed47ab68e1503c716b11ff355364d870984e9e`, deployment `d3f12d22-30fa-4bf2-b859-a593507ce43a`. Esto no califica su OAuth ni su UI: todavía hay cambios de staging por promover y probar. El vídeo accesible, la cuenta de reviewer de producción y la verificación final del publicador siguen pendientes.
 
 Estado histórico a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El paquete público apunta a producción, que sigue en MCP 0.4.0 sin la UI Ray. Staging ya desplegó MCP 0.5.1 y recibió la migración de identidad; su batería real de OAuth y protocolos pasó. El plugin privado existente se actualizó a 1.0.0 y el Paddock se renderizó en ChatGPT después de refrescar herramientas. El despliegue integrado del consentimiento y las correcciones finales de preferencias/origen de UI está calificado: aceptación real de veinte hitos y renderizado del Paddock con preferencias en ChatGPT. Ver el [registro de preparación](validation/2026-10-05-publication-prep.md). Esto no constituye publicación ni aprobación de OpenAI.
 
@@ -16,7 +16,7 @@ Estado histórico a 5 de octubre de 2026: candidato preparado, **todavía no env
 
 La fuente de verdad es `plugin.json`, no una segunda ficha escrita a mano:
 
-- `displayName`: Braking Lab - Ray
+- `displayName`: Braking Lab - Race Engineer
 - `shortDescription`: Your race engineer
 - `developerName`: Braking Lab
 - `websiteURL`: https://www.brakinglab.com/en/features/race-engineer
@@ -35,13 +35,13 @@ Estos son los ocho casos exactos del manifiesto. Sus resultados deben comprobars
 
 ### Positivos
 
-**P1. Open the connected Paddock and identify the driver without writes.**
+**P1. Open Race Engineer and identify the connected driver without writes.**
 
-> Open my Braking Lab Paddock and tell me which account is connected and what I can do.
+> Open Braking Lab - Race Engineer and tell me which account is connected and what I can do.
 
 Herramientas previstas: `ray_paddock; ray_whoami, ray_getCapabilities`.
 
-Identify the authenticated reviewer account and existing permissions. Request the Paddock opening; claim visible rendering only when the host confirms it. Explain unavailable sources without treating them as an empty library. Do not save or mutate data.
+Identify the authenticated reviewer account and existing permissions. Open the Race Engineer workspace through ray_paddock; claim visible rendering only when the host confirms it. Explain unavailable sources without treating them as an empty library. Do not save or mutate data.
 
 **P2. Read the latest owned synthetic telemetry session.**
 
