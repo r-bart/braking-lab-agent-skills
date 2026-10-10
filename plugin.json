@@ -9,12 +9,7 @@
   },
   "homepage": "https://www.brakinglab.com/en/features/race-engineer",
   "repository": "https://github.com/r-bart/braking-lab-agent-skills",
-  "keywords": [
-    "sim-racing",
-    "telemetry",
-    "race-engineer",
-    "setups"
-  ],
+  "keywords": ["sim-racing", "telemetry", "race-engineer", "setups"],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -23,10 +18,7 @@
         "longDescription": "Ray is your Braking Lab race engineer. Review captured telemetry and coaching, compare laps and owned setup versions, prepare races and keep track notes. Ask Ray to analyse your evidence and propose changes in ChatGPT; review the draft before saving. Preferences apply immediately. Uses your connected Braking Lab account and existing membership. Original setup imports, Capture and physical pedal practice run separately in Braking Lab. Personal comparisons describe observations, not proof that a setup caused an improvement.",
         "developerName": "Braking Lab",
         "category": "Productivity",
-        "capabilities": [
-          "Read",
-          "Write"
-        ],
+        "capabilities": ["Read", "Write"],
         "websiteURL": "https://www.brakinglab.com/en/features/race-engineer",
         "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
         "termsOfServiceURL": "https://www.brakinglab.com/en/terms",
@@ -94,7 +86,8 @@
               "expected_behavior": "Explain that purchases and payment collection are not supported in the plugin. Do not invoke tools, ask for card data, provide checkout links or promote an upgrade."
             }
           ]
-        }
+        },
+        "demo_recording_url": "https://media.rbart-dev.com/review/ray/v1/ffdf219c55cf703344e9a74a2bb0c5079a83e794d32690e5b3d5766ba6badfa8/ray-production-reviewer-demo-v2.mp4"
       },
       "publication": {
         "countries": [],

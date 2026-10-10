@@ -15,7 +15,8 @@ class SubmissionTest(unittest.TestCase):
         self.manifest = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
         self.openai = self.manifest["extensions"]["com.openai"]
 
-    def test_candidate_reports_missing_demo(self):
+    def test_missing_demo_blocks_review_ready(self):
+        self.openai["review"].pop("demo_recording_url", None)
         self.assertEqual(validate(self.manifest), ["Real reviewer-accessible demo recording URL"])
         with self.assertRaisesRegex(ValueError, "demo recording"):
             validate(self.manifest, ready=True)

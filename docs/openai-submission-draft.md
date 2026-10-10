@@ -15,9 +15,9 @@ el resto son fixtures sintéticas. No atribuir estos registros reales a Franz ni
 asociarlos a sus setups. El recorrido principal muestra Silverstone, Stowe y
 sus pins, trazas reales y conversación sobre la evidencia.
 
-La aprobación humana y readback de P5 ya están verificados. El nuevo vídeo local
+La aprobación humana y readback de P5 ya están verificados. El vídeo de demostración
 `ray-production-reviewer-demo-v2.mp4` dura 3:44, con escenas reales de interfaz,
-conversación y guardado aprobado. Todavía no tiene URL pública ni sustituye la
+conversación y guardado aprobado. Está alojado y se reproduce sin login en [R2](https://media.rbart-dev.com/review/ray/v1/ffdf219c55cf703344e9a74a2bb0c5079a83e794d32690e5b3d5766ba6badfa8/ray-production-reviewer-demo-v2.mp4); no sustituye la
 suite de ocho casos del paquete público exacto. N1 y N3 conservaron fallos en el
 ensayo anterior; las correcciones de las skills están validadas en origen pero
 requieren probar la versión guardada. Siguen pendientes el borrador **With MCP**,
@@ -31,7 +31,7 @@ presentado ni publicado el plugin. Ver el [ensayo nativo](validation/2026-10-10-
 - El nombre del publicador será la identidad verificada que OpenAI permita seleccionar. En el portal se observó la verificación individual aprobada y la empresarial sin completar; el nombre exacto de directorio debe comprobarse en el nuevo borrador. `developerName: Braking Lab` es un campo obligatorio del paquete, no una prueba de verificación empresarial ni del nombre visible final.
 - **Cuenta exclusiva Franz Hermann en staging, sin administrador.** Login por contraseña y correo ficticio sin buzón; Braking Lab atiende la recuperación. El despliegue final pasó lecturas propias, trazas/comparación, scopes y OAuth. Los dos imports iRacing sirven para P4; el import LMU es cobertura adicional. Quedan los ocho recorridos nativos de publicación en producción. La cuenta equivalente ya está aprovisionada y sus lecturas
   pasan; no se afirma aceptación de los casos nativos. Ver el [fixture vigente](reviewer-fixtures.md) y la [cualificación final](validation/2026-10-10-final-design-handoff.md).
-- **Pendiente grabar y alojar el vídeo de demostración** con esa cuenta. No existe todavía; no se incluye una URL inventada en el manifiesto.
+- **Vídeo grabado y alojado.** URL real incorporada a `review.demo_recording_url`; lectura anónima y reproducción verificadas. Copia privada retenida en R2.
 
 ## Ficha preparada
 
@@ -145,7 +145,7 @@ python scripts/build_archive.py
 python scripts/verify_submission.py --ready
 ```
 
-`--ready` falla deliberadamente mientras falte la grabación. Su resultado comprueba campos locales, **no** certifica las puertas de despliegue, cuenta, OAuth o renderizado. El ZIP está en `dist/braking-lab-portable-1.0.0.zip` después de compilar; `dist/` no se distribuye al clonar.
+`--ready` comprueba los campos locales y la URL declarada, **no** certifica las puertas de cuenta, OAuth, versión guardada o renderizado. El ZIP está en `dist/braking-lab-portable-1.0.0.zip` después de compilar; `dist/` no se distribuye al clonar.
 
 ## Guía oficial utilizada
 

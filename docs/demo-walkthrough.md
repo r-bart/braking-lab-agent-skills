@@ -1,6 +1,10 @@
 # Guion del vídeo para revisión
 
-**Grabación de producción en curso; vídeo final todavía no entregado ni alojado.**
+**Grabación final alojada:** [vídeo de revisión, 3:44](https://media.rbart-dev.com/review/ray/v1/ffdf219c55cf703344e9a74a2bb0c5079a83e794d32690e5b3d5766ba6badfa8/ray-production-reviewer-demo-v2.mp4).
+La URL responde sin autenticación, con `video/mp4`, soporte de rangos y SHA-256
+igual al original. Una copia privada permanece en `braking-lab-review-materials`
+(jurisdicción UE). La grabación muestra la conexión de desarrollo de producción;
+la prueba del borrador público exacto sigue pendiente.
 La conexión de desarrollo de producción muestra la cuenta sintética Franz
 Hermann, sus trazas y sus dos setups iRacing independientes. P1, P2, P3 y P4
 produjeron respuestas verificadas de lectura. P5 mostró el borrador exacto,
