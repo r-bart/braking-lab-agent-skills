@@ -74,7 +74,7 @@
               "description": "Explicitly update a single owned track note and read back the result.",
               "prompt": "In my track notepad named Reviewer Demo Notes, append the line \"Reviewer practice: check brake release consistency\" to the general notes, preserving all existing notes. If that exact line is already present, keep it once. Show me the saved result.",
               "tools_triggered": "ray_whoami, ray_getTrackNotepads, ray_getTrackNotepad, ray_updateTrackNotepad",
-              "expected_behavior": "Resolve the uniquely named owned notepad; if missing or ambiguous, ask instead of modifying another. Read the current notes before applying only the requested generalNotes change, preserve corner notes, pins and videos, avoid duplicate lines and verify persistence with a read. Explain access refusal factually without an upgrade link."
+              "expected_behavior": "Resolve the uniquely named owned notepad; if missing or ambiguous, ask instead of modifying another. Read the current notes and show an exact draft of the generalNotes change. Ask for the pilot's explicit approval before saving, even when the initial prompt requests a saved result. Then apply only the approved generalNotes change, preserve corner notes, pins and videos, avoid duplicate lines and verify persistence with a read. Explain access refusal factually without an upgrade link."
             }
           ],
           "negative": [

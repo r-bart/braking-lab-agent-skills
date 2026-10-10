@@ -80,7 +80,7 @@ Resolve the two uniquely named owned iRacing setups and pin their setupId and ve
 
 Herramientas previstas: `ray_whoami, ray_getTrackNotepads, ray_getTrackNotepad, ray_updateTrackNotepad`.
 
-Resolve the uniquely named owned notepad; if missing or ambiguous, ask instead of modifying another. Read the current notes before applying only the requested generalNotes change, preserve corner notes, pins and videos, avoid duplicate lines and verify persistence with a read. Explain access refusal factually without an upgrade link.
+Resolve the uniquely named owned notepad; if missing or ambiguous, ask instead of modifying another. Read the current notes and show an exact draft of the generalNotes change. Ask for the pilot's explicit approval before saving, even when the initial prompt requests a saved result. Then apply only the approved generalNotes change, preserve corner notes, pins and videos, avoid duplicate lines and verify persistence with a read. Explain access refusal factually without an upgrade link.
 
 ### Negativos
 
@@ -112,7 +112,7 @@ Para actualizar el piloto privado ya instalado, `python scripts/build_staging.py
 
 ## Puertas antes de enviar
 
-1. Revisar y desplegar por separado la migración canónica de identidad, la página de consentimiento, la UI Ray y MCP 0.5.1. Probar primero en staging en la ventana libre de pruebas compartidas; no promocionar el monorepo completo a producción.
+1. Promover selectivamente la PR 149 una vez terminados los preparativos. El propietario ha autorizado main y comunicado QA completado. La inspección OAuth aprobada no identificó una migración necesaria. Railway construye MCP y su UI Ray en un único despliegue desde main; no desplegar SPA, Capture ni Landing por este handoff. Cualificar el despliegue real antes de declararlo listo.
 2. Verificar `/health`, catálogo y todas las anotaciones/model visibility en producción. Probar OAuth nuevo, refresco, revocación, scopes de identidad sin permisos de datos, UserInfo verificado y rechazo de otro `resource`.
 3. Crear y verificar la [cuenta ficticia del reviewer](reviewer-fixtures.md); ejecutar los cinco casos positivos y tres negativos sin usar la cuenta real del propietario.
 4. Grabar y alojar el [vídeo](demo-walkthrough.md); añadir su URL real a `review.demo_recording_url`. Dar las credenciales únicamente en el campo seguro del portal.
