@@ -1,6 +1,14 @@
 # Guion del vídeo para revisión
 
-**Pendiente de grabar y alojar.** No hay vídeo ni URL de demostración. La cuenta staging ya existe (6 de octubre), pero sus trazas ya se ingirieron y comprobaron, y dispone de dos setups iRacing comparables; el import LMU sigue pendiente como cobertura adicional y la preparación demo está lista; no empezar la grabación de aceptación con el fixture parcial. Usar exclusivamente la cuenta ficticia descrita en [reviewer-fixtures.md](reviewer-fixtures.md), con el MCP 0.5.1 candidato ya desplegado y probado. No grabar la cuenta del propietario.
+**Pendiente de grabar y alojar.** No hay vídeo ni URL de demostración. La
+cuenta ficticia Franz Hermann de staging dispone de trazas y de dos imports
+iRacing comparables, y el despliegue final está cualificado. Usar únicamente
+esa identidad para un ensayo de staging. Para la entrega pública, preparar y
+verificar la cuenta equivalente de producción sobre el candidato enviado a
+revisión. No grabar la cuenta del propietario ni presentar el ensayo como
+aceptación de producción. El import LMU adicional no forma parte del P4, que
+compara los dos imports iRacing propios independientes.
+
 
 ## Recorrido propuesto
 

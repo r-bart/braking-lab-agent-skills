@@ -10,11 +10,18 @@ en los campos protegidos del portal. La cuenta equivalente en producción aún
 requiere autorización y aprovisionamiento; no reutilizar sus tokens de staging.
 Esta decisión sustituye las referencias históricas a un buzón controlado abajo.
 
-**Cuenta dedicada creada en staging el 6 de octubre de 2026; contenido parcial.** Usuario independiente sin administrador, membresía Ultra sintética hasta el 5 de diciembre de 2026, una carrera, un notepad con nota de curva y pin, una sesión sintética LMU con dos vueltas limpias y trazas, y dos setups iRacing comparables de prueba. El login real con contraseña y la lectura propia mediante RLS pasaron; la repetición de la herramienta conserva exactamente una carrera y un notepad. No hay cuenta reviewer en producción ni aceptación de estos casos en ChatGPT. El correo temporal `staging.test` sirve únicamente para pruebas de staging; falta un buzón controlado por Braking Lab para recuperación y revisión final.
+**Estado actual:** Franz Hermann tiene una cuenta independiente de staging, sin
+administrador, con acceso por contraseña y membresía Ultra sintética hasta el
+5 de diciembre de 2026. Tiene carrera/preparación, notepad con curva y pin,
+telemetría sintética LMU y un fixture iRacing compatible para la asociación de
+QA, además de los dos imports iRacing comparables. Las lecturas propias,
+trazas/comparación y las pruebas OAuth del despliegue final pasaron el 10 de
+octubre. No se ejecutaron los ocho casos de publicación en producción ni una
+aceptación humana positiva; los casos LMU adicionales siguen indicados abajo.
 
 ## Identidad y acceso
 
-Crear una cuenta exclusiva para revisión, con correo bajo control de Braking Lab y verificado una vez por el operador. El reviewer debe poder entrar sin MFA, códigos por SMS ni confirmaciones de correo adicionales en cada acceso. La cuenta no contendrá información de pilotos reales, tarjetas ni acceso de administrador. Proporcionar el acceso existente necesario para los casos de revisión, con expiración posterior al período de revisión; no hacer que el reviewer compre un plan.
+Usar la cuenta exclusiva de revisión con correo ficticio sin buzón, según la decisión vigente del propietario. El operador verifica el login por contraseña antes del envío. El reviewer debe poder entrar sin MFA, códigos por SMS ni confirmaciones de correo adicionales en cada acceso. La cuenta no contendrá información de pilotos reales, tarjetas ni acceso de administrador. Proporcionar el acceso existente necesario para los casos de revisión, con expiración posterior al período de revisión; no hacer que el reviewer compre un plan.
 
 Guardar las credenciales en el campo seguro de testing del portal de OpenAI. Nunca en `plugin.json`, un ZIP, Git, una URL de vídeo o este documento. Mantener un responsable para desbloqueos y rotación posterior. El manifiesto no incorpora `testing_instructions` ni credenciales privadas.
 
@@ -26,7 +33,7 @@ Guardar las credenciales en el campo seguro de testing del portal de OpenAI. Nun
 | Telemetría reciente | Una sesión sintética identificada como demo, circuito/coche/simulador compatibles; dos vueltas limpias con trazas de freno, velocidad y distancia coherentes | Última sesión seleccionable; `getSessionDetail`, `getBrakingZones` y `compareLaps` devuelven señales reales del fixture. No simular una medición ausente. |
 | Señales incompletas | Otra sesión sintética, claramente marcada, sin una señal de freno | Una consulta a esa sesión explica la ausencia; no inventa un punto de frenada. Este es un recorrido adicional, no uno de los tres negativos de no invocación. |
 | Calendario | Evento `Reviewer Demo Race` con fecha concreta siete días después del envío; contexto compatible con la sesión | `getUpcomingRaces({})` lo devuelve. Vincular práctica y preparar notas; refrescar su fecha si caduca durante revisión. |
-| Setup propio LMU (pendiente) | `Reviewer Demo Setup`, dos versiones válidas y legibles, con procedencia sintética explícita | La biblioteca y las versiones son consultables. No atribuir una versión a una tanda si no existe evidencia verificable del vínculo. No incorporar corpus privados. |
+| Setup propio LMU (cobertura adicional pendiente) | `Reviewer Demo Setup`, dos versiones válidas y legibles, con procedencia sintética explícita | La biblioteca y las versiones son consultables. No atribuir una versión a una tanda si no existe evidencia verificable del vínculo. No incorporar corpus privados. |
 | Notas de pista | Un único notepad `Reviewer Demo Notes`, con generalNotes base, una nota de curva, un pin y un vídeo público seguro opcional | P5 añade una sola línea y conserva los otros campos. El reviewer tiene permisos normales de escritura sobre este fixture. |
 | Preferencias | Idioma inglés, unidades métricas, densidad comfortable | Cambiar ES/EN y unidades refleja preferencias; restaurar antes del vídeo. |
 
@@ -43,15 +50,21 @@ Generar/importar sesiones mediante las rutas normales de Capture y de importaci�
 
 ## Checklist del operador
 
-- [x] Cuenta staging dedicada creada y correo confirmado por el operador de pruebas.
-- [ ] Cuenta final con buzón controlado, recuperación comprobada y entorno candidato autorizado.
-- [ ] Acceso del reviewer probado en un navegador limpio, sin segundo factor.
-- [ ] Fixtures completos y etiquetados como ficticios.
+- [x] Cuenta staging dedicada Franz Hermann, sin administrador y con correo ficticio.
+- [x] Login por contraseña, lecturas propias y OAuth comprobados en staging final.
+- [ ] Cuenta equivalente de producción autorizada y aprovisionada; responsable de recuperación confirmado.
+- [ ] Acceso final probado en un navegador limpio, sin segundo factor.
+- [ ] Fixtures de producción requeridos para los ocho casos, etiquetados como ficticios.
 - [ ] Ocho casos ejecutados en ChatGPT con el MCP de producción candidato.
 - [ ] Credenciales guardadas solo en el campo privado del portal.
 - [ ] Responsable, fecha del evento y plan de restauración registrados fuera del paquete.
 
-## Herramienta y evidencia del 6 de octubre
+## Bitácora histórica: herramienta y evidencia del 6 de octubre
+
+Las cifras, pendientes y resultados de estas secciones describen el día indicado.
+El estado vigente y la decisión de correo ficticio figuran al principio; no
+interpretar un pendiente histórico como una nueva exigencia de buzón.
+
 
 En el monorepo, desde `apps/mcp-server`:
 
