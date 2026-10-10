@@ -1,0 +1,131 @@
+# Cuenta del reviewer con contenido ficticio
+
+**Decisión vigente — 10 de octubre de 2026:** el propietario ha elegido un
+correo ficticio sin buzón para Franz Hermann. Se conserva la cuenta sintética
+existente de staging y su acceso por contraseña, sin MFA ni códigos por correo.
+No se exige un buzón de recuperación para este recorrido. Braking Lab se ocupa
+de los desbloqueos y de renovar el acceso durante la revisión; el operador debe
+comprobar el login justo antes del envío. Las credenciales se proporcionan solo
+en los campos protegidos del portal. La cuenta independiente de producción ya fue aprobada y aprovisionada; no
+reutilizar sus tokens de staging. Las lecturas de su fixture pasan, pero los
+casos nativos de publicación sobre el candidato de producción siguen pendientes.
+Esta decisión sustituye las referencias históricas a un buzón controlado abajo.
+
+**Estado actual:** Franz Hermann tiene una cuenta independiente de staging, sin
+administrador, con acceso por contraseña y membresía Ultra sintética hasta el
+5 de diciembre de 2026. Tiene carrera/preparación, notepad con curva y pin,
+telemetría sintética LMU y un fixture iRacing compatible para la asociación de
+QA, además de los dos imports iRacing comparables. Las lecturas propias,
+trazas/comparación y las pruebas OAuth del despliegue final pasaron el 10 de
+octubre. No se ejecutaron los ocho casos de publicación en producción ni una
+aceptación humana positiva; los casos LMU adicionales siguen indicados abajo.
+
+## Producción — aprovisionamiento completado el 10 de octubre
+
+Franz Hermann dispone de una identidad independiente, login por contraseña,
+perfil privado y Ultra sintético. Se comprobaron el login y la membresía real;
+no hay administrador, pagos, tarjetas ni datos de pilotos reales. Tiene una
+libreta con curva y pin, una carrera/preparación, dos sesiones con cuatro
+vueltas generadas de 400 muestras y dos imports iRacing independientes.
+Las cuatro trazas devuelven 200 puntos y las dos comparaciones pasan mediante
+los lectores del candidato bajo RLS de esta cuenta. Los dos setups tienen
+61 parámetros; solo cambia la caída delantera izquierda, de −3.9 a −3.8 grados.
+No se ha creado ninguna asociación de setup y sesión.
+
+La fecha de 5 de diciembre a las 12:00 UTC requiere desactivación por el
+operador: el fin del período guardado no revoca por sí solo el acceso. La
+carrera demo es el 17 de octubre; revisar explícitamente su fecha si el envío
+se retrasa. Las credenciales e IDs de recuperación están fuera del paquete.
+Estos resultados no sustituyen OAuth, renderizado y P1–P5/N1–N3 en ChatGPT
+contra el despliegue final de producción, ni una grabación real.
+
+## Identidad y acceso
+
+Usar la cuenta exclusiva de revisión con correo ficticio sin buzón, según la decisión vigente del propietario. El operador verifica el login por contraseña antes del envío. El reviewer debe poder entrar sin MFA, códigos por SMS ni confirmaciones de correo adicionales en cada acceso. La cuenta no contendrá información de pilotos reales, tarjetas ni acceso de administrador. Proporcionar el acceso existente necesario para los casos de revisión, con expiración posterior al período de revisión; no hacer que el reviewer compre un plan.
+
+Guardar las credenciales en el campo seguro de testing del portal de OpenAI. Nunca en `plugin.json`, un ZIP, Git, una URL de vídeo o este documento. Mantener un responsable para desbloqueos y rotación posterior. El manifiesto no incorpora `testing_instructions` ni credenciales privadas.
+
+## Contenido a preparar
+
+| Elemento | Contenido ficticio | Aceptación |
+| --- | --- | --- |
+| Perfil | Nombre de cuenta `Franz Hermann`; username `Franz_Hermann` | `ray_whoami` devuelve esta cuenta; identidad distinta de la cuenta real. |
+| Telemetría reciente | Una sesión sintética identificada como demo, circuito/coche/simulador compatibles; dos vueltas limpias con trazas de freno, velocidad y distancia coherentes | Última sesión seleccionable; `getSessionDetail`, `getBrakingZones` y `compareLaps` devuelven señales reales del fixture. No simular una medición ausente. |
+| Señales incompletas | Otra sesión sintética, claramente marcada, sin una señal de freno | Una consulta a esa sesión explica la ausencia; no inventa un punto de frenada. Este es un recorrido adicional, no uno de los tres negativos de no invocación. |
+| Calendario | Evento `Reviewer Demo Race` con fecha concreta siete días después del envío; contexto compatible con la sesión | `getUpcomingRaces({})` lo devuelve. Vincular práctica y preparar notas; refrescar su fecha si caduca durante revisión. |
+| Setup propio LMU (cobertura adicional pendiente) | `Reviewer Demo Setup`, dos versiones válidas y legibles, con procedencia sintética explícita | La biblioteca y las versiones son consultables. No atribuir una versión a una tanda si no existe evidencia verificable del vínculo. No incorporar corpus privados. |
+| Notas de pista | Un único notepad `Reviewer Demo Notes`, con generalNotes base, una nota de curva, un pin y un vídeo público seguro opcional | P5 añade una sola línea y conserva los otros campos. El reviewer tiene permisos normales de escritura sobre este fixture. |
+| Preferencias | Idioma inglés, unidades métricas, densidad comfortable | Cambiar ES/EN y unidades refleja preferencias; restaurar antes del vídeo. |
+
+Generar/importar sesiones mediante las rutas normales de Capture y de importación compatibles con el simulador. Usar setups de prueba propios o fixtures que puedan compartirse legalmente. Solo copiar telemetría del propietario con su autorización expresa, bajo IDs y objetos propios del reviewer y con procedencia real documentada. No insertar a mano filas que omitan relaciones, objetos y permisos requeridos.
+
+## Ejecución y mantenimiento
+
+1. Seleccionar siempre la conexión demo y confirmar identidad antes de ejecutar los ocho prompts de `plugin.json`.
+2. Guardar un registro redactado de resultado esperado/real; no guardar correo, tokens o credenciales en el reporte.
+3. P1–P4 son lecturas. P5 edita únicamente el notepad demo; no borra carreras ni llama a imports/associations consent-sensitive.
+4. Tras P5, leer de nuevo el notepad. Verificar una sola línea `Reviewer practice: check brake release consistency`, y que notas de curva, pins y vídeos no cambien.
+5. Antes de cada nueva grabación, restaurar únicamente `generalNotes` del notepad demo al texto base mediante la ruta autorizada y verificar identidad/ID. Nunca hacer un reset masivo de tablas o tocar otros usuarios.
+6. Mantener el evento futuro y los fixtures durante toda la revisión. Retirar o rotar el acceso después de cerrarla.
+
+## Checklist del operador
+
+- [x] Cuenta staging dedicada Franz Hermann, sin administrador y con correo ficticio.
+- [x] Login por contraseña, lecturas propias y OAuth comprobados en staging final.
+- [ ] Cuenta equivalente de producción autorizada y aprovisionada; responsable de recuperación confirmado.
+- [ ] Acceso final probado en un navegador limpio, sin segundo factor.
+- [ ] Fixtures de producción requeridos para los ocho casos, etiquetados como ficticios.
+- [ ] Ocho casos ejecutados en ChatGPT con el MCP de producción candidato.
+- [ ] Credenciales guardadas solo en el campo privado del portal.
+- [ ] Responsable, fecha del evento y plan de restauración registrados fuera del paquete.
+
+## Bitácora histórica: herramienta y evidencia del 6 de octubre
+
+Las cifras, pendientes y resultados de estas secciones describen el día indicado.
+El estado vigente y la decisión de correo ficticio figuran al principio; no
+interpretar un pendiente histórico como una nueva exigencia de buzón.
+
+
+En el monorepo, desde `apps/mcp-server`:
+
+```sh
+pnpm exec tsx scripts/reviewer-staging.ts plan
+pnpm exec tsx scripts/reviewer-staging.ts apply
+pnpm exec tsx scripts/reviewer-staging.ts matrix
+```
+
+El operador prepara `~/.config/braking-lab-reviewer/staging-config.json` con permisos 0600: `expectedProjectRef`, `supabaseUrl`, `serviceRoleKey`, `email` y `expiresAt`. La referencia obligatoria es `vybwhglkqcnqjktnrolo`; URL HTTPS exacta, sin ruta, credenciales ni hosts alternativos. La expiración debe estar entre ahora y 90 días. El plan persiste ID y contraseña aleatorios en `staging-state.json`, también 0600, antes de contactar al servidor. Nunca copiar estos archivos al paquete o al repositorio. La CLI no imprime credenciales ni excepciones del proveedor.
+
+`apply` recupera el mismo usuario ante incertidumbre, rechaza identidad o membresía inesperada y cualquier administrador, y no cambia la contraseña, los permisos ni las notas de una cuenta existente. Crea membresía de fixture en staging sin llamar a Stripe. Las notas y carrera se crean con los escritores normales de dominio. No usar los seeds compartidos `e2e-re-*`: la limpieza E2E puede borrarlos y pertenecen a otras identidades. Ejecutar un único operador a la vez.
+
+`matrix` ejecuta lecturas RPC reales para Basic, Plus, Ultra y reviewer; no usa fixtures del navegador. Resultado observado: Basic sin raceStrategy/setupCoaching/aiSetupGenerator; Plus con coaching/generador, sin estrategia; Ultra y reviewer con los tres. `founding_active=false`. La matriz imprime expresamente que **no verifica transporte MCP ni ChatGPT**. Team seat, scopes read-only/write, cuotas agotadas, revocación OAuth y consentimiento requieren la batería de transporte y el recorrido del host por separado.
+
+Telemetría completada mediante el flujo normal de Capture: device-code create/authorize/poll, sync-session, presign R2, PUT firmado y sync-lap. Lecturas reales de `getLapTrace` devuelven 200 puntos por vuelta; `compareTraces` devuelve 200 puntos y delta sintético de 700 ms. Pendiente: caso de señal ausente, importar dos versiones propias LMU por la ruta normal, la aceptación del recorrido en ChatGPT. La carrera/notas se han ajustado al contexto descriptivo LMU guardado y existe preparación demo. La carrera y notas usan el coche/circuito de la sesión sintética; la equivalencia de simulador usa el normalizador canónico. No se afirma identidad exacta de circuito/coche: los IDs canónicos faltan en este fixture. No se vinculan los setups iRacing a la sesión LMU. No saltarse el fence de uploads/reset ni copiar el corpus privado para completar fixtures. Renovar la fecha de carrera explícitamente si la revisión se retrasa; rerun no mueve fechas ni renueva acceso.
+
+Evidencia local: 8 tests de guardas/reanudación, typecheck y lint de los archivos. Evidencia remota: dos aplicaciones sin duplicados, login de contraseña real, RLS de lectura de sus propios dos documentos y matriz RPC. Pendientes: transporte MCP con esta identidad, UI real ChatGPT, vídeo, cuenta final y portal.
+
+### Límite del setup LMU sintético
+
+La carga normal `POST https://app-staging.brakinglab.com/api/setups/upload` se comprobó contra el despliegue SPA `430c58219af4a3b3473de21a192c376619f36b5c`. Rechazó el fixture mínimo del parser con `SVM_VEHICLE_DIRECTORY_INVALID`. Además de estructura válida, el endpoint exige identidad y esquema exactos de un modelo admitido; un fichero con parámetros inventados no basta. No se ha añadido un modelo falso al corpus ni se han copiado valores privados para superar el control. Hace falta un export LMU propio y legalmente compartible de un modelo admitido, dos versiones de prueba y el recorrido normal de importación. La segunda versión dentro de la misma línea debe usar el flujo admitido y su confirmación si procede; no existe atribución automática a las vueltas demo.
+
+Las cuotas se consultaron sin cambiar planes reales: Basic devuelve 0 sesiones/0 vueltas disponibles; Plus/Ultra están activos, reviewer mantiene Ultra con cancelación programada y tiene 1 sesión/2 vueltas. Esto no cualifica transiciones futuras de cancelación, downgrade, `past_due` ni team seat. El token Capture e IDs de objetos están en un ledger privado 0600, fuera del paquete.
+
+### Setups iRacing comparables completados
+
+Se importaron `Reviewer Demo Verified Garage A` y `B` mediante la API normal de SPA, con operationId estable y el flujo completo de parse, hash, fingerprint y reserva/finalización de upload. Fuente: fixture committed y descrito como privacy-safe `packages/setup-fingerprint/fixtures/iracing/bmwm4evogt4-synthetic-toe-fractions/garage.htm`; B cambia un único valor de camber. Se retiró la prosa de notas y se identificó el contenido como prueba. No se usó corpus privado.
+
+Las lecturas remotas reales devolvieron 61 parámetros por versión, identidad conocida, adaptador revisado elegible y comparación disponible con un cambio. Son dos setups propios independientes, cada uno con su versión inicial; no son una relación padre/hijo ni están atribuidos a las vueltas LMU. Dos imports mínimos anteriores (`Reviewer Demo Garage A/B`, cuatro parámetros) permanecen como casos de identidad desconocida y comparación no disponible, correctamente explicada.
+
+**P4 actualizado el 6 de octubre:** manifiesto, draft y guion comparan los dos setups iRacing independientes, con versión explícita y sin atribuirlos a las vueltas LMU. Las lecturas remotas ya prueban el par; P4 en ChatGPT sigue pendiente hasta ejecutarlo en el host. El import LMU continúa como cobertura adicional pendiente; no se registra como caso aprobado.
+
+### Carrera y preparación
+
+Se verificaron las filas de la sesión por ID y propietario, y las únicas carrera/notas demo por propietario e ID. Los escritores normales actualizaron el contexto descriptivo a BMW_M4_LMGT3 y Reviewer Demo Circuit; el simulador coincide mediante el normalizador canónico (`lmu`/`le_mans_ultimate`). Falta identidad numérica de coche/circuito, por lo que no se presenta esa coincidencia de campos como atribución exacta. Se creó una preparación con plantilla admitida y se comprobó la reanudación sin duplicados. No se ejecutó asociación de setup, uso o sesión.
+
+Validación del paquete tras adaptar P4: 31 tests; `verify_package`, `verify_contract` y `verify_submission` pasan con dependencias de `requirements-dev.txt`. `verify_submission --ready` falla exclusivamente por la URL real del vídeo pendiente. No implica aceptación del portal ni prueba del P4 en ChatGPT.
+
+## Identidad Franz Hermann y telemetría autorizada
+
+El propietario pidió renombrar el reviewer como Franz Hermann el 6 de octubre. El username es `Franz_Hermann` porque la SPA no admite espacios; el nombre completo de Auth es `Franz Hermann`. Login y lecturas propias por RLS comprobados después del cambio.
+
+El propietario autorizó usar su telemetría de staging. El perfil coincidente en el staging canónico es `robertodzbt_staging`, actualmente sin sesiones ni vueltas almacenadas. No se copiaron datos reales ni se consultó producción; se conservan las dos vueltas sintéticas hasta identificar otra cuenta de staging o sincronizar la telemetría. Las credenciales permanecen exclusivamente en almacenamiento privado.

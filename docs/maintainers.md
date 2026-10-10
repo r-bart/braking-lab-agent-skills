@@ -4,7 +4,7 @@ The skills and no-npm CLI installer are released as a public beta before either 
 
 ## One skill source, two distribution paths
 
-Keep `skills/` as the only authored copy. The nine `SKILL.md` files use the [Agent Skills format](https://agentskills.io/specification) and contain no Claude- or Codex-only frontmatter. The MCP server remains the source of tools, authentication, authorization, quotas, schemas, and confirmation.
+Keep `skills/` as the only authored copy. The ten `SKILL.md` files use the [Agent Skills format](https://agentskills.io/specification) and contain no Claude- or Codex-only frontmatter. The MCP server remains the source of tools, authentication, authorization, quotas, schemas, and confirmation.
 
 This repository contains two thin platform layers, two generated archives, and one versioned installer:
 
@@ -23,22 +23,26 @@ scripts/verify_package.py      Structural and schema checks
 
 Run `python scripts/build_archive.py` to create the archives, installer, and `SHA256SUMS` under ignored `dist/`. The Claude archive includes `.mcp.json`; the portable archive includes `mcp.json`. Each has exactly one MCP connection mechanism. The personal ChatGPT pilot mapping is absent from public source and releases. Do not copy the skills into separate provider repositories or maintain two versions of the workflow text.
 
-For a public OpenAI listing, create a new **With MCP** submission in the portal using the production HTTPS endpoint and include the skills in that submission. The personal pilot app ID cannot be submitted as an existing integration reference. The [submission draft](openai-submission-draft.md) contains proposed listing copy and reviewer cases; its fixtures and fields must be verified before use. The [submission requirements](https://developers.openai.com/plugins/deploy/submission) also call for domain verification and OAuth workspace domain support. The current MCP discovery advertises only `race-engineer:read` and `race-engineer:write`; `openid`, `email`, a UserInfo Endpoint, and the domain challenge need separate server work and review in the monorepo before public submission.
+For a public OpenAI listing, create a new **With MCP** submission in the portal using the production HTTPS endpoint and include the skills in that submission. The personal pilot app ID cannot be submitted as an existing integration reference. The [submission draft](openai-submission-draft.md) contains proposed listing copy and reviewer cases; its fixtures and fields must be verified before use. The [submission requirements](https://developers.openai.com/plugins/deploy/submission) also call for domain verification and OAuth workspace domain support. The 1.0.0 publication candidate is paired with monorepo MCP 0.5.1: explicit identity scopes, verified UserInfo, issuer/resource binding, exact portal domain challenge and individually model-discoverable typed operations with explicit annotations. These changes are deployed and qualified on staging, including the canonical identity-scope migration and the private ChatGPT pilot 1.0.0. Production has not been promoted. Apply the canonical identity-scope migration before exposing the new scopes in production. See the [current submission gates](openai-submission-draft.md), [reviewer account work](reviewer-fixtures.md), and [demo script](demo-walkthrough.md).
+
+The package verifier checks public metadata and builds deterministically. `verify_submission.py --ready` additionally requires the real demonstration URL; it cannot certify runtime/client acceptance. Keep reviewer credentials and private testing instructions in the secure portal fields, never in a distributable archive. The source snapshot must come from the clean candidate commit and does not establish parity with the deployed MCP.
 
 Codex and ChatGPT share [OpenAI's public plugin directory](https://developers.openai.com/plugins/concepts/plugins). OpenAI's [portable plugin format](https://developers.openai.com/plugins/build/plugins) uses root `plugin.json` and `mcp.json`; `.codex-plugin/plugin.json` remains a compatibility format. Claude uses [its own plugin manifest](https://code.claude.com/docs/en/plugins-reference) and [marketplace or directory distribution](https://code.claude.com/docs/en/plugin-marketplaces). A GitHub repository is source code, not a listing in either public directory. Submission and approval are separate on the two platforms.
 
 ## Current review status
 
-| Check                                                                           | State                                               |
-| ------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Nine named `SKILL.md` files with valid YAML frontmatter                         | Passed locally                                      |
-| Function names against the private MCP `TOOL_CATALOG`                           | Passed on 2026-09-26                                |
-| Manual review of report, calendar, notes, setup, and consent boundaries         | Completed on 2026-09-26                             |
-| Authenticated MCP behavior on staging                                           | 80 harness cases passed; client limits documented    |
-| Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                             |
-| Detailed skill test plan                                                        | Written; execution pending                          |
-| Claude and portable plugin manifest validation                                  | Passed locally; public beta release prepared        |
-| Public directory review                                                         | Pending                                             |
+| Check                                                                           | State                                             |
+| ------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Ten named `SKILL.md` files with valid YAML frontmatter                          | Passed locally                                    |
+| Function names against the private MCP `TOOL_CATALOG`                           | Final staging deployment matches 1.0.0 source snapshot                              |
+| Manual review of report, calendar, notes, setup, and consent boundaries         | Reviewed again on 2026-10-05; see current qualification                           |
+| Authenticated MCP behavior on staging                                           | Final 0.5.1: 20 live acceptance milestones passed |
+| Automatic skill selection and output quality in fresh Codex and Claude sessions | Pending                                           |
+| Detailed skill test plan                                                        | Written; execution pending                        |
+| Claude and portable plugin manifest validation                                  | Passed locally; public beta release prepared      |
+| Public directory review                                                         | Pending                                           |
+
+See [the current staging qualification and remaining publication gates](validation/2026-10-05-publication-prep.md). Earlier client test records remain historical evidence, not proof of current public acceptance.
 
 The source catalog is `braking-lab-monorepo/apps/mcp-server/src/mcp/code-mode/catalog/` in the private project. Published skills must name only functions present in the deployed catalog. A successful YAML check cannot establish correct tool behavior.
 
@@ -53,3 +57,7 @@ The source catalog is `braking-lab-monorepo/apps/mcp-server/src/mcp/code-mode/ca
 ## Voice and documentation
 
 User-facing copy follows Braking Lab's landing and docs: direct second person, concrete racing situations, product names left intact, no first-person brand voice, and no claim that a single lap or two-run setup comparison proves a cause. English and Peninsular Spanish should carry the same meaning; Spanish addresses the driver as **tú**. Keep developer contracts in this file and the skills, so the README stays useful to a driver seeing the repository for the first time.
+
+## Actualizar el piloto privado de Ray
+
+El paquete público sigue en 1.0.0; el piloto privado usa su propia secuencia (1.1.0 para la nueva ficha y workspace). Obtén primero la fuente vigente y su release mediante Plugin Creator; verifica que el directorio local coincide con esa fuente. Construye con `python scripts/build_staging.py --installed-plugin /ruta/privada/del/piloto --version 1.1.0`, sustituyendo el número por una versión estrictamente mayor que la instalada. El constructor rechaza versiones iguales o inferiores, mantiene el binding y los prompts exactos y sincroniza el overlay legacy. Este ZIP privado nunca se sube como candidato público ni se adjunta a un release de GitHub. Actualiza con el release esperado y verifica la fuente guardada de nuevo.

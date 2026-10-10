@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import tempfile
@@ -9,7 +10,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "dist/braking-lab-portable-0.2.0.zip"
+VERSION = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]
+ARCHIVE = ROOT / f"dist/braking-lab-portable-{VERSION}.zip"
 INSTALLER = ROOT / "install.sh"
 
 
@@ -42,7 +44,7 @@ def main() -> None:
         result = run(cwd, "--skills", "all", "--no-mcp")
         assert result.returncode == 0, result.stderr
         skill_root = cwd / ".agents/skills"
-        assert len(list(skill_root.glob("*/SKILL.md"))) == 9
+        assert len(list(skill_root.glob("*/SKILL.md"))) == 10
 
         result = run(cwd, "--skills", "debrief", "--no-mcp")
         assert result.returncode == 0, result.stderr
@@ -77,7 +79,7 @@ def main() -> None:
             "mcp get braking-lab",
             "mcp add braking-lab --url https://mcp.brakinglab.com/mcp",
         ]
-    print("Installer smoke passed: nine skills, managed update, collision, duplicate, Codex MCP")
+    print("Installer smoke passed: ten skills, managed update, collision, duplicate, Codex MCP")
 
 
 if __name__ == "__main__":

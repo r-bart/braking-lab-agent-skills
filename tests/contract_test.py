@@ -1,0 +1,146 @@
+"""Regression guards for references the domain-only verifier previously omitted."""
+
+from copy import deepcopy
+import json
+from pathlib import Path
+import sys
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from verify_contract import verify_ray_contract  # noqa: E402
+
+
+class RayContractTest(unittest.TestCase):
+    def setUp(self):
+        self.domain = json.loads((ROOT / "tests/contract/tool-catalog.json").read_text())
+        self.ray = json.loads((ROOT / "tests/contract/ray-tools.json").read_text())
+        self.skills = {
+            path.parent.name: path.read_text(encoding="utf-8")
+            for path in (ROOT / "skills").glob("*/SKILL.md")
+        }
+
+    def tool(self, name):
+        return next(tool for tool in self.ray["tools"] if tool["name"] == name)
+
+    def check(self):
+        return verify_ray_contract(self.ray, self.domain, self.skills)
+
+    def test_current_skill_routes_are_known(self):
+        self.assertEqual(self.check(), 15)
+
+    def test_unknown_underscore_tool_is_rejected(self):
+        self.skills["setup-library"] += "\nOpen `ray_openSetupFille`."
+        with self.assertRaisesRegex(AssertionError, "Unknown Ray tools"):
+            self.check()
+
+    def test_missing_domain_mirror_is_rejected(self):
+        self.ray["tools"] = [t for t in self.ray["tools"] if t["name"] != "ray_recordSetupComparison"]
+        with self.assertRaisesRegex(AssertionError, "Missing domain mirrors"):
+            self.check()
+
+    def test_source_mismatch_is_rejected(self):
+        self.ray["sourceRevision"] = "0" * 40
+        with self.assertRaisesRegex(AssertionError, "source mismatch"):
+            self.check()
+
+    def test_catalog_mismatch_is_rejected(self):
+        self.ray["version"] = "101-0000000000000000"
+        with self.assertRaisesRegex(AssertionError, "catalog mismatch"):
+            self.check()
+
+    def test_duplicate_tools_are_rejected(self):
+        self.ray["tools"].append(deepcopy(self.tool("ray_openSetupFile")))
+        with self.assertRaisesRegex(AssertionError, "Duplicate typed tools"):
+            self.check()
+
+    def test_file_opener_cannot_become_a_write(self):
+        self.tool("ray_openSetupFile")["readOnlyHint"] = False
+        with self.assertRaisesRegex(AssertionError, "read-only"):
+            self.check()
+
+    def test_import_cannot_become_a_read(self):
+        self.tool("ray_importSetupFile")["readOnlyHint"] = True
+        with self.assertRaisesRegex(AssertionError, "separate write"):
+            self.check()
+
+    def test_sensitive_mutation_cannot_become_a_read(self):
+        self.tool("ray_recordSetupComparison")["readOnlyHint"] = True
+        self.tool("ray_recordSetupComparison")["destructiveHint"] = False
+        with self.assertRaisesRegex(AssertionError, "Sensitive mutation"):
+            self.check()
+
+    def test_file_entrypoint_cannot_omit_the_file(self):
+        self.tool("ray_openSetupFile")["required"] = []
+        with self.assertRaisesRegex(AssertionError, "entrypoint contract"):
+            self.check()
+
+    def test_sensitive_tools_cannot_disappear_from_model_discovery(self):
+        original = deepcopy(self.ray)
+        for name in ("commitSetupAssociation", "retireSetupAssociation", "recordSetupComparison"):
+            with self.subTest(name=name):
+                self.ray = deepcopy(original)
+                self.tool(f"ray_{name}")["visibility"] = ["app"]
+                with self.assertRaisesRegex(AssertionError, "discoverable"):
+                    self.check()
+
+    def test_every_domain_operation_must_remain_model_discoverable(self):
+        self.tool('ray_getLatestSession')['visibility'] = ['app']
+        with self.assertRaisesRegex(AssertionError, 'individually discoverable'):
+            self.check()
+
+    def test_compatibility_tools_cannot_become_model_visible(self):
+        self.tool("ray_updatePreparationPhase")["visibility"] = ["app", "model"]
+        with self.assertRaisesRegex(AssertionError, "app-only"):
+            self.check()
+
+    def test_preparation_alias_cannot_be_missing(self):
+        self.ray["tools"] = [t for t in self.ray["tools"] if t["name"] != "ray_addPreparationPhase"]
+        with self.assertRaisesRegex(AssertionError, "Missing preparation aliases"):
+            self.check()
+
+    def test_preparation_alias_cannot_accept_action(self):
+        self.tool("ray_addPreparationPhase")["inputFields"].append("action")
+        with self.assertRaisesRegex(AssertionError, "action selector"):
+            self.check()
+
+    def test_preparation_alias_must_bind_owner_resource(self):
+        self.tool("ray_addPreparationPhase")["required"].remove("preparationId")
+        with self.assertRaisesRegex(AssertionError, "bind its preparation"):
+            self.check()
+
+    def test_preparation_alias_cannot_be_hidden(self):
+        self.tool("ray_addPreparationPhase")["visibility"] = ["app"]
+        with self.assertRaisesRegex(AssertionError, "aliases must be discoverable"):
+            self.check()
+
+    def test_checklist_alias_cannot_omit_phase_or_item(self):
+        for field in ("phaseId", "itemId"):
+            original = deepcopy(self.ray)
+            with self.subTest(field=field):
+                self.tool("ray_toggleChecklistItem")["required"].remove(field)
+                with self.assertRaisesRegex(AssertionError, "required identity"):
+                    self.check()
+            self.ray = original
+
+    def test_toggle_cannot_be_declared_idempotent(self):
+        self.tool("ray_toggleChecklistItem")["idempotentHint"] = True
+        with self.assertRaisesRegex(AssertionError, "retry policy"):
+            self.check()
+
+    def test_annotations_cannot_be_omitted(self):
+        for annotation in ('destructiveHint', 'openWorldHint'):
+            with self.subTest(annotation=annotation):
+                original = self.tool('ray_getLatestSession').pop(annotation)
+                with self.assertRaisesRegex(AssertionError, 'policy'):
+                    self.check()
+                self.tool('ray_getLatestSession')[annotation] = original
+
+    def test_overwrite_cannot_be_declared_non_destructive(self):
+        self.tool('ray_updateTrackNotepad')['destructiveHint'] = False
+        with self.assertRaisesRegex(AssertionError, 'Overwrite'):
+            self.check()
+
+
+if __name__ == "__main__":
+    unittest.main()

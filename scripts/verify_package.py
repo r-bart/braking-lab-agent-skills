@@ -11,6 +11,7 @@ from pathlib import Path
 from jsonschema import Draft202012Validator
 
 from verify_contract import main as verify_contract
+from verify_submission import validate as verify_submission
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +26,7 @@ EXPECTED_SKILLS = {
     "setup-evaluation",
     "setup-library",
     "track-notes",
+    "training",
 }
 PRODUCTION_MCP = "https://mcp.brakinglab.com/mcp"
 
@@ -50,8 +52,10 @@ def main() -> None:
     codex_marketplace = read_json(ROOT / ".agents" / "plugins" / "marketplace.json")
 
     assert portable["name"] == claude["name"] == "braking-lab-race-engineer"
-    assert portable["version"] == claude["version"]
+    assert portable["version"] == claude["version"] == marketplace["plugins"][0]["version"] == codex_marketplace["plugins"][0]["version"]
     assert re.fullmatch(r"\d+\.\d+\.\d+", portable["version"])
+    installer_version = re.search(r"^VERSION=(\d+\.\d+\.\d+)$", (ROOT / "install.sh").read_text(), re.M)
+    assert installer_version and installer_version.group(1) == portable["version"], "Installer version drift"
     assert len(mcp["mcpServers"]) == len(claude_mcp["mcpServers"]) == 1
     assert mcp["mcpServers"]["braking-lab"] == {
         "type": "streamable-http",
@@ -86,8 +90,9 @@ def main() -> None:
         subprocess.run(["agentskills", "validate", str(directory)], check=True)
 
     verify_contract()
+    verify_submission(portable, ROOT)
 
-    print("Package verified: 9 skills, 2 provider manifests, one production MCP URL")
+    print("Package verified: 10 skills, 2 provider manifests, one production MCP URL")
 
 
 if __name__ == "__main__":

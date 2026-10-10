@@ -1,0 +1,2284 @@
+{
+  "version": "101-ed5a84b844b4a006",
+  "sourceRevision": "c58cd673c521a247f38f78b530ba7b2b86c76b8c",
+  "tools": [
+    {
+      "name": "ray_addChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "label",
+        "notes",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "label",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_addPreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "description",
+        "items",
+        "name",
+        "notes",
+        "preparationId"
+      ],
+      "required": [
+        "name",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_addSetupVersion",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "filename",
+        "label",
+        "note",
+        "operationKey",
+        "setupId",
+        "svm"
+      ],
+      "required": [
+        "operationKey",
+        "setupId",
+        "svm"
+      ]
+    },
+    {
+      "name": "ray_buildSetupFromInterview",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "base",
+        "fromVersionId",
+        "operationKey",
+        "setupId",
+        "target",
+        "userBrief"
+      ],
+      "required": [
+        "base",
+        "fromVersionId",
+        "operationKey",
+        "setupId",
+        "target"
+      ]
+    },
+    {
+      "name": "ray_commitSetupAssociation",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "confirmationToken",
+        "expectedConflictIds",
+        "normalizedTarget",
+        "preview",
+        "replaceConflicts"
+      ],
+      "required": [
+        "confirmationToken",
+        "expectedConflictIds",
+        "normalizedTarget",
+        "preview",
+        "replaceConflicts"
+      ]
+    },
+    {
+      "name": "ray_compareLaps",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "comparedLapId",
+        "driverLapId",
+        "lapIds",
+        "referenceLapId"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_compareOwnedSetupVersionResources",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "from",
+        "offset",
+        "to"
+      ],
+      "required": [
+        "from",
+        "to"
+      ]
+    },
+    {
+      "name": "ray_compareSetupUsages",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "usageIdA",
+        "usageIdB"
+      ],
+      "required": [
+        "usageIdA",
+        "usageIdB"
+      ]
+    },
+    {
+      "name": "ray_compareTraces",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "channels",
+        "isPublicB",
+        "lapIdA",
+        "lapIdB",
+        "zoneNumber"
+      ],
+      "required": [
+        "lapIdA",
+        "lapIdB"
+      ]
+    },
+    {
+      "name": "ray_confirmSetupUsage",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [
+        "usageId",
+        "versionId"
+      ],
+      "required": [
+        "usageId"
+      ]
+    },
+    {
+      "name": "ray_createCarSetup",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carClass",
+        "carName",
+        "filename",
+        "name",
+        "note",
+        "operationKey",
+        "setupType",
+        "svm",
+        "trackName"
+      ],
+      "required": [
+        "name",
+        "operationKey",
+        "svm"
+      ]
+    },
+    {
+      "name": "ray_createExerciseFromZone",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "lapId",
+        "name",
+        "operationKey",
+        "tolerance",
+        "zoneNumber"
+      ],
+      "required": [
+        "lapId",
+        "operationKey",
+        "zoneNumber"
+      ]
+    },
+    {
+      "name": "ray_createPreparation",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carFamiliarity",
+        "notes",
+        "phases",
+        "prepGoal",
+        "raceEventId",
+        "templateId",
+        "trackFamiliarity"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_createRaceEvent",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "carClass",
+        "iracingTrackId",
+        "isRecurring",
+        "name",
+        "notes",
+        "priority",
+        "raceDate",
+        "raceMinutes",
+        "raceTime",
+        "series",
+        "sim",
+        "track",
+        "weekNumber"
+      ],
+      "required": [
+        "car",
+        "name",
+        "raceDate",
+        "series",
+        "sim",
+        "track"
+      ]
+    },
+    {
+      "name": "ray_createRaceFromLMUSchedule",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "carClass",
+        "notes",
+        "raceDate",
+        "seriesId",
+        "weekNum"
+      ],
+      "required": [
+        "seriesId",
+        "weekNum"
+      ]
+    },
+    {
+      "name": "ray_createRaceFromSchedule",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "carClass",
+        "notes",
+        "onTimeMismatch",
+        "preferredTime",
+        "raceDate",
+        "seriesId",
+        "strictTimeMatch",
+        "weekNum"
+      ],
+      "required": [
+        "seriesId",
+        "weekNum"
+      ]
+    },
+    {
+      "name": "ray_createTrackNotepad",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "conditionNotes",
+        "displayName",
+        "generalNotes",
+        "iracingTrackId",
+        "sim",
+        "trackLayoutId"
+      ],
+      "required": [
+        "trackLayoutId"
+      ]
+    },
+    {
+      "name": "ray_deleteChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_deletePreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_deleteRaceEvent",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_deleteTrackNotepad",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "notepadId"
+      ],
+      "required": [
+        "notepadId"
+      ]
+    },
+    {
+      "name": "ray_editChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "itemId",
+        "label",
+        "notes",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_editPreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "description",
+        "name",
+        "notes",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_evidence",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "selection"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_explainSetupParam",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carKey",
+        "param",
+        "sessionId",
+        "setupId",
+        "sim"
+      ],
+      "required": [
+        "param"
+      ]
+    },
+    {
+      "name": "ray_generateStrategyFromTelemetry",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "cooldownLaps",
+        "formationLaps",
+        "maxStintLaps",
+        "pitStopLossSeconds",
+        "raceDurationMinutes",
+        "raceLaps",
+        "safetyLaps",
+        "sessionId",
+        "tankCapacity"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getAllRaces",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "dedupe",
+        "limit",
+        "offset",
+        "sim",
+        "status",
+        "track"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getBrakeMasterLeaderboard",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "license",
+        "page",
+        "pageSize",
+        "range",
+        "scope"
+      ],
+      "required": [
+        "scope"
+      ]
+    },
+    {
+      "name": "ray_getBrakeMasterProgress",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getBrakingZones",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "lapId",
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getCapabilities",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "group",
+        "intent"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getCarParamSpace",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carKey",
+        "sim"
+      ],
+      "required": [
+        "carKey",
+        "sim"
+      ]
+    },
+    {
+      "name": "ray_getCarSetup",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "setupId"
+      ],
+      "required": [
+        "setupId"
+      ]
+    },
+    {
+      "name": "ray_getCoachingReport",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "reportId"
+      ],
+      "required": [
+        "reportId"
+      ]
+    },
+    {
+      "name": "ray_getCoachingReports",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getComparisons",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "limit",
+        "offset",
+        "trackName"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getCornerAnalysis",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "cornerIndex",
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getDatapack",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "id"
+      ],
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "name": "ray_getDesktopLeaderboard",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carClass",
+        "carName",
+        "dateFrom",
+        "dateTo",
+        "iratingMax",
+        "iratingMin",
+        "lapTimeMaxMs",
+        "lapTimeMinMs",
+        "limit",
+        "offset",
+        "seasonId",
+        "sessionType",
+        "trackConfig",
+        "trackName",
+        "username"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getDocumentation",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "topic"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getDrivingSymptoms",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "lapId",
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getExerciseResults",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "exerciseId",
+        "exerciseType",
+        "limit",
+        "since"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getFunctionSchema",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [
+        "name",
+        "names"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getHardwareSetup",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "id"
+      ],
+      "required": [
+        "id"
+      ]
+    },
+    {
+      "name": "ray_getImportedLaps",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "limit",
+        "offset",
+        "track"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getLMUCurrentSchedule",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getLMUSeriesSchedule",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "seriesId",
+        "weekNum"
+      ],
+      "required": [
+        "seriesId"
+      ]
+    },
+    {
+      "name": "ray_getLMUSpecialEvents",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getLapTrace",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "channels",
+        "fromDistPct",
+        "lapId",
+        "maxPoints",
+        "toDistPct"
+      ],
+      "required": [
+        "lapId"
+      ]
+    },
+    {
+      "name": "ray_getLatestSession",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "sim",
+        "trackName"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getPreparation",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "preparationId",
+        "raceEventId"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getPreparationTemplates",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getProgressOverTime",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "limit",
+        "sessionId",
+        "trackName"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getRaceDetail",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_getRaceReadinessData",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_getRaceReadinessReport",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_getSectorAnalysis",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getSeriesSchedule",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "seriesId",
+        "weekNum"
+      ],
+      "required": [
+        "seriesId"
+      ]
+    },
+    {
+      "name": "ray_getSessionDetail",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getSessions",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "limit",
+        "offset",
+        "sessionType",
+        "sim",
+        "startedAfter",
+        "startedBefore",
+        "trackName"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getSessionsFacets",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getSettings",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getSetupExperimentHistory",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit",
+        "offset",
+        "setupId",
+        "versionId"
+      ],
+      "required": [
+        "setupId"
+      ]
+    },
+    {
+      "name": "ray_getSetupTelemetryContext",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId",
+        "setupId",
+        "usageId",
+        "versionId"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getSetupTendencies",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carKey",
+        "phase",
+        "sim",
+        "symptom"
+      ],
+      "required": [
+        "sim",
+        "symptom"
+      ]
+    },
+    {
+      "name": "ray_getStintMetrics",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId",
+        "stintNumber"
+      ],
+      "required": [
+        "sessionId",
+        "stintNumber"
+      ]
+    },
+    {
+      "name": "ray_getTireDegradation",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getTrackNotepad",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "notepadId"
+      ],
+      "required": [
+        "notepadId"
+      ]
+    },
+    {
+      "name": "ray_getTrackNotepads",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "limit",
+        "offset",
+        "sim",
+        "trackLayoutId"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getTrackOutline",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "maxPoints",
+        "trackConfig",
+        "trackId"
+      ],
+      "required": [
+        "trackId"
+      ]
+    },
+    {
+      "name": "ray_getTrackTemplate",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getUnlinkedSessionsForRace",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId",
+        "sinceHours"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_getUpcomingRaces",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getWeakCorners",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "limit",
+        "sessionId",
+        "trackName"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_getZoneConsistency",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "sessionId",
+        "zoneNumber"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_getZoneTrace",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "lapId",
+        "paddingPct",
+        "zoneNumber"
+      ],
+      "required": [
+        "lapId",
+        "zoneNumber"
+      ]
+    },
+    {
+      "name": "ray_importSetupFile",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "fileBase64",
+        "fileType",
+        "name",
+        "note",
+        "operationKey",
+        "setupType",
+        "sourceFilename",
+        "tagNames",
+        "trackName"
+      ],
+      "required": [
+        "fileBase64",
+        "fileType",
+        "name",
+        "operationKey",
+        "sourceFilename"
+      ]
+    },
+    {
+      "name": "ray_linkNotepadToRace",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId",
+        "trackNotepadId"
+      ],
+      "required": [
+        "raceEventId",
+        "trackNotepadId"
+      ]
+    },
+    {
+      "name": "ray_linkSessionToRace",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "practiceType",
+        "raceEventId",
+        "sessionId"
+      ],
+      "required": [
+        "raceEventId",
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_listCarSetups",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit",
+        "offset",
+        "search",
+        "setupType",
+        "sim",
+        "tagNames"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_listCustomExercises",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit",
+        "offset"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_listDatapacks",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "iracingSeason",
+        "iracingYear",
+        "limit",
+        "offset",
+        "setupType",
+        "simulator",
+        "trackName",
+        "weatherRainGroup"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_listHardwareSetups",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit",
+        "offset"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_listReferenceSetups",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carClass",
+        "carName",
+        "carVariant",
+        "condition",
+        "riskProfile",
+        "session",
+        "trackType"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_listSessionStints",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit",
+        "offset",
+        "sessionId"
+      ],
+      "required": [
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_nativeSettingsRead",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_nativeSettingsUpdate",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "set"
+      ],
+      "required": [
+        "set"
+      ]
+    },
+    {
+      "name": "ray_openResource",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "id",
+        "kind"
+      ],
+      "required": [
+        "id",
+        "kind"
+      ]
+    },
+    {
+      "name": "ray_openSetupFile",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "file"
+      ],
+      "required": [
+        "file"
+      ]
+    },
+    {
+      "name": "ray_paddock",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_previewSetupAssociation",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "acknowledgeUnknownCar",
+        "sessionId",
+        "setupId",
+        "validFromLapId",
+        "validToLapId",
+        "versionId"
+      ],
+      "required": [
+        "sessionId",
+        "setupId",
+        "versionId"
+      ]
+    },
+    {
+      "name": "ray_readOwnedExerciseResource",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "exerciseId"
+      ],
+      "required": [
+        "exerciseId"
+      ]
+    },
+    {
+      "name": "ray_readOwnedSetupVersionResource",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "setupId",
+        "versionId"
+      ],
+      "required": [
+        "setupId",
+        "versionId"
+      ]
+    },
+    {
+      "name": "ray_recordSetupComparison",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "usageIdA",
+        "usageIdB"
+      ],
+      "required": [
+        "usageIdA",
+        "usageIdB"
+      ]
+    },
+    {
+      "name": "ray_recordSetupEvaluation",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "approval",
+        "baselineUsageId",
+        "expectedEvaluationId",
+        "note",
+        "reasonTags",
+        "relativeVerdict",
+        "subjectiveConfidence",
+        "usageId"
+      ],
+      "required": [
+        "expectedEvaluationId",
+        "usageId"
+      ]
+    },
+    {
+      "name": "ray_remixSetup",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "bestLapId",
+        "changes",
+        "fromVersionId",
+        "instruction",
+        "label",
+        "measurementEvaluationId",
+        "note",
+        "operationKey",
+        "rationale",
+        "sessionId",
+        "setupId"
+      ],
+      "required": [
+        "changes",
+        "instruction",
+        "operationKey",
+        "rationale",
+        "setupId"
+      ]
+    },
+    {
+      "name": "ray_reportReferenceMiss",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carName",
+        "condition",
+        "note",
+        "session",
+        "sim",
+        "trackType"
+      ],
+      "required": [
+        "carName",
+        "sim"
+      ]
+    },
+    {
+      "name": "ray_retireSetupAssociation",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "usageId"
+      ],
+      "required": [
+        "usageId"
+      ]
+    },
+    {
+      "name": "ray_saveCoachingReport",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "actionItems",
+        "corners",
+        "language",
+        "notes",
+        "operationKey",
+        "overview",
+        "pace",
+        "raceEventId",
+        "sessionId",
+        "stintNumber"
+      ],
+      "required": [
+        "actionItems",
+        "corners",
+        "operationKey",
+        "overview",
+        "sessionId"
+      ]
+    },
+    {
+      "name": "ray_saveComparison",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "driverLapId",
+        "note",
+        "referenceLapId",
+        "referenceSource"
+      ],
+      "required": [
+        "driverLapId",
+        "referenceLapId",
+        "referenceSource"
+      ]
+    },
+    {
+      "name": "ray_saveRaceReadinessReport",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "cornerEvolution",
+        "delta",
+        "familiarityProfile",
+        "goalAlignment",
+        "pace",
+        "phaseAnalysis",
+        "raceEventId",
+        "racePlan",
+        "readiness",
+        "strengths",
+        "version",
+        "weaknesses"
+      ],
+      "required": [
+        "cornerEvolution",
+        "pace",
+        "phaseAnalysis",
+        "raceEventId",
+        "racePlan",
+        "readiness",
+        "strengths",
+        "weaknesses"
+      ]
+    },
+    {
+      "name": "ray_saveRaceStrategy",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "averageLapTimeSecondsOverride",
+        "cooldownLaps",
+        "formationLaps",
+        "fuelPerLapOverride",
+        "maxStintLaps",
+        "notes",
+        "pitStopLossSeconds",
+        "raceDurationMinutes",
+        "raceEventId",
+        "raceLaps",
+        "safetyLaps",
+        "sessionId",
+        "tankCapacity"
+      ],
+      "required": [
+        "raceEventId",
+        "sessionId",
+        "tankCapacity"
+      ]
+    },
+    {
+      "name": "ray_searchIRacingSeries",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "category",
+        "licenseClass",
+        "limit",
+        "query"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_searchLMUCars",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carClass",
+        "limit",
+        "query"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_searchLMUSeries",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit",
+        "query",
+        "tier"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_searchLMUTracks",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "country",
+        "limit",
+        "query"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_searchRacesThisWeek",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "category",
+        "licenseClass",
+        "limit"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_toggleChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_unlinkNotepadFromRace",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "raceEventId",
+        "trackNotepadId"
+      ],
+      "required": [
+        "raceEventId",
+        "trackNotepadId"
+      ]
+    },
+    {
+      "name": "ray_updateChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_updatePreparation",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "carFamiliarity",
+        "expectedUpdatedAt",
+        "notes",
+        "prepGoal",
+        "preparationId",
+        "totalTimeSpent",
+        "trackFamiliarity"
+      ],
+      "required": [
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_updatePreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_updateRaceEvent",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "carClass",
+        "iracingTrackId",
+        "isRecurring",
+        "name",
+        "notes",
+        "priority",
+        "raceDate",
+        "raceEventId",
+        "raceMinutes",
+        "raceTime",
+        "series",
+        "sim",
+        "status",
+        "track",
+        "weekNumber"
+      ],
+      "required": [
+        "raceEventId"
+      ]
+    },
+    {
+      "name": "ray_updateSettings",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [
+        "density",
+        "language",
+        "units"
+      ],
+      "required": []
+    },
+    {
+      "name": "ray_updateTrackNotepad",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "car",
+        "conditionNotes",
+        "cornerNotes",
+        "customCorners",
+        "displayName",
+        "expectedUpdatedAt",
+        "generalNotes",
+        "iracingTrackId",
+        "notepadId",
+        "pins",
+        "sim",
+        "videos"
+      ],
+      "required": [
+        "notepadId"
+      ]
+    },
+    {
+      "name": "ray_whoami",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "search_mentions",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app"
+      ],
+      "inputFields": [
+        "query"
+      ],
+      "required": [
+        "query"
+      ]
+    }
+  ]
+}

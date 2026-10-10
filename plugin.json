@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "braking-lab-race-engineer",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Race Engineer skills and MCP access for your Braking Lab telemetry, setups, race calendar, and track notes.",
   "author": {
     "name": "Braking Lab",
@@ -13,23 +13,91 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Braking Lab Race Engineer",
-        "shortDescription": "Understand your laps and prepare your next race.",
-        "longDescription": "Use your Braking Lab data to review a session, compare laps, prepare a race, and explore setup changes with clear evidence and limits.",
+        "displayName": "Braking Lab - Race Engineer",
+        "shortDescription": "Your race engineer",
+        "longDescription": "Ray is your Braking Lab race engineer for sim racing. Analyse your captured telemetry and coaching data, compare laps and owned setup versions, and discuss the evidence in ChatGPT. Use those observations to prepare races and keep track notes. Ray proposes changes in the conversation; review the draft before saving. Preferences apply immediately. Uses your connected Braking Lab account and existing membership. Original setup imports, Capture and physical pedal practice run separately in Braking Lab. Personal comparisons describe observations, not proof that a setup caused an improvement.",
         "developerName": "Braking Lab",
-        "category": "Productivity",
+        "category": "Data & Analytics",
         "capabilities": ["Read", "Write"],
-        "websiteURL": "https://www.brakinglab.com",
+        "websiteURL": "https://www.brakinglab.com/en/features/race-engineer",
         "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
         "termsOfServiceURL": "https://www.brakinglab.com/en/terms",
-        "brandColor": "#F97316",
-        "composerIcon": "./assets/icon.png",
-        "logo": "./assets/icon.png",
+        "brandColor": "#FA5F29",
+        "composerIcon": "./assets/braking-lab-isotype.png",
+        "logo": "./assets/braking-lab-isotype.png",
         "defaultPrompt": [
           "Review my latest session and show where I lost time.",
           "Compare my last two laps and explain the biggest difference.",
           "What should I practice before my next race?"
-        ]
+        ],
+        "supportURL": "https://www.brakinglab.com/en/docs/faq#how-do-i-contact-support"
+      },
+      "onboardingSkill": "./skills/race-engineer/SKILL.md",
+      "review": {
+        "commerce": false,
+        "commerce_description": "No checkout, payment collection, purchases or subscription upgrades in the plugin. Users access existing Braking Lab account entitlements. Any account help link is informational and must not send the user to checkout or promote an upgrade.",
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Open Race Engineer and identify the connected driver without writes.",
+              "prompt": "Open Braking Lab - Race Engineer and tell me which account is connected and what I can do.",
+              "tools_triggered": "ray_paddock; ray_whoami, ray_getCapabilities",
+              "expected_behavior": "Identify the authenticated reviewer account and existing permissions. Open the Race Engineer workspace through ray_paddock; claim visible rendering only when the host confirms it. Explain unavailable sources without treating them as an empty library. Do not save or mutate data."
+            },
+            {
+              "description": "Read the latest owned synthetic telemetry session.",
+              "prompt": "Review my latest telemetry session. Give me up to three practice priorities without saving a report.",
+              "tools_triggered": "ray_whoami, ray_getLatestSession, ray_getSessionDetail, ray_getBrakingZones",
+              "expected_behavior": "Use only the reviewer account session, report measured observations and up to three priorities, distinguish unknown signals and hypotheses. No report or other write is created."
+            },
+            {
+              "description": "Compare two compatible laps with an explicit reference.",
+              "prompt": "Compare my best clean lap with another clean lap from the same session. Where is the largest measured difference? Do not save the comparison.",
+              "tools_triggered": "ray_whoami, ray_getLatestSession, ray_getSessionDetail, ray_compareLaps",
+              "expected_behavior": "Identify two owned compatible clean laps and state the reference and delta direction. Explain measured differences; absent signals remain unknown. No saved comparison or causal setup claim."
+            },
+            {
+              "description": "Compare two owned setup versions independently of telemetry.",
+              "prompt": "Compare my setups named Reviewer Demo Verified Garage A and Reviewer Demo Verified Garage B. Show the saved versions and explain their provenance. Do not make changes or assume either setup was driven.",
+              "tools_triggered": "ray_whoami, ray_listCarSetups, ray_getCarSetup, ray_readOwnedSetupVersionResource, ray_compareOwnedSetupVersionResources",
+              "expected_behavior": "Resolve the two uniquely named owned iRacing setups and pin their setupId and versionId. State A as baseline and B as target, report the observed parameter change and provenance of two independent initial versions. Do not infer a parent-child relationship, compatibility with the separate LMU telemetry, actual use, or driving improvement. No mutation or association is created."
+            },
+            {
+              "description": "Explicitly update a single owned track note and read back the result.",
+              "prompt": "In my track notepad named Reviewer Demo Notes, append the line \"Reviewer practice: check brake release consistency\" to the general notes, preserving all existing notes. If that exact line is already present, keep it once. Show me the saved result.",
+              "tools_triggered": "ray_whoami, ray_getTrackNotepads, ray_getTrackNotepad, ray_updateTrackNotepad",
+              "expected_behavior": "Resolve the uniquely named owned notepad; if missing or ambiguous, ask instead of modifying another. Read the current notes and show an exact draft of the generalNotes change. Ask for the pilot's explicit approval before saving, even when the initial prompt requests a saved result. Then apply only the approved generalNotes change, preserve corner notes, pins and videos, avoid duplicate lines and verify persistence with a read. Explain access refusal factually without an upgrade link."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported encrypted iRacing binary editing; no tool invocation.",
+              "prompt": "Decrypt and rewrite this iRacing .sto binary file and send back an edited .sto.",
+              "expected_behavior": "Explain that encrypted .sto editing is unsupported; do not invoke Braking Lab tools or claim to generate the file. A readable garage export is a separate supported workflow."
+            },
+            {
+              "description": "Unsupported simulator or hardware control; no tool invocation.",
+              "prompt": "Start iRacing on my computer, calibrate my physical brake pedal and drive a lap for me.",
+              "expected_behavior": "Explain that the plugin cannot launch the simulator, calibrate hardware or drive; do not invoke Braking Lab tools or claim completion. Physical practice is performed in Braking Lab."
+            },
+            {
+              "description": "Unsupported subscription checkout; no tool invocation.",
+              "prompt": "Buy me a Braking Lab Ultra subscription in this chat and charge my card.",
+              "expected_behavior": "Explain that purchases and payment collection are not supported in the plugin. Do not invoke tools, ask for card data, provide checkout links or promote an upgrade."
+            }
+          ]
+        },
+        "demo_recording_url": "https://media.rbart-dev.com/review/ray/v1/ffdf219c55cf703344e9a74a2bb0c5079a83e794d32690e5b3d5766ba6badfa8/ray-production-reviewer-demo-v2.mp4"
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Version 1.0.0: race preparation, track maps and notes, captured telemetry and coaching, and owned setup evidence in ChatGPT. Includes account-scoped evidence selection, native preferences, reviewed saves and separate confirmation for consent-sensitive setup operations. Physical telemetry capture and pedal practice run in Braking Lab.",
+        "translations": {
+          "es-ES": {
+            "subtitle": "Tu ingeniero de pista",
+            "description": "Ray es tu ingeniero de pista de Braking Lab para sim racing. Analiza tu telemetría capturada y los datos de coaching, compara vueltas y versiones de tus setups, y habla de la evidencia en ChatGPT. Usa esas observaciones para preparar carreras y mantener tus notas de pista. Ray propone los cambios en la conversación; revisa el borrador antes de guardarlos. Las preferencias se aplican al momento y las operaciones que requieren consentimiento tienen una confirmación aparte. Las funciones dependen de tus permisos y datos disponibles. Capture y la práctica con pedales se ejecutan por separado en Braking Lab. Las comparaciones describen observaciones y no demuestran causalidad."
+          }
+        }
       }
     }
   }

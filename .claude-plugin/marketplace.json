@@ -8,7 +8,8 @@
     {
       "name": "braking-lab-race-engineer",
       "source": "./",
-      "description": "Review laps, prepare races, and explore setups using your Braking Lab data."
+      "description": "Review laps, prepare races, and explore setups using your Braking Lab data.",
+      "version": "1.0.0"
     }
   ]
 }
