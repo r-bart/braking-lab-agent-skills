@@ -41,3 +41,9 @@ El aviso de categoría era no bloqueante, pero Productivity describía peor la f
 El nuevo upload 1.0.0 tiene SHA-256 `6d9405411dfc99b348b4f3e5dcc0af817cd0fea4638a19329fe10f0e67d899ef`. El ZIP guardado y descargado del portal tiene SHA-256 `45a9836a8f459a3922b74e41453b0162d00468ff43f8df63f62090e8d4e6eb7e`: todos sus archivos coinciden con el candidato y sus manifests son estructuralmente idénticos. Se confirmó la categoría Data & Analytics y la descripción nueva en la ficha. Verificador de paquete y submission, 39 tests, build determinista y SHA256SUMS pasan. Post-review quick: cambio acotado de metadata, sin lógica o acceso nuevo; categoría guardada comprobada; el diálogo final ya no presenta el finding de categoría.
 
 Referencia de categorías: https://developers.openai.com/plugins/deploy/submission-errors#listing-and-interface-errors
+
+## Estado observado tras el ajuste
+
+Después de recargar la ficha, la misma versión 1.0.0 y submission `appsub_6aca9fc11f60819191bfca3756c086e2` aparecen con Review status **In review** y Publication **Not published**. Se confirma Data & Analytics en la metadata. El agente no marcó las seis declaraciones ni pulsó el botón final Submit; el cambio a In review se observó al refrescar la página. No se canceló la revisión ni se modificó de nuevo la versión enviada.
+
+El aviso no apareció en el diálogo final antes del envío observado. Una vez In review, el portal deja de presentar una comprobación de metadata de draft: su panel vacío no se usa como prueba de un nuevo escaneo. Se conserva el resultado MCP limpio ya comprobado sobre 0.5.2. Este estado de revisión no acredita ejecución nativa de los ocho casos pendientes ni aprobación/publicación. Los estados de ausencia de envío registrados en las secciones anteriores son históricos.
