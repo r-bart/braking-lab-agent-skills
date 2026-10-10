@@ -1,7 +1,19 @@
 # Preparación del envío público a OpenAI — 1.0.0
 
 Estado vigente del 10 de octubre de 2026: staging privado **1.1.9**, paquete
-público **1.0.0**, MCP **0.5.1**. PR 149 promovida a main
+público **1.0.0**, MCP **0.5.2**. PR 150 integrada en develop
+`bd4bc9da7c2dbe82f9c813d2436d4a4bdad5bf2b` y PR 151 en main
+`0e058c9a51d8551d0d811bca372a82620ecc4c3b`; ambos despliegues están
+comprobados. El ZIP nuevo `76ae645282ef0e0e5c5169fc5d7e5a87944931f77988e445d97b741e0cc12a1e`
+ya se ha subido al mismo borrador y su conexión OAuth permanece autorizada. El
+escaneo de MCP 0.5.2 terminó sin findings y las diez skills pasan sus checks. La comprobación autenticada de staging pasó
+12 bloques y la de producción 20 checks, sin cambios de contenido; las grants
+temporales exactas quedaron revocadas. Los casos nativos del borrador público
+no están aceptados: no está instalado y ChatGPT devuelve «Plugin not found» al
+abrir su ficha. Sigue pendiente la puerta de declaraciones del publicador.
+No se ha presentado ni publicado.
+
+La primera promoción base fue MCP 0.5.1. PR 149 promovida a main
 `74acf0498a4683f532dad2c33b33ec10c6d0a99b`, desplegada en producción mediante
 Railway `6e20bf20-3d1b-4712-addc-5949a5aca87f`. La cualificación autenticada
 pasó OAuth stateful, identidad, recursos UI, refresh y revocación. La conexión
@@ -22,8 +34,16 @@ suite de ocho casos del paquete público exacto. N1 y N3 conservaron fallos en e
 ensayo anterior; las correcciones de las skills están validadas en origen pero
 requieren probar la versión guardada. El borrador público 1.0.0 ya está creado;
 el dominio MCP está verificado y las diez skills muestran «Checks passed».
-La nueva conexión OAuth ya está autorizada a Franz y los campos privados de reviewer están guardados, con contraseña verificada sin exponerla. El portal conserva cinco casos positivos, tres negativos y el vídeo. El escaneo de MCP 0.5.1 señala cinco herramientas: executor genérico, selectores de preparación, esquema y confirmación retirada. Se está preparando MCP 0.5.2 y la skill de preparación para ofrecer siete acciones concretas; aún requiere staging, promoción y un nuevo escaneo. Siguen pendientes los ocho casos nativos del paquete público exacto y las declaraciones del publicador. El aviso de categoría es no bloqueante. No se ha
-presentado ni publicado el plugin. Ver el [ensayo nativo](validation/2026-10-10-native-production-rehearsal.md).
+La conexión OAuth permanece autorizada a Franz y los campos privados de reviewer
+se han vuelto a comprobar después del reupload, incluida la presencia de la
+contraseña sin exponerla. El portal conserva los cinco casos positivos, tres
+negativos, países, traducción y vídeo. El escaneo MCP actualizado no señala
+incidencias; los cinco findings históricos de 0.5.1 ya no aparecen. El aviso de
+categoría es no bloqueante y la ficha describe el uso de telemetría, notas,
+preparación y setups. Siguen pendientes los ocho casos nativos del paquete
+público exacto y las declaraciones del publicador. No se ha presentado ni
+publicado. Ver el [ensayo nativo](validation/2026-10-10-native-production-rehearsal.md)
+y la [comprobación de 0.5.2](validation/2026-10-10-model-operation-review.md).
 
 ## Decisiones confirmadas
 
