@@ -3,9 +3,9 @@
 **Pendiente de grabar y alojar.** No hay vídeo ni URL de demostración. La
 cuenta ficticia Franz Hermann de staging dispone de trazas y de dos imports
 iRacing comparables, y el despliegue final está cualificado. Usar únicamente
-esa identidad para un ensayo de staging. Para la entrega pública, preparar y
-verificar la cuenta equivalente de producción sobre el candidato enviado a
-revisión. No grabar la cuenta del propietario ni presentar el ensayo como
+esa identidad para un ensayo de staging. La cuenta equivalente de producción ya está creada y sus trazas y setups
+sintéticos están comprobados. Para la entrega pública, verificar OAuth y el
+renderizado de esa cuenta sobre el candidato desplegado que se envía a revisión. No grabar la cuenta del propietario ni presentar el ensayo como
 aceptación de producción. El import LMU adicional no forma parte del P4, que
 compara los dos imports iRacing propios independientes.
 

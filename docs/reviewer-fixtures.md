@@ -6,8 +6,9 @@ existente de staging y su acceso por contraseña, sin MFA ni códigos por correo
 No se exige un buzón de recuperación para este recorrido. Braking Lab se ocupa
 de los desbloqueos y de renovar el acceso durante la revisión; el operador debe
 comprobar el login justo antes del envío. Las credenciales se proporcionan solo
-en los campos protegidos del portal. La cuenta equivalente en producción aún
-requiere autorización y aprovisionamiento; no reutilizar sus tokens de staging.
+en los campos protegidos del portal. La cuenta independiente de producción ya fue aprobada y aprovisionada; no
+reutilizar sus tokens de staging. Las lecturas de su fixture pasan, pero los
+casos nativos de publicación sobre el candidato de producción siguen pendientes.
 Esta decisión sustituye las referencias históricas a un buzón controlado abajo.
 
 **Estado actual:** Franz Hermann tiene una cuenta independiente de staging, sin
@@ -18,6 +19,25 @@ QA, además de los dos imports iRacing comparables. Las lecturas propias,
 trazas/comparación y las pruebas OAuth del despliegue final pasaron el 10 de
 octubre. No se ejecutaron los ocho casos de publicación en producción ni una
 aceptación humana positiva; los casos LMU adicionales siguen indicados abajo.
+
+## Producción — aprovisionamiento completado el 10 de octubre
+
+Franz Hermann dispone de una identidad independiente, login por contraseña,
+perfil privado y Ultra sintético. Se comprobaron el login y la membresía real;
+no hay administrador, pagos, tarjetas ni datos de pilotos reales. Tiene una
+libreta con curva y pin, una carrera/preparación, dos sesiones con cuatro
+vueltas generadas de 400 muestras y dos imports iRacing independientes.
+Las cuatro trazas devuelven 200 puntos y las dos comparaciones pasan mediante
+los lectores del candidato bajo RLS de esta cuenta. Los dos setups tienen
+61 parámetros; solo cambia la caída delantera izquierda, de −3.9 a −3.8 grados.
+No se ha creado ninguna asociación de setup y sesión.
+
+La fecha de 5 de diciembre a las 12:00 UTC requiere desactivación por el
+operador: el fin del período guardado no revoca por sí solo el acceso. La
+carrera demo es el 17 de octubre; revisar explícitamente su fecha si el envío
+se retrasa. Las credenciales e IDs de recuperación están fuera del paquete.
+Estos resultados no sustituyen OAuth, renderizado y P1–P5/N1–N3 en ChatGPT
+contra el despliegue final de producción, ni una grabación real.
 
 ## Identidad y acceso
 

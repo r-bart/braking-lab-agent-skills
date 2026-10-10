@@ -3,8 +3,9 @@
 Actualización vigente del 10 de octubre: privado de staging **1.1.9** y candidato
 público **1.0.0**, con el handoff final aplicado. El propietario ha elegido un
 correo ficticio sin buzón para Franz Hermann, login por contraseña y recuperación
-a cargo de Braking Lab. Ya existe la cuenta de staging; la de producción queda
-por aprovisionar con autorización. Las referencias históricas a un buzón
+a cargo de Braking Lab. Ya existen las cuentas independientes de staging y producción. La fixture de
+producción está aprobada, cargada y comprobada por sus lectores autenticados;
+quedan la cualificación OAuth/host del candidato y el vídeo real. Las referencias históricas a un buzón
 controlado no son un requisito del recorrido de acceso elegido.
 
 Actualización del 9 de octubre: candidato público **Braking Lab - Race Engineer 1.0.0**, separado del plugin privado de staging 1.1.7. El isotipo actual, las diez skills y la conexión MCP se conservan. La ficha prioriza telemetría y conversación sobre los datos; las cuatro áreas de UI son Pitwall, Notas de Pista, Telemetría y AI Setups. Se comprobó el health público de producción: MCP 0.5.1, commit `8aed47ab68e1503c716b11ff355364d870984e9e`, deployment `d3f12d22-30fa-4bf2-b859-a593507ce43a`. Esto no califica su OAuth ni su UI: todavía hay cambios de staging por promover y probar. El vídeo accesible, la cuenta de reviewer de producción y la verificación final del publicador siguen pendientes.
@@ -16,7 +17,8 @@ Estado histórico a 5 de octubre de 2026: candidato preparado, **todavía no env
 - Todos los países: `publication.countries: []`.
 - Sin compras ni cobros dentro del plugin. Se accede a los permisos de la cuenta existente. Los enlaces de ayuda de cuenta son informativos; no promocionar planes ni enviar a checkout desde el plugin.
 - El nombre del publicador será la identidad verificada que OpenAI permita seleccionar. En el portal se observó la verificación individual aprobada y la empresarial sin completar; el nombre exacto de directorio debe comprobarse en el nuevo borrador. `developerName: Braking Lab` es un campo obligatorio del paquete, no una prueba de verificación empresarial ni del nombre visible final.
-- **Cuenta exclusiva Franz Hermann en staging, sin administrador.** Login por contraseña y correo ficticio sin buzón; Braking Lab atiende la recuperación. El despliegue final pasó lecturas propias, trazas/comparación, scopes y OAuth. Los dos imports iRacing sirven para P4; el import LMU es cobertura adicional. Quedan los ocho recorridos nativos de publicación y la cuenta equivalente de producción autorizada. Ver el [fixture vigente](reviewer-fixtures.md) y la [cualificación final](validation/2026-10-10-final-design-handoff.md).
+- **Cuenta exclusiva Franz Hermann en staging, sin administrador.** Login por contraseña y correo ficticio sin buzón; Braking Lab atiende la recuperación. El despliegue final pasó lecturas propias, trazas/comparación, scopes y OAuth. Los dos imports iRacing sirven para P4; el import LMU es cobertura adicional. Quedan los ocho recorridos nativos de publicación en producción. La cuenta equivalente ya está aprovisionada y sus lecturas
+  pasan; no se afirma aceptación de los casos nativos. Ver el [fixture vigente](reviewer-fixtures.md) y la [cualificación final](validation/2026-10-10-final-design-handoff.md).
 - **Pendiente grabar y alojar el vídeo de demostración** con esa cuenta. No existe todavía; no se incluye una URL inventada en el manifiesto.
 
 ## Ficha preparada
