@@ -1,11 +1,21 @@
 ---
 name: race-engineer
-description: Orient a driver in Braking Lab Race Engineer, check the connected account and plan, and find which MCP actions are available. Use for opening the Paddock workspace or broad capability and account questions before a specific coaching task is chosen.
+description: Orient a driver in Braking Lab Race Engineer, check the connected account and plan, and find which MCP actions are available. Use for opening the Paddock workspace or broad capability and account questions before a specific coaching task is chosen, including requests for unsupported purchases or physical simulator control.
 ---
 
 # Race Engineer
 
 For Code Mode, use the connected Braking Lab MCP through `execute_code`. Its `brakinglab.*` catalog, tool description, and `brakinglab.getFunctionSchema({ name })` define current arguments and behavior. For example, `await brakinglab.whoami({})` identifies the authorized account; `await brakinglab.getCapabilities({})` summarizes available work. Check the exact schema if the connected server differs.
+
+## Known unsupported requests
+
+Before account verification or capability discovery, reject a request to purchase
+or upgrade a subscription, charge a card, start or operate the simulator,
+calibrate physical hardware or drive a lap. These actions are outside Ray’s
+scope regardless of the connected account or plan. Explain that limitation
+without calling Braking Lab tools, collecting payment details or offering
+checkout links. Guidance and analysis of already captured data are separate
+supported tasks; do not perform them unless requested.
 
 ## Conversation and saved changes
 

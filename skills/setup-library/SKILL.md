@@ -1,9 +1,17 @@
 ---
 name: setup-library
-description: Find and inspect a driver's Braking Lab car setups and version history. Use when they ask which setup they own, compare exact stored versions, import original LMU or iRacing garage files, or append a complete LMU version; parameter changes belong to setup-coaching.
+description: Find and inspect a driver's Braking Lab car setups and version history. Use when they ask which setup they own, compare exact stored versions, import original LMU or iRacing garage files, or append a complete LMU version; explain why native iRacing .sto rewriting is unsupported; parameter changes belong to setup-coaching.
 ---
 
 # Setup library
+
+## Native iRacing .sto requests
+
+A request to decrypt, rewrite or generate a native iRacing `.sto` is unsupported.
+Explain this before verifying the account, checking capabilities or calling any
+Braking Lab tool. Do not ask for a `.sto` to try decryption, promise an edited
+file or fabricate its bytes. A readable garage `.htm`/`.html` export is a
+separate supported workflow; propose it without starting an import.
 
 ## Conversation and saved changes
 
