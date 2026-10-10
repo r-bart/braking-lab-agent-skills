@@ -15,7 +15,7 @@ strict validation pass. Website, support, privacy and terms URLs were checked.
 The portable and Claude ZIPs are rebuilt from the canonical skills. Package
 validity does not establish live production acceptance or directory readiness.
 
-The monorepo UI has 649 passing tests and a 3.44 MB standalone bundle. Local
+The monorepo UI has 657 passing tests and a 3.44 MB standalone bundle. Local
 browser screenshots are design-QA evidence using explicitly synthetic fixtures;
 these are not screenshots or recordings of a production reviewer journey.
 
@@ -35,3 +35,12 @@ this chosen login method. No reviewer should have to register or receive a code.
 Use `docs/demo-walkthrough.md` for the real recording. Host-rendered icon caching
 must be verified separately from a valid packaged PNG. Preserve final staging
 and production connections; do not recreate QA as an extra user-facing app.
+
+Native staging QA rendered the owned session and measured trace, Silverstone's
+18-corner notebook, exact setup version with all 71 parameters, preferences
+without changing the pilot's choices, and calendar creation through Ray. The
+first identity-bound live pass also verified read scope, ownership/parent
+refusal, OAuth refresh/revocation and decline/cancel/missing-capability/stateless
+consent refusal with zero content writes. A canonical LMU display token found
+by that native pass was corrected and regression tested. These observations
+remain staging QA, not production reviewer-case acceptance.

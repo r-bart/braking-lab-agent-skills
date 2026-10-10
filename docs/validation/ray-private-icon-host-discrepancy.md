@@ -75,3 +75,14 @@ Formato de branding contrastado con la documentación oficial:
 [Package your plugin](https://developers.openai.com/plugins/build/plugins) y
 [Upload and submit](https://developers.openai.com/plugins/deploy/submission).
 No se ensayan más versiones sin un diagnóstico nuevo.
+
+## Final handoff update — 10 October
+
+The same private plugin was updated to 1.1.9, release
+`pluginrel_6aca6f28fa888191bd37e9e9bff46a8a`. Its existing required App, ten
+skills, three prompts and USER/PRIVATE audience were preserved. All four
+branding paths point to the contained current 512px PNG at
+`./assets/braking-lab-isotype-staging-1.1.9.png`; the package was read back.
+The native listing visibly reports 1.1.9 but still shows the generic fallback.
+The connected workspace renders the current isotype. No new hypothesis about
+the host's icon renderer has been established, and no support message was sent.
