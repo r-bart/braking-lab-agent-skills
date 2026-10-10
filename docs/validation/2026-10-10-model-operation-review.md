@@ -33,3 +33,11 @@ Se comprobaron de nuevo los campos privados de reviewer tras el reupload: login,
 ## Puerta del publicador
 
 El diálogo final permite abrir Submit for review y muestra seis declaraciones sin marcar: términos y guías de OpenAI, leyes aplicables, ausencia de transferencias/inversiones, derechos sobre contenido y endpoints, aptitud para menores de 18 y no dirigirse a menores de 13 ni compartir sus datos. El botón Submit permanece deshabilitado. La skill de preparación exige que las complete el publicador autorizado; se dejó el diálogo preparado para el titular, sin marcar casillas ni presentar el borrador. La prueba nativa exacta sigue pendiente independientemente de esas declaraciones.
+
+## Ajuste de categoría de la ficha
+
+El aviso de categoría era no bloqueante, pero Productivity describía peor la función principal de Ray. Se consultó la lista oficial de categorías y se eligió Data & Analytics, priorizando el análisis de telemetría, comparaciones y conversación sobre la evidencia. Se aclaró la descripción en inglés y español sin ampliar capacidades ni cambiar las diez skills, permisos, casos, dominio o conexión.
+
+El nuevo upload 1.0.0 tiene SHA-256 `6d9405411dfc99b348b4f3e5dcc0af817cd0fea4638a19329fe10f0e67d899ef`. El ZIP guardado y descargado del portal tiene SHA-256 `45a9836a8f459a3922b74e41453b0162d00468ff43f8df63f62090e8d4e6eb7e`: todos sus archivos coinciden con el candidato y sus manifests son estructuralmente idénticos. Se confirmó la categoría Data & Analytics y la descripción nueva en la ficha. Verificador de paquete y submission, 39 tests, build determinista y SHA256SUMS pasan. Post-review quick: cambio acotado de metadata, sin lógica o acceso nuevo; categoría guardada comprobada; el diálogo final ya no presenta el finding de categoría.
+
+Referencia de categorías: https://developers.openai.com/plugins/deploy/submission-errors#listing-and-interface-errors

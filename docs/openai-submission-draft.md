@@ -4,7 +4,7 @@ Estado vigente del 10 de octubre de 2026: staging privado **1.1.9**, paquete
 público **1.0.0**, MCP **0.5.2**. PR 150 integrada en develop
 `bd4bc9da7c2dbe82f9c813d2436d4a4bdad5bf2b` y PR 151 en main
 `0e058c9a51d8551d0d811bca372a82620ecc4c3b`; ambos despliegues están
-comprobados. El ZIP nuevo `76ae645282ef0e0e5c5169fc5d7e5a87944931f77988e445d97b741e0cc12a1e`
+comprobados. El ZIP nuevo `6d9405411dfc99b348b4f3e5dcc0af817cd0fea4638a19329fe10f0e67d899ef`
 ya se ha subido al mismo borrador y su conexión OAuth permanece autorizada. El
 escaneo de MCP 0.5.2 terminó sin findings y las diez skills pasan sus checks. La comprobación autenticada de staging pasó
 12 bloques y la de producción 20 checks, sin cambios de contenido; las grants
@@ -38,9 +38,9 @@ La conexión OAuth permanece autorizada a Franz y los campos privados de reviewe
 se han vuelto a comprobar después del reupload, incluida la presencia de la
 contraseña sin exponerla. El portal conserva los cinco casos positivos, tres
 negativos, países, traducción y vídeo. El escaneo MCP actualizado no señala
-incidencias; los cinco findings históricos de 0.5.1 ya no aparecen. El aviso de
-categoría es no bloqueante y la ficha describe el uso de telemetría, notas,
-preparación y setups. Siguen pendientes los ocho casos nativos del paquete
+incidencias; los cinco findings históricos de 0.5.1 ya no aparecen. Se ajustó la categoría a Data & Analytics y se aclaró la finalidad de
+análisis de datos en inglés y español; el paso final ya no muestra el aviso
+de categoría. Siguen pendientes los ocho casos nativos del paquete
 público exacto y las declaraciones del publicador. No se ha presentado ni
 publicado. Ver el [ensayo nativo](validation/2026-10-10-native-production-rehearsal.md)
 y la [comprobación de 0.5.2](validation/2026-10-10-model-operation-review.md).
@@ -65,7 +65,7 @@ La fuente de verdad es `plugin.json`, no una segunda ficha escrita a mano:
 - `supportURL`: https://www.brakinglab.com/en/docs/faq#how-do-i-contact-support
 - `privacyPolicyURL`: https://www.brakinglab.com/en/privacy
 - `termsOfServiceURL`: https://www.brakinglab.com/en/terms
-- Categoría propuesta: Productivity; comprobar opciones del portal.
+- Categoría: Data & Analytics. La descripción prioriza análisis de telemetría y conversación sobre la evidencia; la categoría figura entre las admitidas por OpenAI.
 - Icono y logo: `assets/braking-lab-isotype.png`, PNG cuadrado de 512 px.
 - MCP: `https://mcp.brakinglab.com/mcp`, una conexión en el ZIP portable.
 - Diez skills; onboarding `skills/race-engineer/SKILL.md`.
