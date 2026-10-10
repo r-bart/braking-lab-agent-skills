@@ -1,5 +1,12 @@
 # Preparación del envío público a OpenAI — 1.0.0
 
+Actualización vigente del 10 de octubre: privado de staging **1.1.9** y candidato
+público **1.0.0**, con el handoff final aplicado. El propietario ha elegido un
+correo ficticio sin buzón para Franz Hermann, login por contraseña y recuperación
+a cargo de Braking Lab. Ya existe la cuenta de staging; la de producción queda
+por aprovisionar con autorización. Las referencias históricas a un buzón
+controlado no son un requisito del recorrido de acceso elegido.
+
 Actualización del 9 de octubre: candidato público **Braking Lab - Race Engineer 1.0.0**, separado del plugin privado de staging 1.1.7. El isotipo actual, las diez skills y la conexión MCP se conservan. La ficha prioriza telemetría y conversación sobre los datos; las cuatro áreas de UI son Pitwall, Notas de Pista, Telemetría y AI Setups. Se comprobó el health público de producción: MCP 0.5.1, commit `8aed47ab68e1503c716b11ff355364d870984e9e`, deployment `d3f12d22-30fa-4bf2-b859-a593507ce43a`. Esto no califica su OAuth ni su UI: todavía hay cambios de staging por promover y probar. El vídeo accesible, la cuenta de reviewer de producción y la verificación final del publicador siguen pendientes.
 
 Estado histórico a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El paquete público apunta a producción, que sigue en MCP 0.4.0 sin la UI Ray. Staging ya desplegó MCP 0.5.1 y recibió la migración de identidad; su batería real de OAuth y protocolos pasó. El plugin privado existente se actualizó a 1.0.0 y el Paddock se renderizó en ChatGPT después de refrescar herramientas. El despliegue integrado del consentimiento y las correcciones finales de preferencias/origen de UI está calificado: aceptación real de veinte hitos y renderizado del Paddock con preferencias en ChatGPT. Ver el [registro de preparación](validation/2026-10-05-publication-prep.md). Esto no constituye publicación ni aprobación de OpenAI.

@@ -20,12 +20,17 @@ browser screenshots are design-QA evidence using explicitly synthetic fixtures;
 these are not screenshots or recordings of a production reviewer journey.
 
 Remaining directory gates: production deployment qualification; dedicated
-reviewer with working recovery mailbox and authorized production fixture plan;
+reviewer with verified password login and authorized production fixture plan;
 executed five positive/three negative journeys; actual native ChatGPT/iPhone
 acceptance; reviewer-accessible HTTPS demo recording; verified publisher/domain
 and portal tool scans. The production account has not been provisioned or granted
 new access by this package work. Credentials stay outside Git/archives and belong
 only in the submission portal's protected reviewer fields.
+
+The owner selected a fictitious reviewer email without a mailbox. Franz Hermann
+already has a dedicated staging password account; the operator handles recovery
+and keeps access valid during review. Mailbox recovery is not a release gate for
+this chosen login method. No reviewer should have to register or receive a code.
 
 Use `docs/demo-walkthrough.md` for the real recording. Host-rendered icon caching
 must be verified separately from a valid packaged PNG. Preserve final staging

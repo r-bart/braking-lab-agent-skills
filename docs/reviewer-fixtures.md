@@ -1,5 +1,15 @@
 # Cuenta del reviewer con contenido ficticio
 
+**Decisión vigente — 10 de octubre de 2026:** el propietario ha elegido un
+correo ficticio sin buzón para Franz Hermann. Se conserva la cuenta sintética
+existente de staging y su acceso por contraseña, sin MFA ni códigos por correo.
+No se exige un buzón de recuperación para este recorrido. Braking Lab se ocupa
+de los desbloqueos y de renovar el acceso durante la revisión; el operador debe
+comprobar el login justo antes del envío. Las credenciales se proporcionan solo
+en los campos protegidos del portal. La cuenta equivalente en producción aún
+requiere autorización y aprovisionamiento; no reutilizar sus tokens de staging.
+Esta decisión sustituye las referencias históricas a un buzón controlado abajo.
+
 **Cuenta dedicada creada en staging el 6 de octubre de 2026; contenido parcial.** Usuario independiente sin administrador, membresía Ultra sintética hasta el 5 de diciembre de 2026, una carrera, un notepad con nota de curva y pin, una sesión sintética LMU con dos vueltas limpias y trazas, y dos setups iRacing comparables de prueba. El login real con contraseña y la lectura propia mediante RLS pasaron; la repetición de la herramienta conserva exactamente una carrera y un notepad. No hay cuenta reviewer en producción ni aceptación de estos casos en ChatGPT. El correo temporal `staging.test` sirve únicamente para pruebas de staging; falta un buzón controlado por Braking Lab para recuperación y revisión final.
 
 ## Identidad y acceso
