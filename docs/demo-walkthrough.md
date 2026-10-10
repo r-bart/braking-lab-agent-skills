@@ -9,9 +9,9 @@
 3. **P2:** revisar la sesión reciente con hasta tres prioridades y sin guardar informe. Mostrar límites de señales y distinguir hechos de hipótesis.
 4. **P3:** comparar dos vueltas compatibles, indicando la referencia y la mayor diferencia medida.
 5. **P4:** comparar `Reviewer Demo Verified Garage A/B`, fijando sus dos versiones guardadas. Mostrar el único cambio observado y explicar que son imports independientes iRacing. No asociarlos a las vueltas LMU ni atribuir mejoras al setup.
-6. **P5:** pedir la única edición de notas del manifiesto. Mostrar el texto antes y después y una lectura posterior; conservar curvas y pins.
+6. **P5:** pedir la única edición de notas del manifiesto. Mostrar el borrador exacto, la aprobación del piloto, el texto guardado y una lectura posterior; conservar curvas y pins.
 7. Ejecutar **N1–N3**: edición de `.sto` cifrado, control físico del simulador/pedal y compra en el chat. Mostrar que cada petición se explica como no soportada sin invocar herramientas.
-8. Como recorridos adicionales de Extensions, mostrar las preferencias nativas de idioma/unidades y el file opener con un `.svm` o export de garaje propio de prueba. Abrir un archivo es lectura; importar es otra acción y respeta la elicitación directa del cliente. No presentar aprobación escrita por el agente como consentimiento.
+8. Como recorridos adicionales de Extensions, mostrar las preferencias nativas de idioma/unidades y el file opener con un `.svm` o export de garaje propio de prueba. La previsualización del archivo es lectura; importar abre el flujo de la SPA. Las preferencias se guardan inmediatamente, sin borrador. No presentar aprobación escrita por el agente como consentimiento.
 9. Desconectar/revocar el acceso y mostrar que una llamada posterior requiere autenticación. Restaurar solo las notas demo y las preferencias usadas para la grabación.
 
 ## Entrega

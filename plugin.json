@@ -9,16 +9,24 @@
   },
   "homepage": "https://www.brakinglab.com/en/features/race-engineer",
   "repository": "https://github.com/r-bart/braking-lab-agent-skills",
-  "keywords": ["sim-racing", "telemetry", "race-engineer", "setups"],
+  "keywords": [
+    "sim-racing",
+    "telemetry",
+    "race-engineer",
+    "setups"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Braking Lab - Race Engineer",
         "shortDescription": "Your race engineer",
-        "longDescription": "Ray is your Braking Lab race engineer. Review captured telemetry, compare laps and discuss the evidence in ChatGPT. Open your race preparations, track maps and notes, coaching reports, or owned setup versions. Save changes after reviewing them; consent-sensitive operations require a separate confirmation. Features follow your existing account permissions and available data. Capture and physical pedal practice run separately in Braking Lab. Setup and performance comparisons describe observations and do not establish causality.",
+        "longDescription": "Ray is your Braking Lab race engineer. Review captured telemetry and coaching, compare laps and owned setup versions, prepare races and keep track notes. Ask Ray to analyse your evidence and propose changes in ChatGPT; review the draft before saving. Preferences apply immediately. Uses your connected Braking Lab account and existing membership. Original setup imports, Capture and physical pedal practice run separately in Braking Lab. Personal comparisons describe observations, not proof that a setup caused an improvement.",
         "developerName": "Braking Lab",
         "category": "Productivity",
-        "capabilities": ["Read", "Write"],
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
         "websiteURL": "https://www.brakinglab.com/en/features/race-engineer",
         "privacyPolicyURL": "https://www.brakinglab.com/en/privacy",
         "termsOfServiceURL": "https://www.brakinglab.com/en/terms",
