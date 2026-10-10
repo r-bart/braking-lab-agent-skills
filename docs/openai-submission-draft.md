@@ -1,16 +1,28 @@
 # Preparación del envío público a OpenAI — 1.0.0
 
-Actualización vigente del 10 de octubre: privado de staging **1.1.9** y candidato
-público **1.0.0**, con el handoff final aplicado. El propietario ha elegido un
-correo ficticio sin buzón para Franz Hermann, login por contraseña y recuperación
-a cargo de Braking Lab. Ya existen las cuentas independientes de staging y producción. La fixture de
-producción está aprobada, cargada y comprobada por sus lectores autenticados;
-quedan la cualificación OAuth/host del candidato y el vídeo real. Las referencias históricas a un buzón
-controlado no son un requisito del recorrido de acceso elegido.
+Estado vigente del 10 de octubre de 2026: staging privado **1.1.9**, paquete
+público **1.0.0**, MCP **0.5.1**. PR 149 promovida a main
+`74acf0498a4683f532dad2c33b33ec10c6d0a99b`, desplegada en producción mediante
+Railway `6e20bf20-3d1b-4712-addc-5949a5aca87f`. La cualificación autenticada
+pasó OAuth stateful, identidad, recursos UI, refresh y revocación. La conexión
+nativa de desarrollo mostró Ray y sus bibliotecas con Franz Hermann.
 
-Actualización del 9 de octubre: candidato público **Braking Lab - Race Engineer 1.0.0**, separado del plugin privado de staging 1.1.7. El isotipo actual, las diez skills y la conexión MCP se conservan. La ficha prioriza telemetría y conversación sobre los datos; las cuatro áreas de UI son Pitwall, Notas de Pista, Telemetría y AI Setups. Se comprobó el health público de producción: MCP 0.5.1, commit `8aed47ab68e1503c716b11ff355364d870984e9e`, deployment `d3f12d22-30fa-4bf2-b859-a593507ce43a`. Esto no califica su OAuth ni su UI: todavía hay cambios de staging por promover y probar. El vídeo accesible, la cuenta de reviewer de producción y la verificación final del publicador siguen pendientes.
+Franz tiene perfil privado, membresía Ultra sintética y acceso por contraseña
+con recuperación a cargo de Braking Lab. Contiene tres libretas, tres sesiones,
+seis vueltas y dos setups independientes. Dos libretas y una sesión/dos vueltas
+son copias privadas de material real expresamente autorizado por el propietario;
+el resto son fixtures sintéticas. No atribuir estos registros reales a Franz ni
+asociarlos a sus setups. El recorrido principal muestra Silverstone, Stowe y
+sus pins, trazas reales y conversación sobre la evidencia.
 
-Estado histórico a 5 de octubre de 2026: candidato preparado, **todavía no enviable**. El paquete público apunta a producción, que sigue en MCP 0.4.0 sin la UI Ray. Staging ya desplegó MCP 0.5.1 y recibió la migración de identidad; su batería real de OAuth y protocolos pasó. El plugin privado existente se actualizó a 1.0.0 y el Paddock se renderizó en ChatGPT después de refrescar herramientas. El despliegue integrado del consentimiento y las correcciones finales de preferencias/origen de UI está calificado: aceptación real de veinte hitos y renderizado del Paddock con preferencias en ChatGPT. Ver el [registro de preparación](validation/2026-10-05-publication-prep.md). Esto no constituye publicación ni aprobación de OpenAI.
+La aprobación humana y readback de P5 ya están verificados. El nuevo vídeo local
+`ray-production-reviewer-demo-v2.mp4` dura 3:44, con escenas reales de interfaz,
+conversación y guardado aprobado. Todavía no tiene URL pública ni sustituye la
+suite de ocho casos del paquete público exacto. N1 y N3 conservaron fallos en el
+ensayo anterior; las correcciones de las skills están validadas en origen pero
+requieren probar la versión guardada. Siguen pendientes el borrador **With MCP**,
+el challenge, el escaneo final y las declaraciones del publicador. No se ha
+presentado ni publicado el plugin. Ver el [ensayo nativo](validation/2026-10-10-native-production-rehearsal.md).
 
 ## Decisiones confirmadas
 
@@ -114,9 +126,9 @@ Para actualizar el piloto privado ya instalado, `python scripts/build_staging.py
 
 ## Puertas antes de enviar
 
-1. Promover selectivamente la PR 149 una vez terminados los preparativos. El propietario ha autorizado main y comunicado QA completado. La inspección OAuth aprobada no identificó una migración necesaria. Railway construye MCP y su UI Ray en un único despliegue desde main; no desplegar SPA, Capture ni Landing por este handoff. Cualificar el despliegue real antes de declararlo listo.
+1. Promoción y despliegue completados: PR 149, main y Railway indicados arriba. MCP y UI Ray viajan juntos; no hubo despliegue de SPA, Capture o Landing ni migración adicional de OAuth.
 2. Verificar `/health`, catálogo y todas las anotaciones/model visibility en producción. Probar OAuth nuevo, refresco, revocación, scopes de identidad sin permisos de datos, UserInfo verificado y rechazo de otro `resource`.
-3. Crear y verificar la [cuenta ficticia del reviewer](reviewer-fixtures.md); ejecutar los cinco casos positivos y tres negativos sin usar la cuenta real del propietario.
+3. La [cuenta del reviewer](reviewer-fixtures.md) ya está creada y su login/datos cualificados. Ejecutar los cinco casos positivos y tres negativos sobre el paquete público exacto; los ensayos de la conexión de desarrollo no sustituyen esa puerta.
 4. Grabar y alojar el [vídeo](demo-walkthrough.md); añadir su URL real a `review.demo_recording_url`. Dar las credenciales únicamente en el campo seguro del portal.
 5. Crear un nuevo borrador **With MCP**. El portal actual del proyecto no contiene un borrador de Braking Lab. No reutilizar el ID de la integración personal ni el plugin Verxion.
 6. Obtener el token del portal, configurar `OPENAI_APPS_CHALLENGE` en el servicio de producción y comprobar el cuerpo literal de `/.well-known/openai-apps-challenge`. La ruta sin token devuelve 404.
