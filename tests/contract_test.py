@@ -27,7 +27,7 @@ class RayContractTest(unittest.TestCase):
         return verify_ray_contract(self.ray, self.domain, self.skills)
 
     def test_current_skill_routes_are_known(self):
-        self.assertEqual(self.check(), 7)
+        self.assertEqual(self.check(), 15)
 
     def test_unknown_underscore_tool_is_rejected(self):
         self.skills["setup-library"] += "\nOpen `ray_openSetupFille`."
@@ -87,6 +87,45 @@ class RayContractTest(unittest.TestCase):
     def test_every_domain_operation_must_remain_model_discoverable(self):
         self.tool('ray_getLatestSession')['visibility'] = ['app']
         with self.assertRaisesRegex(AssertionError, 'individually discoverable'):
+            self.check()
+
+    def test_compatibility_tools_cannot_become_model_visible(self):
+        self.tool("ray_updatePreparationPhase")["visibility"] = ["app", "model"]
+        with self.assertRaisesRegex(AssertionError, "app-only"):
+            self.check()
+
+    def test_preparation_alias_cannot_be_missing(self):
+        self.ray["tools"] = [t for t in self.ray["tools"] if t["name"] != "ray_addPreparationPhase"]
+        with self.assertRaisesRegex(AssertionError, "Missing preparation aliases"):
+            self.check()
+
+    def test_preparation_alias_cannot_accept_action(self):
+        self.tool("ray_addPreparationPhase")["inputFields"].append("action")
+        with self.assertRaisesRegex(AssertionError, "action selector"):
+            self.check()
+
+    def test_preparation_alias_must_bind_owner_resource(self):
+        self.tool("ray_addPreparationPhase")["required"].remove("preparationId")
+        with self.assertRaisesRegex(AssertionError, "bind its preparation"):
+            self.check()
+
+    def test_preparation_alias_cannot_be_hidden(self):
+        self.tool("ray_addPreparationPhase")["visibility"] = ["app"]
+        with self.assertRaisesRegex(AssertionError, "aliases must be discoverable"):
+            self.check()
+
+    def test_checklist_alias_cannot_omit_phase_or_item(self):
+        for field in ("phaseId", "itemId"):
+            original = deepcopy(self.ray)
+            with self.subTest(field=field):
+                self.tool("ray_toggleChecklistItem")["required"].remove(field)
+                with self.assertRaisesRegex(AssertionError, "required identity"):
+                    self.check()
+            self.ray = original
+
+    def test_toggle_cannot_be_declared_idempotent(self):
+        self.tool("ray_toggleChecklistItem")["idempotentHint"] = True
+        with self.assertRaisesRegex(AssertionError, "retry policy"):
             self.check()
 
     def test_annotations_cannot_be_omitted(self):

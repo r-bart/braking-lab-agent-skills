@@ -22,9 +22,7 @@ suite de ocho casos del paquete público exacto. N1 y N3 conservaron fallos en e
 ensayo anterior; las correcciones de las skills están validadas en origen pero
 requieren probar la versión guardada. El borrador público 1.0.0 ya está creado;
 el dominio MCP está verificado y las diez skills muestran «Checks passed».
-Siguen pendientes el consentimiento OAuth de la nueva conexión, el descubrimiento
-y escaneo del MCP, los casos nativos, los campos de reviewer y las declaraciones
-del publicador. El aviso de categoría es no bloqueante. No se ha
+La nueva conexión OAuth ya está autorizada a Franz y los campos privados de reviewer están guardados, con contraseña verificada sin exponerla. El portal conserva cinco casos positivos, tres negativos y el vídeo. El escaneo de MCP 0.5.1 señala cinco herramientas: executor genérico, selectores de preparación, esquema y confirmación retirada. Se está preparando MCP 0.5.2 y la skill de preparación para ofrecer siete acciones concretas; aún requiere staging, promoción y un nuevo escaneo. Siguen pendientes los ocho casos nativos del paquete público exacto y las declaraciones del publicador. El aviso de categoría es no bloqueante. No se ha
 presentado ni publicado el plugin. Ver el [ensayo nativo](validation/2026-10-10-native-production-rehearsal.md).
 
 ## Decisiones confirmadas
@@ -133,7 +131,7 @@ Para actualizar el piloto privado ya instalado, `python scripts/build_staging.py
 2. Verificar `/health`, catálogo y todas las anotaciones/model visibility en producción. Probar OAuth nuevo, refresco, revocación, scopes de identidad sin permisos de datos, UserInfo verificado y rechazo de otro `resource`.
 3. La [cuenta del reviewer](reviewer-fixtures.md) ya está creada y su login/datos cualificados. Ejecutar los cinco casos positivos y tres negativos sobre el paquete público exacto; los ensayos de la conexión de desarrollo no sustituyen esa puerta.
 4. Grabar y alojar el [vídeo](demo-walkthrough.md); añadir su URL real a `review.demo_recording_url`. Dar las credenciales únicamente en el campo seguro del portal.
-5. Borrador público creado en el proyecto Braking Lab: `plugin_asdk_app_6aca9fc11f2c8191a867e4475e078342`, versión `appsub_6aca9fc11f60819191bfca3756c086e2`. La ficha muestra `Braking Lab` y el identificador `braking-lab-race-engineer`; las diez skills pasan. No reutiliza la integración personal ni Verxion. Falta completar OAuth y los casos nativos de esta versión.
+5. Borrador público creado en el proyecto Braking Lab: `plugin_asdk_app_6aca9fc11f2c8191a867e4475e078342`, versión `appsub_6aca9fc11f60819191bfca3756c086e2`. La ficha muestra `Braking Lab` y el identificador `braking-lab-race-engineer`; las diez skills pasan. No reutiliza la integración personal ni Verxion. OAuth a Franz y los campos privados de reviewer ya están completos. Faltan los casos nativos de esta versión y el nuevo escaneo de MCP 0.5.2 tras su despliegue.
 6. Dominio verificado. `OPENAI_APPS_CHALLENGE` está configurado; el cuerpo literal HTTPS coincide con el token del portal. Railway `bc538ec9-2b7a-40a3-a0e1-8f75d93c277a` reutiliza main `74acf0498a4683f532dad2c33b33ec10c6d0a99b`; `/ready` responde `ready`. La ruta sin token devuelve 404.
 7. Volver a escanear el MCP tras cualquier cambio de herramientas. Revisar identidad, países, URLs, permisos y ficha antes de seleccionar **Submit for Review**. Enviar, aprobar y publicar son estados distintos.
 

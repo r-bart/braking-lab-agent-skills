@@ -23,7 +23,7 @@ The Ray interface is for reading evidence. A “with Ray” action starts a conv
 
 Navigation and attachment are separate. Only “Use in chat” attaches evidence; an attachment identifies a resource, not its approval or proof that a setup was driven. Respect removed attachments. Preferences are the sole immediate-write UI exception. The host controls the chat, composer and confirmation presentation. File previews are read-only; import original setup bytes through the SPA.
 
-Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
+Prefer individually exposed `ray_*` tools when the connected host offers them to the model. The unprefixed function names below describe the same canonical operations. Use the input schema supplied with each typed tool. If a tool is not offered to the model, do not recover it through hidden schema discovery or generic execution. `execute_code` is the compatibility path for Code Mode clients; it must not enable operations absent from the individually reviewed server catalog. Server permissions and direct client confirmation still apply.
 
 ## Report opening status accurately
 
@@ -34,7 +34,7 @@ If the host reports an unavailable app or failed rendering, state that the inter
 ## Orient the driver
 
 1. Confirm the connected account with `whoami` before interpreting empty results. If it is the wrong account, explain that instead of concluding that the driver has no sessions or races.
-2. Use `getCapabilities` and, for a specific action, `getFunctionSchema`. Route to the relevant task skill when a goal becomes concrete.
+2. Use `getCapabilities` and the input schema of the offered typed tool for a specific action. Native Code Mode clients may use `getFunctionSchema` when that compatibility operation is available. Route to the relevant task skill when a goal becomes concrete.
    When the connected server exposes `ray_paddock`, open it for a persistent Paddock workspace. Use `ray_evidence` for the thread evidence panel and `ray_openResource` for an exact session, race, setup, or note identity. The app uses the same authenticated Ray data and policies; do not invent account, readiness, telemetry, or entitlement values when its bootstrap marks a source unavailable.
 3. State scope and plan limitations plainly. Use only existing account entitlements. Do not promote subscription upgrades, initiate purchases, collect payment details or link to checkout. Informational account help must not become a sales pitch. A Basic account may analyze in chat but cannot save AI coaching reports; do not retry a quota or entitlement refusal with another key or function.
 

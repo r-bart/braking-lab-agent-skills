@@ -18,6 +18,20 @@ FUNCTION_NAME = re.compile(
     r"report|explain)[A-Z][A-Za-z0-9]*$"
 )
 BACKTICK_NAME = re.compile(r"`([A-Za-z][A-Za-z0-9]*)`")
+APP_ONLY_COMPATIBILITY = {
+    "ray_updatePreparationPhase", "ray_updateChecklistItem",
+    "ray_getFunctionSchema", "ray_confirmSetupUsage",
+}
+PREPARATION_ALIASES = {
+    "ray_addPreparationPhase": {"preparationId", "name"},
+    "ray_editPreparationPhase": {"preparationId", "phaseId"},
+    "ray_deletePreparationPhase": {"preparationId", "phaseId"},
+    "ray_addChecklistItem": {"preparationId", "phaseId", "label"},
+    "ray_editChecklistItem": {"preparationId", "phaseId", "itemId"},
+    "ray_deleteChecklistItem": {"preparationId", "phaseId", "itemId"},
+    "ray_toggleChecklistItem": {"preparationId", "phaseId", "itemId"},
+}
+
 DIRECT_CALL = re.compile(r"\bbrakinglab\.([A-Za-z][A-Za-z0-9]*)\s*\(")
 
 
@@ -35,9 +49,23 @@ def verify_ray_contract(snapshot: dict, domain: dict, skills: dict[str, str]) ->
         if tool["readOnlyHint"]:
             assert not tool["destructiveHint"], "Read-only tool cannot be destructive"
         if tool["name"] in {f"ray_{name}" for name in domain["names"]}:
-            assert "model" in tool["visibility"], "Every domain operation must be individually discoverable"
+            if tool["name"] in APP_ONLY_COMPATIBILITY:
+                assert tool["visibility"] == ["app"], "Compatibility tools must be app-only"
+            else:
+                assert "model" in tool["visibility"], "Every domain operation must be individually discoverable"
         assert set(tool["required"]) <= set(tool["inputFields"]), "Invalid required fields"
         assert set(tool["visibility"]) <= {"app", "model"}, "Unknown tool visibility"
+    assert PREPARATION_ALIASES.keys() <= known.keys(), "Missing preparation aliases"
+    for name, required in PREPARATION_ALIASES.items():
+        alias = known[name]
+        assert "model" in alias["visibility"], "Preparation aliases must be discoverable"
+        assert "action" not in alias["inputFields"], "Alias cannot accept an action selector"
+        assert "preparationId" in alias["required"], "Alias must bind its preparation"
+        assert set(alias["required"]) == required, "Alias required identity or fields changed"
+        assert alias.get("idempotentHint") is name.startswith("ray_edit"), "Alias retry policy drift"
+        assert alias["readOnlyHint"] is False, "Preparation aliases are writes"
+        assert alias["openWorldHint"] is False, "Preparation aliases are owner-local"
+        assert alias["destructiveHint"] is (not name.startswith("ray_add")), "Alias destructive policy drift"
     unknown = {
         skill: sorted(set(RAY_NAME.findall(content)) - known.keys())
         for skill, content in skills.items()

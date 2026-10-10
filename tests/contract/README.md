@@ -22,7 +22,7 @@ records names, annotations, visibility and input field/required names, without
 data or credentials. This covers the underscore tool names omitted by the
 domain-function token matcher, including direct confirmation routes and the
 read-only file opener. The verifier rejects unknown names, source mismatch,
-missing domain mirrors and policy drift. Run `python -m unittest discover -s
+missing domain mirrors and policy drift. The four app-only compatibility exceptions are explicit; every other domain mirror must stay model-discoverable. Seven fixed-action preparation aliases must be present, require their exact preparation/phase/item and creation fields, declare the correct retry policy and cannot accept an action selector. Run `python -m unittest discover -s
 tests -p '*_test.py'` to exercise the rejection paths.
 
 These are source registration contracts. They do not prove that a host renders

@@ -1,11 +1,56 @@
 {
   "version": "101-ed5a84b844b4a006",
-  "sourceRevision": "3c06e08622f48a9b2e71847d901d426c79d8b5a3",
+  "sourceRevision": "c58cd673c521a247f38f78b530ba7b2b86c76b8c",
   "tools": [
+    {
+      "name": "ray_addChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "label",
+        "notes",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "label",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_addPreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "description",
+        "items",
+        "name",
+        "notes",
+        "preparationId"
+      ],
+      "required": [
+        "name",
+        "preparationId"
+      ]
+    },
     {
       "name": "ray_addSetupVersion",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -29,6 +74,7 @@
       "name": "ray_buildSetupFromInterview",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -43,10 +89,10 @@
         "userBrief"
       ],
       "required": [
+        "base",
+        "fromVersionId",
         "operationKey",
         "setupId",
-        "fromVersionId",
-        "base",
         "target"
       ]
     },
@@ -54,6 +100,7 @@
       "name": "ray_commitSetupAssociation",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -67,10 +114,10 @@
         "replaceConflicts"
       ],
       "required": [
-        "preview",
-        "normalizedTarget",
-        "expectedConflictIds",
         "confirmationToken",
+        "expectedConflictIds",
+        "normalizedTarget",
+        "preview",
         "replaceConflicts"
       ]
     },
@@ -78,6 +125,7 @@
       "name": "ray_compareLaps",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -95,6 +143,7 @@
       "name": "ray_compareOwnedSetupVersionResources",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -114,6 +163,7 @@
       "name": "ray_compareSetupUsages",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -132,6 +182,7 @@
       "name": "ray_compareTraces",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -153,10 +204,10 @@
       "name": "ray_confirmSetupUsage",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
-        "app",
-        "model"
+        "app"
       ],
       "inputFields": [
         "usageId",
@@ -170,6 +221,7 @@
       "name": "ray_createCarSetup",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -187,15 +239,16 @@
         "trackName"
       ],
       "required": [
+        "name",
         "operationKey",
-        "svm",
-        "name"
+        "svm"
       ]
     },
     {
       "name": "ray_createExerciseFromZone",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -209,8 +262,8 @@
         "zoneNumber"
       ],
       "required": [
-        "operationKey",
         "lapId",
+        "operationKey",
         "zoneNumber"
       ]
     },
@@ -218,6 +271,7 @@
       "name": "ray_createPreparation",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -240,6 +294,7 @@
       "name": "ray_createRaceEvent",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -262,18 +317,19 @@
         "weekNumber"
       ],
       "required": [
-        "name",
-        "sim",
-        "series",
         "car",
-        "track",
-        "raceDate"
+        "name",
+        "raceDate",
+        "series",
+        "sim",
+        "track"
       ]
     },
     {
       "name": "ray_createRaceFromLMUSchedule",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -296,6 +352,7 @@
       "name": "ray_createRaceFromSchedule",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -321,6 +378,7 @@
       "name": "ray_createTrackNotepad",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -340,9 +398,50 @@
       ]
     },
     {
+      "name": "ray_deleteChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_deletePreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
       "name": "ray_deleteRaceEvent",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -359,6 +458,7 @@
       "name": "ray_deleteTrackNotepad",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -369,6 +469,51 @@
       ],
       "required": [
         "notepadId"
+      ]
+    },
+    {
+      "name": "ray_editChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "itemId",
+        "label",
+        "notes",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
+      "name": "ray_editPreparationPhase",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "description",
+        "name",
+        "notes",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "phaseId",
+        "preparationId"
       ]
     },
     {
@@ -389,6 +534,7 @@
       "name": "ray_explainSetupParam",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -409,6 +555,7 @@
       "name": "ray_generateStrategyFromTelemetry",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -433,6 +580,7 @@
       "name": "ray_getAllRaces",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -453,6 +601,7 @@
       "name": "ray_getBrakeMasterLeaderboard",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -473,6 +622,7 @@
       "name": "ray_getBrakeMasterProgress",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -485,6 +635,7 @@
       "name": "ray_getBrakingZones",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -502,6 +653,7 @@
       "name": "ray_getCapabilities",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -517,6 +669,7 @@
       "name": "ray_getCarParamSpace",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -527,14 +680,15 @@
         "sim"
       ],
       "required": [
-        "sim",
-        "carKey"
+        "carKey",
+        "sim"
       ]
     },
     {
       "name": "ray_getCarSetup",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -551,6 +705,7 @@
       "name": "ray_getCoachingReport",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -567,6 +722,7 @@
       "name": "ray_getCoachingReports",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -583,6 +739,7 @@
       "name": "ray_getComparisons",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -600,6 +757,7 @@
       "name": "ray_getCornerAnalysis",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -617,6 +775,7 @@
       "name": "ray_getDatapack",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -633,6 +792,7 @@
       "name": "ray_getDesktopLeaderboard",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -661,6 +821,7 @@
       "name": "ray_getDocumentation",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -675,6 +836,7 @@
       "name": "ray_getDrivingSymptoms",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -692,6 +854,7 @@
       "name": "ray_getExerciseResults",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -709,10 +872,10 @@
       "name": "ray_getFunctionSchema",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
-        "app",
-        "model"
+        "app"
       ],
       "inputFields": [
         "name",
@@ -724,6 +887,7 @@
       "name": "ray_getHardwareSetup",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -740,6 +904,7 @@
       "name": "ray_getImportedLaps",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -754,9 +919,56 @@
       "required": []
     },
     {
+      "name": "ray_getLMUCurrentSchedule",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [],
+      "required": []
+    },
+    {
+      "name": "ray_getLMUSeriesSchedule",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "seriesId",
+        "weekNum"
+      ],
+      "required": [
+        "seriesId"
+      ]
+    },
+    {
+      "name": "ray_getLMUSpecialEvents",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "limit"
+      ],
+      "required": []
+    },
+    {
       "name": "ray_getLapTrace",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -777,6 +989,7 @@
       "name": "ray_getLatestSession",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -790,52 +1003,10 @@
       "required": []
     },
     {
-      "name": "ray_getLMUCurrentSchedule",
-      "readOnlyHint": true,
-      "destructiveHint": false,
-      "openWorldHint": false,
-      "visibility": [
-        "app",
-        "model"
-      ],
-      "inputFields": [],
-      "required": []
-    },
-    {
-      "name": "ray_getLMUSeriesSchedule",
-      "readOnlyHint": true,
-      "destructiveHint": false,
-      "openWorldHint": false,
-      "visibility": [
-        "app",
-        "model"
-      ],
-      "inputFields": [
-        "seriesId",
-        "weekNum"
-      ],
-      "required": [
-        "seriesId"
-      ]
-    },
-    {
-      "name": "ray_getLMUSpecialEvents",
-      "readOnlyHint": true,
-      "destructiveHint": false,
-      "openWorldHint": false,
-      "visibility": [
-        "app",
-        "model"
-      ],
-      "inputFields": [
-        "limit"
-      ],
-      "required": []
-    },
-    {
       "name": "ray_getPreparation",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -851,6 +1022,7 @@
       "name": "ray_getPreparationTemplates",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -863,6 +1035,7 @@
       "name": "ray_getProgressOverTime",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -880,6 +1053,7 @@
       "name": "ray_getRaceDetail",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -896,6 +1070,7 @@
       "name": "ray_getRaceReadinessData",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -912,6 +1087,7 @@
       "name": "ray_getRaceReadinessReport",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -928,6 +1104,7 @@
       "name": "ray_getSectorAnalysis",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -944,6 +1121,7 @@
       "name": "ray_getSeriesSchedule",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -961,6 +1139,7 @@
       "name": "ray_getSessionDetail",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -977,6 +1156,7 @@
       "name": "ray_getSessions",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -998,6 +1178,7 @@
       "name": "ray_getSessionsFacets",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1021,6 +1202,7 @@
       "name": "ray_getSetupExperimentHistory",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1040,6 +1222,7 @@
       "name": "ray_getSetupTelemetryContext",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1057,6 +1240,7 @@
       "name": "ray_getSetupTendencies",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1077,6 +1261,7 @@
       "name": "ray_getStintMetrics",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1095,6 +1280,7 @@
       "name": "ray_getTireDegradation",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1111,6 +1297,7 @@
       "name": "ray_getTrackNotepad",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1127,6 +1314,7 @@
       "name": "ray_getTrackNotepads",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1145,6 +1333,7 @@
       "name": "ray_getTrackOutline",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1163,6 +1352,7 @@
       "name": "ray_getTrackTemplate",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1179,6 +1369,7 @@
       "name": "ray_getUnlinkedSessionsForRace",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1196,6 +1387,7 @@
       "name": "ray_getUpcomingRaces",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1208,6 +1400,7 @@
       "name": "ray_getWeakCorners",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1225,6 +1418,7 @@
       "name": "ray_getZoneConsistency",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1242,6 +1436,7 @@
       "name": "ray_getZoneTrace",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1261,6 +1456,7 @@
       "name": "ray_importSetupFile",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1278,17 +1474,18 @@
         "trackName"
       ],
       "required": [
-        "operationKey",
         "fileBase64",
         "fileType",
-        "sourceFilename",
-        "name"
+        "name",
+        "operationKey",
+        "sourceFilename"
       ]
     },
     {
       "name": "ray_linkNotepadToRace",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1307,6 +1504,7 @@
       "name": "ray_linkSessionToRace",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1318,14 +1516,15 @@
         "sessionId"
       ],
       "required": [
-        "sessionId",
-        "raceEventId"
+        "raceEventId",
+        "sessionId"
       ]
     },
     {
       "name": "ray_listCarSetups",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1345,6 +1544,7 @@
       "name": "ray_listCustomExercises",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1360,6 +1560,7 @@
       "name": "ray_listDatapacks",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1382,6 +1583,7 @@
       "name": "ray_listHardwareSetups",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1397,6 +1599,7 @@
       "name": "ray_listReferenceSetups",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1417,6 +1620,7 @@
       "name": "ray_listSessionStints",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1447,6 +1651,7 @@
       "name": "ray_nativeSettingsUpdate",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1473,8 +1678,8 @@
         "kind"
       ],
       "required": [
-        "kind",
-        "id"
+        "id",
+        "kind"
       ]
     },
     {
@@ -1509,6 +1714,7 @@
       "name": "ray_previewSetupAssociation",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1523,15 +1729,16 @@
         "versionId"
       ],
       "required": [
+        "sessionId",
         "setupId",
-        "versionId",
-        "sessionId"
+        "versionId"
       ]
     },
     {
       "name": "ray_readOwnedExerciseResource",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1548,6 +1755,7 @@
       "name": "ray_readOwnedSetupVersionResource",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1566,6 +1774,7 @@
       "name": "ray_recordSetupComparison",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1584,6 +1793,7 @@
       "name": "ray_recordSetupEvaluation",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1600,14 +1810,15 @@
         "usageId"
       ],
       "required": [
-        "usageId",
-        "expectedEvaluationId"
+        "expectedEvaluationId",
+        "usageId"
       ]
     },
     {
       "name": "ray_remixSetup",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1627,17 +1838,18 @@
         "setupId"
       ],
       "required": [
-        "operationKey",
-        "setupId",
         "changes",
         "instruction",
-        "rationale"
+        "operationKey",
+        "rationale",
+        "setupId"
       ]
     },
     {
       "name": "ray_reportReferenceMiss",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1652,14 +1864,15 @@
         "trackType"
       ],
       "required": [
-        "sim",
-        "carName"
+        "carName",
+        "sim"
       ]
     },
     {
       "name": "ray_retireSetupAssociation",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1676,6 +1889,7 @@
       "name": "ray_saveCoachingReport",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1694,17 +1908,18 @@
         "stintNumber"
       ],
       "required": [
-        "operationKey",
-        "sessionId",
-        "overview",
+        "actionItems",
         "corners",
-        "actionItems"
+        "operationKey",
+        "overview",
+        "sessionId"
       ]
     },
     {
       "name": "ray_saveComparison",
       "readOnlyHint": false,
       "destructiveHint": false,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1726,6 +1941,7 @@
       "name": "ray_saveRaceReadinessReport",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1746,20 +1962,21 @@
         "weaknesses"
       ],
       "required": [
-        "raceEventId",
-        "readiness",
+        "cornerEvolution",
         "pace",
         "phaseAnalysis",
-        "cornerEvolution",
+        "raceEventId",
+        "racePlan",
+        "readiness",
         "strengths",
-        "weaknesses",
-        "racePlan"
+        "weaknesses"
       ]
     },
     {
       "name": "ray_saveRaceStrategy",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1790,6 +2007,7 @@
       "name": "ray_searchIRacingSeries",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1807,6 +2025,7 @@
       "name": "ray_searchLMUCars",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1823,6 +2042,7 @@
       "name": "ray_searchLMUSeries",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1839,6 +2059,7 @@
       "name": "ray_searchLMUTracks",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1855,6 +2076,7 @@
       "name": "ray_searchRacesThisWeek",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1868,9 +2090,31 @@
       "required": []
     },
     {
+      "name": "ray_toggleChecklistItem",
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false,
+      "visibility": [
+        "app",
+        "model"
+      ],
+      "inputFields": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ],
+      "required": [
+        "itemId",
+        "phaseId",
+        "preparationId"
+      ]
+    },
+    {
       "name": "ray_unlinkNotepadFromRace",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1889,10 +2133,10 @@
       "name": "ray_updateChecklistItem",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
-        "app",
-        "model"
+        "app"
       ],
       "inputFields": [],
       "required": []
@@ -1901,6 +2145,7 @@
       "name": "ray_updatePreparation",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1923,10 +2168,10 @@
       "name": "ray_updatePreparationPhase",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
-        "app",
-        "model"
+        "app"
       ],
       "inputFields": [],
       "required": []
@@ -1935,6 +2180,7 @@
       "name": "ray_updateRaceEvent",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -1966,6 +2212,7 @@
       "name": "ray_updateSettings",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app"
@@ -1981,6 +2228,7 @@
       "name": "ray_updateTrackNotepad",
       "readOnlyHint": false,
       "destructiveHint": true,
+      "idempotentHint": false,
       "openWorldHint": false,
       "visibility": [
         "app",
@@ -2008,6 +2256,7 @@
       "name": "ray_whoami",
       "readOnlyHint": true,
       "destructiveHint": false,
+      "idempotentHint": true,
       "openWorldHint": false,
       "visibility": [
         "app",
