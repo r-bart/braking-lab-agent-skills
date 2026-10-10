@@ -1,14 +1,23 @@
 # Guion del vídeo para revisión
 
-**Pendiente de grabar y alojar.** No hay vídeo ni URL de demostración. La
-cuenta ficticia Franz Hermann de staging dispone de trazas y de dos imports
-iRacing comparables, y el despliegue final está cualificado. Usar únicamente
-esa identidad para un ensayo de staging. La cuenta equivalente de producción ya está creada y sus trazas y setups
-sintéticos están comprobados. Para la entrega pública, verificar OAuth y el
-renderizado de esa cuenta sobre el candidato desplegado que se envía a revisión. No grabar la cuenta del propietario ni presentar el ensayo como
-aceptación de producción. El import LMU adicional no forma parte del P4, que
-compara los dos imports iRacing propios independientes.
+**Grabación de producción en curso; vídeo final todavía no entregado ni alojado.**
+La conexión de desarrollo de producción muestra la cuenta sintética Franz
+Hermann, sus trazas y sus dos setups iRacing independientes. P1, P2, P3 y P4
+produjeron respuestas verificadas de lectura; P5 mostró el borrador exacto y
+sigue pendiente de aprobación directa del piloto y readback de persistencia.
+No aceptar esa aprobación en nombre del piloto.
 
+El primer ensayo N1 sin invocación explícita de Ray ofreció comprobar el
+descifrado de un `.sto`: no pasa. Al consultar expresamente las capacidades
+MCP, ChatGPT corrigió la respuesta. N2 y N3 rechazaron respectivamente control
+físico y compra/cargo. No presentar esos ensayos como cualificación del paquete
+público guardado ni como prueba completa de ausencia de llamadas a herramientas.
+La skill de setup-library ya declara que `.sto` nativo no está soportado.
+
+La primera toma de OAuth capturó una ventana equivocada y fue descartada; no
+es evidencia válida. Las tomas posteriores se verificaron por fotogramas del
+producto real. El vídeo final debe excluir contraseñas, UUID internos,
+marcadores e historial ajeno, y conservar los límites observados.
 
 ## Recorrido propuesto
 
