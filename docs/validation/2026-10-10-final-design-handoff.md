@@ -44,3 +44,17 @@ refusal, OAuth refresh/revocation and decline/cancel/missing-capability/stateles
 consent refusal with zero content writes. A canonical LMU display token found
 by that native pass was corrected and regression tested. These observations
 remain staging QA, not production reviewer-case acceptance.
+
+Final staging deployment `6255d04c-4996-41a4-b6b5-705629be985f` certifies develop
+`b05c41a84d4c3584c8f7f2a234ac66032a0c0f92`, with source
+`0c61b3a9804bf4a8f2b5f9870748438244736f953a4b2c97a0b063174ae310e5`.
+The read, OAuth lifecycle and negative consent probes passed again on that
+exact deployment with temporary-grant cleanup, zero content writes and the
+shared gate unchanged. Candidate CI 38071311924 passed. Native ChatGPT after
+refresh renders LMU correctly; at 390px the real lap cursor, explicit composer
+context, navigation preserving context and removal without navigation were
+verified. Physical-device and accepted human consent remain separate gates.
+
+Selective promotion is prepared in monorepo PR 149. Its final readiness record
+is `thoughts/notes/2026-10-10_ray-final-design-release-readiness.md`. No main push,
+production reviewer provisioning or directory submission was performed.
